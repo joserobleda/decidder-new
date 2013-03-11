@@ -1,0 +1,65 @@
+
+@import "normalize";
+@import "foundation";
+@import "bourbon/bourbon";
+
+
+$green: #469A40;
+
+a, a:hover, a:focus { color: $green; }
+html, body { height:100%; font-family: "Helvetica Neu"; }
+
+header {
+	padding: 14px 0;
+	border-bottom: 1px solid $green;
+
+	@include prefixer(box-shadow, 0 0 10px 0px hsla(0, 0%, 0%, 0.2), spec);
+
+	a {
+		font-size: 18px;
+	}
+
+	.login {
+		line-height: 36px;
+	}
+
+	.logout {
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	#avatar {
+		float: right;
+		margin: 0 0 0 1em;
+		vertical-align: top;
+		border: 1px solid #555;
+		@include prefixer(border-radius, 1px, spec);
+	}
+}
+
+
+#question {
+	margin-top: 150px;
+
+	input, input:focus {
+	    font-family: "Helvetica Neu", sans-serif;
+
+	    border: 0px;
+	    border-radius:6px;
+	   	padding: 10px;
+	    height: auto;
+	    box-shadow: 0 1px 0 rgba(255, 255, 255, .15), 0 2px 4px rgba(0, 0, 0, .2) inset, 0 -1px 3px rgba(0, 0, 0, .2) inset, 0 0 12px rgba(255, 255, 255, .1);
+
+	    color: $green;
+	    background-color: rgba(0, 0, 0, 0.03);
+
+	    font-size: 35px;
+	    text-align:center;
+	    letter-spacing: -1px;
+	    text-shadow: 0 2px 5px rgba(255, 255, 255, .6);
+	}
+
+	button {
+		font-size: 18px
+	}
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>decidder</title>
+        <meta name="description" content="Helps you take decissions">
+        <meta name="viewport" content="width=device-width">
+        <style id="fonts">{% include 'fonts/helveticaneue.css' %}</style>
+
+        <link rel="stylesheet" href="/assets/css/web.css" />
+    </head>
+    <body>
+    	<div id="canvas">
+    		<header>
+    			<div class="row">
+    				<div class="six columns">
+    					<img src="/assets/images/logo.png" width="170" height="36" />
+    				</div>
+    				<div class="six columns text-right end">
+    					{% if session.user %}
+    						<img src="{{session.user.image}}" id="avatar" alt="avatar" height="36" width="36" />
+
+    						<div class="right">
+	    						<a id="nickname">@{{session.user.nick}}</a><br />
+	    						<a href="/auth/exit" class="logout">Log out</a>
+    						</div>
+    						
+    					{% else %}
+    						<a href="/auth/login" class="login">Log In</a>
+    					{% endif %}
+    				</div>
+    			</div>
+    		</header>
