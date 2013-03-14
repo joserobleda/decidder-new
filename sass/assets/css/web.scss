@@ -67,12 +67,34 @@ header {
 	}
 }
 
+#responses {
+	h3 {
+		border-top:5px solid #B2C51B;
+		padding: 0.8em 4% 0.3em;
+		margin: 1em 0 0 0;
+	}
+
+	.arguments {
+		background-color: #F3F3F3;
+		padding: 1em 2% 0 4%
+	}
+
+	p {
+		border-bottom: 1px solid #999;
+		font-family: $helveticaC;
+		padding: 1em;
+		background-color: #D9D9D9;
+	}
+
+}
 
 .context {
 	background-color: rgba(232, 232, 232, 0.5);
 	padding: 1em;
 
 	p {
+		font-family: $helveticaC;
+		font-size: 14px;
 		margin: 0
 	}
 }

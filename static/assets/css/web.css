@@ -3667,10 +3667,25 @@ header {
   #new-question button {
     font-size: 18px; }
 
+#responses h3 {
+  border-top: 5px solid #B2C51B;
+  padding: 0.8em 4% 0.3em;
+  margin: 1em 0 0 0; }
+#responses .arguments {
+  background-color: #F3F3F3;
+  padding: 1em 2% 0 4%; }
+#responses p {
+  border-bottom: 1px solid #999;
+  font-family: "Helvetica NC";
+  padding: 1em;
+  background-color: #D9D9D9; }
+
 .context {
   background-color: rgba(232, 232, 232, 0.5);
   padding: 1em; }
   .context p {
+    font-family: "Helvetica NC";
+    font-size: 14px;
     margin: 0; }
 
 .border-green {
