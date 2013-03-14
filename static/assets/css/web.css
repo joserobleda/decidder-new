@@ -311,7 +311,7 @@ html {
 
 body {
   background: white;
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica N", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 12px;
@@ -3627,14 +3627,16 @@ a, a:hover, a:focus {
 
 html, body {
   height: 100%;
-  font-family: "Helvetica Neu"; }
+  font-family: "Helvetica N"; }
 
 header {
   padding: 14px 0;
+  margin-bottom: 1em;
   border-bottom: 1px solid #469a40;
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2); }
   header a {
-    font-size: 18px; }
+    font-size: 18px;
+    font-family: "Helvetica NC", sans-serif; }
   header .login {
     line-height: 36px; }
   header .logout {
@@ -3647,10 +3649,10 @@ header {
     border: 1px solid #555;
     border-radius: 1px; }
 
-#question {
+#new-question {
   margin-top: 150px; }
-  #question input, #question input:focus {
-    font-family: "Helvetica Neu", sans-serif;
+  #new-question input, #new-question input:focus {
+    font-family: "Helvetica N", sans-serif;
     border: 0px;
     border-radius: 6px;
     padding: 10px;
@@ -3662,5 +3664,16 @@ header {
     text-align: center;
     letter-spacing: -1px;
     text-shadow: 0 2px 5px rgba(255, 255, 255, 0.6); }
-  #question button {
+  #new-question button {
     font-size: 18px; }
+
+.context {
+  background-color: rgba(232, 232, 232, 0.5);
+  padding: 1em; }
+  .context p {
+    margin: 0; }
+
+.border-green {
+  box-shadow: 0px 9px 15px -10px rgba(0, 0, 0, 0.2);
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #469a40; }

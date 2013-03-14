@@ -1,0 +1,19 @@
+{% include 'header.twig' %}
+
+    <section class="row collapse">
+        <div class="eight columns">
+            <form id="question" method="post" action="/question/{{_id}}">
+                <input type="hidden" name="_method" value="put" />
+
+                <div class="right" data-form-showing>
+                    <button type="submit">Edit</button>
+                </div>
+
+                <h1 class="border-green" name="title" data-tag="input">{{ title }}</h1>
+
+                <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
+            </form>
+        </div>
+    </section>
+
+{% include 'footer.twig' %}

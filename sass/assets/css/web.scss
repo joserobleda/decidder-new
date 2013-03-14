@@ -3,20 +3,23 @@
 @import "foundation";
 @import "bourbon/bourbon";
 
-
+$helveticaN: "Helvetica N";
+$helveticaC: "Helvetica NC";
 $green: #469A40;
 
 a, a:hover, a:focus { color: $green; }
-html, body { height:100%; font-family: "Helvetica Neu"; }
+html, body { height:100%; font-family: $helveticaN; }
 
 header {
 	padding: 14px 0;
+	margin-bottom: 1em;
 	border-bottom: 1px solid $green;
 
 	@include prefixer(box-shadow, 0 0 10px 0px hsla(0, 0%, 0%, 0.2), spec);
 
 	a {
 		font-size: 18px;
+		font-family: $helveticaC, sans-serif;
 	}
 
 	.login {
@@ -38,11 +41,11 @@ header {
 }
 
 
-#question {
+#new-question {
 	margin-top: 150px;
 
 	input, input:focus {
-	    font-family: "Helvetica Neu", sans-serif;
+	    font-family: $helveticaN, sans-serif;
 
 	    border: 0px;
 	    border-radius:6px;
@@ -62,4 +65,21 @@ header {
 	button {
 		font-size: 18px
 	}
+}
+
+
+.context {
+	background-color: rgba(232, 232, 232, 0.5);
+	padding: 1em;
+
+	p {
+		margin: 0
+	}
+}
+
+
+.border-green {
+	@include prefixer(box-shadow, 0px 9px 15px -10px rgba(0, 0, 0, 0.2), spec);
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid $green;
 }
