@@ -22,11 +22,21 @@
                     {{date}}
                 </div>
             </div>
+
+            <div class="row">
+                <div class="twelve columns text-center">
+                    <button class="reveal green" data-reveal-id="new-response"> Help decidde with your response </button>
+                </div>
+            </div>
         </div>
     </section>
 
+    <form id="new-response" class="modal" style="display:none">{% include 'question-new.twig' %}</form>
+
     <section id="responses">
 
+
+        {#
         <div class="row">
             <div class="twelve columns">
                 <h3 class="response">Respuesta #1</h3>
@@ -83,7 +93,7 @@
                 </div>
             </div>
         </div>
-
+        #}
     </section>
 
 {% include 'footer.twig' %}

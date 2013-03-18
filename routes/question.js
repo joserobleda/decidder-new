@@ -22,7 +22,7 @@
 				data.isResponsed = isResponsed;
 			
 				//data.isOwnQuestion = user && user.getId() == data.owner._id;
-				console.log(data);
+				//console.log(data);
 
 				res.render('question.twig', data);
 			});
