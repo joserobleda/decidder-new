@@ -10,11 +10,20 @@ $helveticaC: "Helvetica NC";
 $green: #469A40;
 
 a, a:hover, a:focus { color: $green; }
-html, body { height:100%; font-family: $helveticaN; }
+html, body { height:100%; font-family: $helveticaN;  }
+#canvas {background-color: rgba(232, 232, 232, 0.3);}
 .reveal-modal-bg { background-color: #FFF; }
-#new-response { width: 500px; }
+
+
+.border-green {
+	@include prefixer(box-shadow, 0px 9px 15px -10px rgba(0, 0, 0, 0.2), spec);
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid $green;
+}
+
 
 header {
+	background-color: #FFF;
 	padding: 14px 0;
 	margin-bottom: 1em;
 	border-bottom: 1px solid $green;
@@ -84,6 +93,10 @@ header {
     margin: 0;
 
 
+    textarea {
+    	resize: vertical;
+    }
+
 	h5 {
 		margin: 0;
 	    
@@ -97,13 +110,14 @@ header {
 	    border-bottom:1px solid #bababa;
 
 
-		@include prefixer(box-shadow, (inset 0px -1px 0px #fff, 0px 1px 3px rgba(0,0,0,.08)), webkit moz ms o spec);
+		@include prefixer(box-shadow, (inset 0px 0px 0px #fff, 0px 1px 3px rgba(0,0,0,.08)), webkit moz ms o spec);
 		@include prefixer(border-radius, 4px 4px 0px 0px, webkit moz ms o spec);
 	    
-	    font-size:14px;
+		font-family: "Helvetica NC";
+		font-size: 18px;
 	    font-weight:bold;
 	    text-align:center;
-	    line-height:44px;
+	    line-height:3em;
 	    color:#444444;
 	    text-shadow:0px 1px 0px #fff;
 	}
@@ -119,28 +133,67 @@ header {
 
 #responses {
 	h3 {
-		border-top:5px solid #B2C51B;
-		padding: 0.8em 4% 0.3em;
+		//@include linear-gradient(top, rgb(233, 233, 233), rgba(232, 232, 232, 0.3));
+		background-color: #EFF0F4;
+		border-top: 5px solid $green;
+		padding: 0.5em 4%;
 		margin: 1em 0 0 0;
+		color: #3D444E;
 	}
 
 	.arguments {
-		background-color: #F3F3F3;
-		padding: 1em 2% 0 4%
+		//background-color: #F3F3F3;
+		padding: 1em 0 0 2%
 	}
 
 	p {
-		border-bottom: 1px solid #999;
+		//@include prefixer(box-shadow, 3px 5px 6px -4px rgba(0, 0, 0, 0.25), webkit moz ms o spec);
 		font-family: $helveticaC;
 		padding: 1em;
-		background-color: #D9D9D9;
+		background-color: #fff;
+		border: 1px solid #EEE;
 		@include prefixer(border-radius, 2px, spec);
+
+		&:before, &:after {
+			content: "";
+			position: absolute;
+			top: 0.8em;
+			left: -15px;
+
+			border: 8px solid transparent;
+			border-right-color: #fff;
+		}
+
+		&:before {
+			left: -16px;
+			border-right-color: #EEE;
+		}
 	}
 
 }
 
+
+#question {
+	min-height: 250px;
+	background-color: #FFF;
+	padding: 0.5em 2em 1em;
+	@include prefixer(border-radius, 8px, webkit moz ms o spec);
+
+	&:after {
+		content: "";
+		position: absolute;
+		border: 16px solid transparent;
+		border-left-color: #FFF;
+		top: 3em;
+		right: -16px;
+	}
+}
+
+#new-response { width: 500px; }
+#new-reponse-button { font-size: 16px; }
+
 .context {
-	background-color: rgba(232, 232, 232, 0.5);
+	//background-color: rgba(232, 232, 232, 0.5);
 	padding: 1em;
 
 	p {
@@ -150,9 +203,15 @@ header {
 	}
 }
 
-
-.border-green {
-	@include prefixer(box-shadow, 0px 9px 15px -10px rgba(0, 0, 0, 0.2), spec);
-	padding-bottom: 0.3em;
-	border-bottom: 1px solid $green;
+.poster {
+	@include prefixer(border-radius, 40px, spec);
+	@include prefixer(box-shadow, 0px 9px 20px -10px rgba(10, 10, 10, 0.8), webkit moz ms o spec);
+	border: 1px solid #FFF;
+	margin: 1em 0 1.5em;
 }
+
+.avatar {
+	@include prefixer(border-radius, 20px, spec);
+}
+
+
