@@ -5,17 +5,19 @@
             <form id="question" method="post" action="/question/{{_id}}" >
                 <input type="hidden" name="_method" value="put" />
 
+
                 <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
 
                 <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
            
 
-                <div class="row">
+                <div class="row info collapse">
                     <div class="six columns">
-
-                    </div>
-                    <div class="six columns text-right">
                         {{date}}
+                    </div>
+                    <div class="six columns text-right options">
+                        <button class="right" data-form-showing>Edit</button>
+                        <button type="submit" class="right green" style="display:none" data-form-editing>Save</button>
                     </div>
                 </div>
              </form>
@@ -62,7 +64,17 @@
                                     <img src="{{argument.owner.image}}" class="avatar" alt="avatar" height="36" width="36" />
                                 </div>
                                 <div class="eleven columns">
-                                    <p>{{ argument.text }}</p>
+                                    <article>
+                                        <p>{{ argument.text }}</p>
+                                        <div class="row info collapse">
+                                            <div class="six columns">
+                                                {{ argument.date }}
+                                            </div>
+                                            <div class="six columns text-right options">
+                                                <a href="/argument/{{argument._id}}/?_method=delete">delete</a>
+                                            </div>
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
                         {% endfor %}
@@ -71,64 +83,6 @@
             </div>
         {% endfor %}
 
-        {#
-        <div class="row">
-            <div class="twelve columns">
-                <h3 class="response">Respuesta #1</h3>
-                <div class="arguments">
-
-                    <div class="row">
-                        <div class="one columns">
-                            <img src="{{session.user.image}}" class="avatar" alt="avatar" height="36" width="36" />
-                        </div>
-                        <div class="eleven columns">
-                            <p>Chanante ipsum dolor sit amet, viejuno exercitation elit enim enratonao incididunt cosica. Minim, eveniet no te digo ná y te lo digo tó cabeza de viejo cuerpo de joven quis bizcoché asquerosito eiusmod chotera ju-já páharo pataliebre hueles avinagrado. Nostrud ut mamellas. Bajonaaa agazapao labore payacho ex enim churretoso atiendee, elit exercitation artista pepinoninoni. Chiquititantantan elit, ahí va qué chorrazo droja.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="one columns">
-                            <img src="{{session.user.image}}" class="avatar" alt="avatar" height="36" width="36" />
-                        </div>
-                        <div class="eleven columns">
-                            <p>Chanante ipsum dolor sit amet, viejuno exercitation elit enim enratonao incididunt cosica. Minim, eveniet no te digo ná y te lo digo tó cabeza de viejo cuerpo de joven quis bizcoché asquerosito eiusmod chotera ju-já páharo pataliebre hueles avinagrado. Nostrud ut mamellas. Bajonaaa agazapao labore payacho ex enim churretoso atiendee, elit exercitation artista pepinoninoni. Chiquititantantan elit, ahí va qué chorrazo droja.
-                            </p>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="twelve columns">
-                <h3 class="response">Respuesta #2</h3>
-                <div class="arguments">
-
-                    <div class="row">
-                        <div class="one columns">
-                            <img src="{{session.user.image}}" class="avatar" alt="avatar" height="36" width="36" />
-                        </div>
-                        <div class="eleven columns">
-                            <p>Chanante ipsum dolor sit amet, viejuno exercitation elit enim enratonao incididunt cosica. Minim, eveniet no te digo ná y te lo digo tó cabeza de viejo cuerpo de joven quis bizcoché asquerosito eiusmod chotera ju-já páharo pataliebre hueles avinagrado. Nostrud ut mamellas. Bajonaaa agazapao labore payacho ex enim churretoso atiendee, elit exercitation artista pepinoninoni. Chiquititantantan elit, ahí va qué chorrazo droja.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="one columns">
-                            <img src="{{session.user.image}}" class="avatar" alt="avatar" height="36" width="36" />
-                        </div>
-                        <div class="eleven columns">
-                            <p>Chanante ipsum dolor sit amet, viejuno exercitation elit enim enratonao incididunt cosica. Minim, eveniet no te digo ná y te lo digo tó cabeza de viejo cuerpo de joven quis bizcoché asquerosito eiusmod chotera ju-já páharo pataliebre hueles avinagrado. Nostrud ut mamellas. Bajonaaa agazapao labore payacho ex enim churretoso atiendee, elit exercitation artista pepinoninoni. Chiquititantantan elit, ahí va qué chorrazo droja.
-                            </p>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-        #}
     </section>
 
 {% include 'footer.twig' %}

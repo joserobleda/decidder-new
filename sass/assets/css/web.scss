@@ -11,7 +11,10 @@ $green: #469A40;
 
 a, a:hover, a:focus { color: $green; }
 html, body { height:100%; font-family: $helveticaN;  }
-#canvas {background-color: rgba(232, 232, 232, 0.3);}
+#canvas {
+	min-height: 100%;
+	background-color: rgba(232, 232, 232, 0.3);
+}
 .reveal-modal-bg { background-color: #FFF; }
 
 
@@ -131,6 +134,23 @@ header {
 	}
 }
 
+
+.info {
+	font-family: "Helvetica NC";
+	color: #929292;
+	padding-top: 0.5em;
+	margin-top: 0.5em;
+	border-top: 1px solid #EEE;
+
+	div, a {
+		font-size: 10px;
+	}
+
+	.options { display: none; }
+}
+
+
+
 #responses {
 	h3 {
 		//@include linear-gradient(top, rgb(233, 233, 233), rgba(232, 232, 232, 0.3));
@@ -146,10 +166,13 @@ header {
 		padding: 1em 0 0 2%
 	}
 
-	p {
+	p { margin: 0; }
+
+	article {
 		//@include prefixer(box-shadow, 3px 5px 6px -4px rgba(0, 0, 0, 0.25), webkit moz ms o spec);
 		font-family: $helveticaC;
 		padding: 1em;
+		margin-bottom: 1em;
 		background-color: #fff;
 		border: 1px solid #EEE;
 		@include prefixer(border-radius, 2px, spec);
@@ -168,15 +191,16 @@ header {
 			left: -16px;
 			border-right-color: #EEE;
 		}
-	}
 
+		&:hover .options { display: block; }
+	}
 }
 
 
 #question {
 	min-height: 250px;
 	background-color: #FFF;
-	padding: 0.5em 2em 1em;
+	padding: 1em 2em;
 	@include prefixer(border-radius, 8px, webkit moz ms o spec);
 
 	&:after {
@@ -187,6 +211,19 @@ header {
 		top: 3em;
 		right: -16px;
 	}
+
+	h1 {
+		margin: 0;
+	}
+
+
+	.info { 
+		line-height: 20px; 
+	
+		.options { 
+			display: block; 
+		}
+	}
 }
 
 #new-response { width: 500px; }
@@ -194,7 +231,7 @@ header {
 
 .context {
 	//background-color: rgba(232, 232, 232, 0.5);
-	padding: 1em;
+	padding: 1em 0 2em;
 
 	p {
 		font-family: $helveticaC;
