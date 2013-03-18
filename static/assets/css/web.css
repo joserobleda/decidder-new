@@ -3707,6 +3707,20 @@ button {
       background-image: -o-linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%);
       background-image: linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%); }
 
+[data-icon]:before, i[data-icon]:before {
+  font-family: "Batch";
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  font-style: normal !important;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+
+a[data-icon] {
+  text-decoration: none; }
+
 a, a:hover, a:focus {
   color: #469a40; }
 
@@ -3820,6 +3834,7 @@ header {
     border-radius: 0 0 4px 4px; }
 
 .info {
+  line-height: 12px;
   font-family: "Helvetica NC";
   color: #929292;
   padding-top: 0.5em;
@@ -3837,7 +3852,8 @@ header {
   margin: 1em 0 0 0;
   color: #3D444E; }
 #responses .arguments {
-  padding: 1em 0 0 2%; }
+  padding: 1em 0 0 2%;
+  margin-bottom: 1em; }
 #responses p {
   margin: 0; }
 #responses article {
@@ -3893,8 +3909,7 @@ header {
   padding: 1em 0 2em; }
   .context p {
     font-family: "Helvetica NC";
-    font-size: 14px;
-    margin: 0; }
+    font-size: 14px; }
 
 .poster {
   border-radius: 40px;

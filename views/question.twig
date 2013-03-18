@@ -16,8 +16,8 @@
                         {{date}}
                     </div>
                     <div class="six columns text-right options">
-                        <button class="right" data-form-showing>Edit</button>
-                        <button type="submit" class="right green" style="display:none" data-form-editing>Save</button>
+                        <button class="right" data-form-showing> <i class="ic" data-icon="&#61753;"></i> &nbsp; Edit</button>
+                        <button type="submit" class="right green" style="display:none" data-form-editing><i class="ic" data-icon="&#61528;"></i> &nbsp;  Save</button>
                     </div>
                 </div>
              </form>
@@ -71,13 +71,23 @@
                                                 {{ argument.date }}
                                             </div>
                                             <div class="six columns text-right options">
-                                                <a href="/argument/{{argument._id}}/?_method=delete">delete</a>
+                                                <a href="/argument/{{argument._id}}/?_method=delete" class="ic" data-icon="&#61526;" title="delete"></a>
                                             </div>
                                         </div>
                                     </article>
                                 </div>
                             </div>
                         {% endfor %}
+
+                        <div class="row collapse">
+                            <div class="eleven columns offset-by-one">
+                                <div class="row collapse info">
+                                    <div class="twelve columns">
+                                        <i class="ic" data-icon="&#61469;"></i> &nbsp; Add your argument
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

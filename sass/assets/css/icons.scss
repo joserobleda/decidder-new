@@ -1,0 +1,16 @@
+
+[data-icon]:before, i[data-icon]:before {
+	font-family: "Batch"; 
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	font-style: normal !important;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+a[data-icon] {
+	text-decoration: none;
+}
