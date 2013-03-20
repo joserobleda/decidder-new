@@ -35,7 +35,7 @@
 		app.define({
 			PROTOCOL: 'http:',
 			DOMAIN: 'aws.babelbite.com',
-			PORT: 80
+			PORT: 3000
 		});
 
 	// Run before all request
