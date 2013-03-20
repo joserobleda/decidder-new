@@ -45,7 +45,7 @@
 	  */
 	app.post('/question', function(req, res){
 		if (req.body.question) req.session.question = req.body.question;
-		if (req.session.user === undefined) return res.redirect('/auth');
+		if (req.session.user === undefined) return res.redirect('/auth/login');
 		req.session.question = null;
 		
 		
