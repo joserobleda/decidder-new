@@ -3764,6 +3764,7 @@ header {
 #new-question {
   margin-top: 150px; }
   #new-question input, #new-question input:focus {
+    outline: none;
     font-family: "Helvetica N", sans-serif;
     border: 0px;
     border-radius: 6px;

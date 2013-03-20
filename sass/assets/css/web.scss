@@ -65,6 +65,7 @@ header {
 	margin-top: 150px;
 
 	input, input:focus {
+		outline: none;
 	    font-family: $helveticaN, sans-serif;
 
 	    border: 0px;

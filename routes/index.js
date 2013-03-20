@@ -2,5 +2,9 @@
 	var app = require('babel');
 	
 	app.get('/', function(req, res){
-		res.render('index.twig');
+		if (req.session.question) {
+			return res.redirect('/question?question='+ encodeURIComponent(req.session.question) +'&_method=post');
+		}
+		
+		res.render('index.twig', viewData);
 	});
