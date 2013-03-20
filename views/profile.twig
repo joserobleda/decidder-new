@@ -1,0 +1,26 @@
+{% include 'header.twig' %}
+
+    <section class="row">
+        <div class="twelve columns centered">
+            <h3>Your questions</h3>
+
+            <div id="responses">
+                {% for question in questions %}
+                    <div class="row collapse">
+                        <div class="twelve columns">
+                            <article>
+                                <p>
+                                    <a href="/question/{{ question._id }}">{{ question.title }}</a> · {{ question.contextResume }}
+                                </p>
+                                <p>
+                                    {{ question.responses.length }} response | {{ question.date }} 
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% include 'footer.twig' %}

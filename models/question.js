@@ -42,9 +42,10 @@
 		},
 
 		getViewData: function(cb, ctx) {
-			var self = this, data = this.data;
+			var self = this, data = this.data, context = this.data.context || '';
 
 			data.contextHTML = this.getContextHTML();
+			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context.length;
 			data.predefinedresponsesHTML = this.getPredefinedResponsesHTML();
 			data.date = new Date(data.time);
 

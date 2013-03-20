@@ -3728,6 +3728,9 @@ html, body {
   height: 100%;
   font-family: "Helvetica N"; }
 
+ul li {
+  list-style: none; }
+
 #canvas {
   min-height: 100%;
   background-color: rgba(232, 232, 232, 0.3); }
