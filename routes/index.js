@@ -6,5 +6,5 @@
 			return res.redirect('/question?question='+ encodeURIComponent(req.session.question) +'&_method=post');
 		}
 		
-		res.render('index.twig', viewData);
+		res.render('index.twig');
 	});
