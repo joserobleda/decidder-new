@@ -3655,6 +3655,7 @@ button {
   border: 1px solid #C1C1C1;
   padding: 0.6em 1em;
   cursor: pointer;
+  outline: none;
   font-family: Helvetica;
   font-size: 13px;
   font-weight: bold; }
@@ -3700,24 +3701,25 @@ button {
       background-color: #569E3D;
       background-image: none;
       border-color: #418737; }
+    button.green:focus {
+      box-shadow: 0 0 5px rgba(24, 184, 24, 0.71); }
   button.red {
-    background-color: #f87288;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f87288), color-stop(90%, #f34755), color-stop(95%, #e1414d), color-stop(100%, #ce3b46));
-    background-image: -webkit-linear-gradient(top, #f87288 0%, #f34755 90%, #e1414d 95%, #ce3b46 100%);
-    background-image: -moz-linear-gradient(top, #f87288 0%, #f34755 90%, #e1414d 95%, #ce3b46 100%);
-    background-image: -ms-linear-gradient(top, #f87288 0%, #f34755 90%, #e1414d 95%, #ce3b46 100%);
-    background-image: -o-linear-gradient(top, #f87288 0%, #f34755 90%, #e1414d 95%, #ce3b46 100%);
-    background-image: linear-gradient(top, #f87288 0%, #f34755 90%, #e1414d 95%, #ce3b46 100%);
+    background-color: #B33630;
+    background-color: #dc5f59;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dc5f59), color-stop(100%, #b33630));
+    background-image: -webkit-linear-gradient(top, #dc5f59, #b33630);
+    background-image: -moz-linear-gradient(top, #dc5f59, #b33630);
+    background-image: -ms-linear-gradient(top, #dc5f59, #b33630);
+    background-image: -o-linear-gradient(top, #dc5f59, #b33630);
+    background-image: linear-gradient(top, #dc5f59, #b33630);
     border: 1px solid #b0333e;
     color: #fff; }
     button.red:active {
-      background-color: #ce3b46;
-      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ce3b46), color-stop(95%, #e1414d), color-stop(90%, #f34755), color-stop(0%, #f87288));
-      background-image: -webkit-linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%);
-      background-image: -moz-linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%);
-      background-image: -ms-linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%);
-      background-image: -o-linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%);
-      background-image: linear-gradient(top, #ce3b46 100%, #e1414d 95%, #f34755 90%, #f87288 0%); }
+      background-color: #B33630;
+      background-image: none;
+      border-color: #9F312C; }
+    button.red:focus {
+      box-shadow: 0 0 5px #E02F44; }
 
 [data-icon]:before, i[data-icon]:before {
   font-family: "Batch";
@@ -3828,7 +3830,6 @@ header {
     -ms-border-radius: 4px 4px 0px 0px;
     -o-border-radius: 4px 4px 0px 0px;
     border-radius: 4px 4px 0px 0px;
-    font-family: "Helvetica NC";
     font-size: 18px;
     font-weight: bold;
     text-align: center;
