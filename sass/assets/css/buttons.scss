@@ -67,9 +67,7 @@ button {
 	    color:#fff;
 
 	    &:active {
-	    	background-color: #B33630;
-			background-image: none;
-			border-color: #9F312C;
+	    	@include linear-gradient(#B33630, #DC5F59);
 	    }
 
 	    &:focus {			
