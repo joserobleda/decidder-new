@@ -9,9 +9,12 @@ button {
     border: 1px solid #C1C1C1;
     padding: 0.6em 1em;
     cursor: pointer;
+    outline: none;
     font-family: Helvetica;
     font-size: 13px;
     font-weight: bold;
+
+
 
     &:hover {
     	background-color: #3072B3;
@@ -36,7 +39,6 @@ button {
     &.green {
     	color: white;
 
-
 		background-color: #469A40;
     	@include prefixer(text-shadow, 0 -1px 0 rgba(0, 0, 0, 0.25), webkit moz ms o spec);
 		@include linear-gradient(#76C959, #469A40);
@@ -44,22 +46,34 @@ button {
 	    border:1px solid #5CA941;
 	    color:#fff;
 
+
 		&:active {
 	    	background-color: #569E3D;
 			background-image: none;
 			border-color: #418737;
 	    }
+
+		&:focus {			
+			box-shadow: 0 0 5px rgba(24, 184, 24, 0.71);
+	    }
     }
 
 
     &.red {
-		@include linear-gradient(top, rgba(248,114,136,1) 0%, rgba(243,71,85,1) 90%, rgba(225,65,77,1) 95%, rgba(206,59,70,1) 100%);
+    	background-color: #B33630;
+		@include linear-gradient(#DC5F59, #B33630);
 
 	    border:1px solid #b0333e;
 	    color:#fff;
 
 	    &:active {
-	    	@include linear-gradient(top, rgba(206,59,70,1) 100%, rgba(225,65,77,1) 95%, rgba(243,71,85,1) 90%, rgba(248,114,136,1) 0%);
+	    	background-color: #B33630;
+			background-image: none;
+			border-color: #9F312C;
+	    }
+
+	    &:focus {			
+			box-shadow: 0 0 5px #E02F44;
 	    }
     }
 

@@ -121,7 +121,6 @@ header {
 		@include prefixer(box-shadow, (inset 0px 0px 0px #fff, 0px 1px 3px rgba(0,0,0,.08)), webkit moz ms o spec);
 		@include prefixer(border-radius, 4px 4px 0px 0px, webkit moz ms o spec);
 	    
-		font-family: "Helvetica NC";
 		font-size: 18px;
 	    font-weight:bold;
 	    text-align:center;
