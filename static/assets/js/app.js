@@ -36,4 +36,6 @@
 		$target.reveal(data);
 	});
 
+	$('#tags').tagsInput();
+
 })(window);
