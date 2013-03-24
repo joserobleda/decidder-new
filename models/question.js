@@ -35,6 +35,7 @@
 			var predefined = this.data.predefinedresponses;
 
 			if (predefined) {
+				return predefined;
 				return predefined.join(', ') || '';
 			}
 
