@@ -7,25 +7,47 @@ button {
     display: inline-block;
     color: #555;
     border: 1px solid #C1C1C1;
-    padding: 0.3em 0.5em;
+    padding: 0.6em 1em;
     cursor: pointer;
-    
+    font-family: Helvetica;
+    font-size: 13px;
+    font-weight: bold;
+
+    &:hover {
+    	background-color: #3072B3;
+    	@include linear-gradient(#599BCD, #3072B3);
+    	color: #FFF;
+    	border-color: #2A65A0;
+    }
 
     &:active {
-		@include linear-gradient(#CCC, #FFF);
+    	color: #FFF;
+    	background-color: #3072B3;
+		background-image: none;
+		border-color: #25588C;
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.15);
     }
+
+	&.xs { font-size: 9px; }
+    &.s { font-size: 11px; }
+
 
 
     &.green {
-    	@include prefixer(text-shadow, 0px 1px 0px rgba(0,0,0,.2), webkit moz ms o spec);
-		@include linear-gradient(top, rgba(170,212,79,1) 0%, rgba(116,185,49,1) 90%, rgba(106,173,45,1) 95%, rgba(96,157,41,1) 100%);
+    	color: white;
+
+
+		background-color: #469A40;
+    	@include prefixer(text-shadow, 0 -1px 0 rgba(0, 0, 0, 0.25), webkit moz ms o spec);
+		@include linear-gradient(#76C959, #469A40);
 	    
-	    font-family: "Helvetica NC";
-	    border:1px solid #5b8821;
+	    border:1px solid #5CA941;
 	    color:#fff;
 
 		&:active {
-	    	@include linear-gradient(top, rgba(96,157,41,1) 100%, rgba(106,173,45,1) 95%, rgba(116,185,49,1) 90%, rgba(170,212,79,1) 0%);
+	    	background-color: #569E3D;
+			background-image: none;
+			border-color: #418737;
 	    }
     }
 
@@ -33,7 +55,6 @@ button {
     &.red {
 		@include linear-gradient(top, rgba(248,114,136,1) 0%, rgba(243,71,85,1) 90%, rgba(225,65,77,1) 95%, rgba(206,59,70,1) 100%);
 
-		font-family: "Helvetica NC";
 	    border:1px solid #b0333e;
 	    color:#fff;
 
