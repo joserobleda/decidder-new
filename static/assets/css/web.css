@@ -3715,9 +3715,13 @@ button {
     border: 1px solid #b0333e;
     color: #fff; }
     button.red:active {
-      background-color: #B33630;
-      background-image: none;
-      border-color: #9F312C; }
+      background-color: #b33630;
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b33630), color-stop(100%, #dc5f59));
+      background-image: -webkit-linear-gradient(top, #b33630, #dc5f59);
+      background-image: -moz-linear-gradient(top, #b33630, #dc5f59);
+      background-image: -ms-linear-gradient(top, #b33630, #dc5f59);
+      background-image: -o-linear-gradient(top, #b33630, #dc5f59);
+      background-image: linear-gradient(top, #b33630, #dc5f59); }
     button.red:focus {
       box-shadow: 0 0 5px #E02F44; }
 
@@ -3837,6 +3841,7 @@ header {
     color: #444444;
     text-shadow: 0px 1px 0px #fff; }
   .modal section {
+    border-top: 2px solid #76C959;
     padding: 1em;
     background: #fcfcfc;
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
