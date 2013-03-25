@@ -36,20 +36,20 @@
 		this.edit = function() {
 			if (widget.editing) return;
 			widget.editing = true;
-			widget.edited = false;
+			widget.edited = true; // always save
 
 
 			widget.inputs.each(function(i) {
 				var tagName = $(this).data('tag') || 'input'
 					, text = $(this).data('raw') || $(this).text()
 					, name = $(this).attr('name')
-					, id = $(this).data('input-id')
+					, className = $(this).attr('class')
 					, tabindex = $(this).data('form-tabindex')
 					, placeholder = $(this).data('form-placeholder')
 					, $dom = $(document.createElement(tagName))
 				;
 
-				$dom.attr({type:'text', name:name, placeholder:placeholder, tabindex:tabindex, id:id}).addClass(this.tagName.toLowerCase()).val(text).insertBefore(this);
+				$dom.attr({type:'text', name:name, placeholder:placeholder, tabindex:tabindex}).addClass(this.tagName.toLowerCase()).addClass(className).val(text).insertBefore(this);
 
 				if (tagName === 'textarea') {
 					var textarea = $dom.get(0);
@@ -117,7 +117,19 @@
 							$(this).data('raw', $dom.val());
 
 							$dom.remove();
-							$(this).html(value).show();
+
+							if (typeof value == 'string') {
+								$(this).html(value);
+							} else if (value.length) {
+								$(this).empty();
+
+								var tagName = 'li';
+								for (var k in value) {
+									$(document.createElement('li')).html(value[k]).appendTo(this);
+								}
+							}
+
+							$(this).show();
 
 							if (i === last) $(widget).trigger('show');
 						});

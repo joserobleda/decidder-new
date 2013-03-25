@@ -98,8 +98,8 @@
 				if (err) return res.status(500).end();
 
 				data.context = question.getContextHTML();
-				data.predefinedresponses = question.getPredefinedResponsesHTML();
-
+				data.predefinedresponses = question.data.predefinedresponses;
+console.log(data.predefinedresponses);
 				return res.json(data);
 			});
 		}

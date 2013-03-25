@@ -3924,6 +3924,9 @@ header {
     right: -16px; }
   #question h1 {
     margin: 0; }
+  #question #predefined {
+    padding-top: 1em;
+    border-top: 1px dotted #ccc; }
   #question .info {
     line-height: 20px; }
     #question .info .options {
@@ -3933,10 +3936,13 @@ header {
   width: 500px; }
 
 .context {
-  padding: 1em 0 2em; }
+  padding: 1em; }
   .context p {
     font-family: "Helvetica NC";
     font-size: 14px; }
+
+textarea.context {
+  padding: 6px; }
 
 .poster {
   border-radius: 40px;
@@ -3955,8 +3961,6 @@ div.tagsinput {
   border: 1px solid #CCC;
   background: #FFF;
   padding: 5px;
-  width: 300px;
-  height: 100px;
   overflow-y: auto; }
 
 div.tagsinput span.tag {
@@ -3964,7 +3968,6 @@ div.tagsinput span.tag {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   display: block;
-  float: left;
   padding: 5px;
   text-decoration: none;
   background: #cde69c;
@@ -3976,12 +3979,12 @@ div.tagsinput span.tag {
 
 div.tagsinput span.tag a {
   font-weight: bold;
+  float: right;
   color: #82ad2b;
   text-decoration: none;
   font-size: 11px; }
 
 div.tagsinput input {
-  width: 80px;
   margin: 0px;
   font-family: helvetica;
   font-size: 13px;

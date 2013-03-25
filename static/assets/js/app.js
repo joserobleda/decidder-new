@@ -5,16 +5,34 @@
 
 	if (question.length) {
 		//console.log(question);
-		require(['widget/formEditable'], function() {
+		require(['widget/formEditable'], function () {
 
-			question.editable(function(widget){
+			question.editable(function (widget) {
+				$(widget).bind('edit', function () {
+					$('input.taglist').tagsInput({
+						defaultText: 'add predefined response',
+						ready: function () {
+							$(this).attr('data-form-editing', true);
+						}
+					});
+				});
+
+				$(widget).bind('show', function () {
+					$(question).find('.tagsinput').remove();
+				})
+
+				$(widget).bind('error', function(){
+					alert('Error, try again!');
+				});
+
+				/*
 				if ($.address.value() === '/edit') {
 					$(widget).bind('show', function() {
 						location.href = '#';
 					});
 
 					widget.edit();
-				};
+				};*/
 			});
 		});
 	};
@@ -40,6 +58,6 @@
 		$target.reveal(data);
 	});
 
-	$('#tags').tagsInput();
+
 
 })(window);

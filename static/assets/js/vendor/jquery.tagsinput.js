@@ -79,6 +79,7 @@
 				var id = $(this).attr('id');
 
 				var tagslist = $(this).val().split(delimiter[id]);
+				$(this).trigger('keyup');
 				if (tagslist[0] == '') { 
 					tagslist = new Array();
 				}
@@ -141,6 +142,7 @@
 				var id = $(this).attr('id');
 	
 				var old = $(this).val().split(delimiter[id]);
+				$(this).trigger('keyup');
 					
 				$('#'+id+'_tagsinput .tag').remove();
 				str = '';
@@ -179,8 +181,6 @@
       interactive:true,
       defaultText:'add a tag',
       minChars:0,
-      width:'300px',
-      height:'100px',
       autocomplete: {selectFirst: false },
       'hide':true,
       'delimiter':',',
@@ -189,7 +189,8 @@
       placeholderColor:'#666666',
       autosize: true,
       comfortZone: 20,
-      inputPadding: 6*2
+      inputPadding: 6*2,
+      ready: function(){},
     },options);
 
 		this.each(function() { 
@@ -197,6 +198,7 @@
 				$(this).hide();				
 			}
 			var id = $(this).attr('id');
+
 			if (!id || delimiter[$(this).attr('id')]) {
 				id = $(this).attr('id', 'tags' + new Date().getTime()).attr('id');
 			}
@@ -226,7 +228,8 @@
 			
 			markup = markup + '</div><div class="tags_clear"></div></div>';
 			
-			$(markup).insertAfter(this);
+			var $markup = $(markup);
+			$markup.insertAfter(this);
 
 			$(data.holder).css('width',settings.width);
 			$(data.holder).css('min-height',settings.height);
@@ -238,7 +241,7 @@
 			if (settings.interactive) { 
 				$(data.fake_input).val($(data.fake_input).attr('data-default'));
 				$(data.fake_input).css('color',settings.placeholderColor);
-		        $(data.fake_input).resetAutosize(settings);
+		        //$(data.fake_input).resetAutosize(settings);
 		
 				$(data.holder).bind('click',data,function(event) {
 					$(event.data.fake_input).focus();
@@ -326,6 +329,8 @@
 				    });
 				}
 			} // if settings.interactive
+
+			settings.ready.call($markup.get(0));
 		});
 			
 		return this;

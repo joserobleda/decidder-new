@@ -31,11 +31,10 @@
 			return ghm.parse(this.data.context || '');
 		},
 
-		getPredefinedResponsesHTML: function() {
+		getPredefinedText: function() {
 			var predefined = this.data.predefinedresponses;
 
 			if (predefined) {
-				return predefined;
 				return predefined.join(', ') || '';
 			}
 
@@ -47,7 +46,7 @@
 
 			data.contextHTML = this.getContextHTML();
 			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context.length;
-			data.predefinedresponsesHTML = this.getPredefinedResponsesHTML();
+			data.predefinedtext = this.getPredefinedText();
 			data.date = new Date(data.time);
 
 			this.getResponses(function(err, responses){
