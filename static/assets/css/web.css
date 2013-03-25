@@ -3816,6 +3816,15 @@ header {
   margin: 0; }
   .modal textarea {
     resize: vertical; }
+  .modal textarea, .modal input {
+    outline: none; }
+    .modal textarea:focus, .modal input:focus {
+      border-color: #469a40;
+      -webkit-box-shadow: 0 0 6px 0 #469a40;
+      -moz-box-shadow: 0 0 6px 0 #469a40;
+      -ms-box-shadow: 0 0 6px 0 #469a40;
+      -o-box-shadow: 0 0 6px 0 #469a40;
+      box-shadow: 0 0 6px 0 #469a40; }
   .modal h5 {
     margin: 0;
     background-image: -webkit-linear-gradient(top, #f9f9f9, #e9e9e9);
@@ -3841,7 +3850,6 @@ header {
     color: #444444;
     text-shadow: 0px 1px 0px #fff; }
   .modal section {
-    border-top: 2px solid #76C959;
     padding: 1em;
     background: #fcfcfc;
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
