@@ -43,12 +43,13 @@
 				var tagName = $(this).data('tag') || 'input'
 					, text = $(this).data('raw') || $(this).text()
 					, name = $(this).attr('name')
+					, id = $(this).data('input-id')
 					, tabindex = $(this).data('form-tabindex')
 					, placeholder = $(this).data('form-placeholder')
 					, $dom = $(document.createElement(tagName))
 				;
 
-				$dom.attr({type:'text', name:name, placeholder:placeholder, tabindex:tabindex}).addClass(this.tagName.toLowerCase()).val(text).insertBefore(this);
+				$dom.attr({type:'text', name:name, placeholder:placeholder, tabindex:tabindex, id:id}).addClass(this.tagName.toLowerCase()).val(text).insertBefore(this);
 
 				if (tagName === 'textarea') {
 					var textarea = $dom.get(0);

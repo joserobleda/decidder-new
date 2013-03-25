@@ -33,6 +33,10 @@
 			$canvas.css({'height':'inherit', 'overflow':'auto'});
 		};
 
+		data.open = function () {
+			$target.find("input:first").focus();
+		};
+
 		$target.reveal(data);
 	});
 
