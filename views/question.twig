@@ -9,12 +9,12 @@
                 <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
 
                 <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
-           
-               
 
                 <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
                     {% for text in predefinedresponses %}
                         <li>{{ text }}</li>
+                    {% else %}
+                        <li><em class="light">respuesta libre, edita la pregunta si quieres delimitar las respuestas</em></li>
                     {% endfor %}
                 </ul>
                 <!--<div data-tag="input" name="predefinedresponses" data-raw="{{predefinedresponses}}"  data-form-tabindex="2" data-input-id="perro">{{ predefinedresponsesHTML }}</div>-->

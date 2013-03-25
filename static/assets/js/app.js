@@ -25,14 +25,14 @@
 					alert('Error, try again!');
 				});
 
-				/*
+				
 				if ($.address.value() === '/edit') {
 					$(widget).bind('show', function() {
 						location.href = '#';
 					});
 
 					widget.edit();
-				};*/
+				};
 			});
 		});
 	};
