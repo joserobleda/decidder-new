@@ -41,13 +41,21 @@
 			return '';
 		},
 
-		getViewData: function(cb, ctx) {
-			var self = this, data = this.data, context = this.data.context || '';
+		getSyncData: function () {
+			var data = this.data, context = this.data.context || '';
 
 			data.contextHTML = this.getContextHTML();
 			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context.length;
 			data.predefinedtext = this.getPredefinedText();
 			data.date = new Date(data.time);
+
+			return data;
+		},
+
+		getViewData: function(cb, ctx) {
+			var self = this, data = this.getSyncData();
+
+
 
 			this.getResponses(function(err, responses){
 				if (err) return cb(err);

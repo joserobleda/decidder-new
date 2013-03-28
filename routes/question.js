@@ -21,7 +21,7 @@
 			question.getViewData(function(err, data){
 				data.isResponsed = isResponsed;
 			
-				//data.isOwnQuestion = user && user.getId() == data.owner._id;
+				data.isOwnQuestion = user && user.getId() == data.owner._id;
 				//console.log(data);
 
 				res.render('question.twig', data);

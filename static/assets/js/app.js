@@ -1,13 +1,14 @@
 (function(w, undefined) {
 	"use strict";
 
-	var question = $('form#question'), $canvas = $("#canvas");
+	var $canvas = $("#canvas"),
+		$question = $('form#question');
 
-	if (question.length) {
+	if ($question.length) {
 		//console.log(question);
 		require(['widget/formEditable'], function () {
 
-			question.editable(function (widget) {
+			$question.editable(function (widget) {
 				$(widget).bind('edit', function () {
 					$('input.taglist').tagsInput({
 						defaultText: 'add predefined response',
@@ -18,7 +19,7 @@
 				});
 
 				$(widget).bind('show', function () {
-					$(question).find('.tagsinput').remove();
+					$question.find('.tagsinput').remove();
 				})
 
 				$(widget).bind('error', function(){
@@ -40,22 +41,99 @@
 
 	$('.reveal').click(function () {
 		var $this = $(this), 
-			$target = $('#'+$this.data('reveal-id')),
+			revealId = $this.data('reveal-target') || null,
+			revealSrc = $this.data('reveal-src') || null,
 			data = $this.data();
 
-		$canvas.css({'height':'100%', 'overflow':'hidden'});
-		$target.css('margin-left', '-' + ($target.outerWidth()/2) + 'px');
-		$target.css('margin-top', '-' + ($target.outerHeight()/2) + 'px');
+		function lock () {
+			$canvas.css({'height':'100%', 'overflow':'hidden'});
+		};
 
-		data.close = function () {
+		function unlock () {
 			$canvas.css({'height':'inherit', 'overflow':'auto'});
 		};
 
-		data.open = function () {
-			$target.find("input:first").focus();
+		function open (ref) {
+			var $target = $(ref);
+
+			// once modalbox is open
+			data.open = function () {
+				$target.find("input:first").focus();
+			};
+
+			data.close = function () {
+				unlock();
+				if (typeof ref == 'object') $target.remove();
+			};
+
+			// adjusts dimensions
+			$target.css('margin-left', '-' + ($target.outerWidth()/2) + 'px');
+			$target.css('margin-top', '-' + ($target.outerHeight()/2) + 'px');
+
+			// open reveal
+			$target.reveal();
 		};
 
-		$target.reveal(data);
+		// prevent scroll
+		lock();
+
+		// if we have id..
+		if (revealId) return open (revealId);
+
+		// if we have src 
+		if (revealSrc) {
+			var $loading = $("#loading"),
+				xhrError = false,
+				xhr,
+				src = revealSrc,
+				method = 'get',
+				iof = src.indexOf(':'), 
+				methodDefined = (iof > -1 && iof < 5);
+
+			if (methodDefined) {
+				method = src.substring(0, iof);
+				src = src.substring(iof+1);
+			}
+
+			// show loading layer
+			$loading.reveal({
+				close: function () {
+					unlock();
+					if (xhr && xhr.abort()) xhr.abort();
+				},
+
+				opened: function () {
+					if (xhrError) $loading.trigger('reveal:close');
+				}
+			});
+			
+
+			xhr = $.ajax({
+				url: src, 
+				type: method,
+				error: function (xhr, status, error) {
+					alert(error);
+					xhrError = error;
+				},
+				success: function (res, status, xhr) {
+
+					var contentType = xhr.getResponseHeader('content-type');
+				
+					if (contentType.indexOf('text/html') === 0) {
+						// append content to body
+						var $dom = $(res).hide().appendTo($canvas);
+
+						// hide loading layer
+						$loading.hide();
+
+						// show content
+						open($dom);
+					}
+
+				}
+			});
+		};
+		
 	});
 
 

@@ -24,8 +24,17 @@
                         {{date}}
                     </div>
                     <div class="six columns text-right options">
-                        <button class="right xs" data-form-showing> <i class="ic" data-icon="&#61753;"></i> &nbsp; Edit</button>
-                        <button type="submit" class="right green xs" style="display:none" data-form-editing><i class="ic" data-icon="&#61528;"></i> &nbsp;  Save</button>
+                        {% if isOwnQuestion %}
+                            <button class="xs reveal" type="reset" data-reveal-src="post:/question/{{ _id }}/doubt" data-form-showing>
+                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions (2)
+                            </button>
+                            <button type="submit" class="xs" data-form-showing>
+                                <i class="ic" data-icon="&#61753;"></i>&nbsp; Edit your question
+                            </button>
+                            <button type="submit" class="right green xs" style="display:none" data-form-editing>
+                                <i class="ic" data-icon="&#61528;"></i>&nbsp; Save
+                            </button>
+                        {% endif %}
                     </div>
                 </div>
              </form>
@@ -48,14 +57,22 @@
 
     <div class="row">
         <div class="ten columns text-center">
-            <button id="new-reponse-button" class="reveal green" data-reveal-id="new-response">Write a response</button>
+            <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
+                <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+            </button>
             <span style=""> &nbsp; or &nbsp; </span>
-            <button id="new-reponse-button" class="reveal green" data-reveal-id="new-response">Request more info</button>
+            <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
+                <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
+            </button>
         </div>
     </div>
 
-    <form id="new-response" method="post" action="/question/{{_id}}/response" class="modal" style="display:none">
+    <form id="new-response" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
         {% include 'question-new.twig' %}
+    </form>
+
+    <form id="new-inforequest" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
+        {% include 'inforequest-new.twig' %}
     </form>
 
     <section id="responses">

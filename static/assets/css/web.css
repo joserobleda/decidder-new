@@ -3749,6 +3749,16 @@ html, body {
 ul li {
   list-style: none; }
 
+#loading {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  margin-left: -8px;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  z-index: 99; }
+
 #canvas {
   min-height: 100%;
   background-color: rgba(232, 232, 232, 0.3); }
@@ -3813,7 +3823,15 @@ header {
   top: 50% !important;
   left: 50% !important;
   z-index: 100;
-  margin: 0; }
+  margin: 0;
+  width: 400px;
+  -webkit-box-shadow: 0 0px 46px 0px #aaa;
+  -moz-box-shadow: 0 0px 46px 0px #aaa;
+  -ms-box-shadow: 0 0px 46px 0px #aaa;
+  -o-box-shadow: 0 0px 46px 0px #aaa;
+  box-shadow: 0 0px 46px 0px #aaa; }
+  .modal.m {
+    width: 500px; }
   .modal textarea {
     resize: vertical; }
   .modal textarea, .modal input {
@@ -3931,9 +3949,6 @@ header {
     line-height: 20px; }
     #question .info .options {
       display: block; }
-
-#new-response {
-  width: 500px; }
 
 .context {
   padding: 1em; }

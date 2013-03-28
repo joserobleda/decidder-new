@@ -34,10 +34,18 @@
 			});
 		},
 
-		getViewData: function(cb, ctx) {
-			var  self = this, data = this.data, date = new Date(data.time);;
+		getSyncData: function () {
+			var data = this.data;
 
-			data.date = date;
+			data.date = new Date(data.time);
+
+			return data;
+		},
+
+		getViewData: function(cb, ctx) {
+			var  self = this, data = this.getSyncData();
+
+
 			self.getUser(function(err, theUser){
 
 				if (ctx === 'response') {
@@ -53,7 +61,14 @@
 
 					self.getResponse(function(err, response) {
 						if (response) data.response = response.data;
-						cb(null, data);
+
+						// get question for this argument
+						self.getQuestion(function (err, question) {
+							if (question) data.question = question.getSyncData();
+
+							cb(null, data);
+						});
+						
 					})
 
 					
