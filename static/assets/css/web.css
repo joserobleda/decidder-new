@@ -3636,7 +3636,7 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
 
   .top-bar ul > li.has-button a.button {
     margin: 0; } }
-button {
+.button, button {
   background-color: white;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #cccccc));
   background-image: -webkit-linear-gradient(top, white, #cccccc);
@@ -3658,8 +3658,9 @@ button {
   outline: none;
   font-family: Helvetica;
   font-size: 13px;
-  font-weight: bold; }
-  button:hover {
+  font-weight: bold;
+  text-decoration: none; }
+  .button:hover, button:hover {
     background-color: #3072B3;
     background-color: #599bcd;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #599bcd), color-stop(100%, #3072b3));
@@ -3670,17 +3671,17 @@ button {
     background-image: linear-gradient(top, #599bcd, #3072b3);
     color: #FFF;
     border-color: #2A65A0; }
-  button:active {
+  .button:active, button:active {
     color: #FFF;
     background-color: #3072B3;
     background-image: none;
     border-color: #25588C;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.15); }
-  button.xs {
-    font-size: 9px; }
-  button.s {
-    font-size: 11px; }
-  button.green {
+  .button.xs, .button.xs i, button.xs, button.xs i {
+    font-size: 9px !important; }
+  .button.s, .button.s i, button.s, button.s i {
+    font-size: 11px !important; }
+  .button.green, button.green {
     color: white;
     background-color: #469A40;
     -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -3697,13 +3698,13 @@ button {
     background-image: linear-gradient(top, #76c959, #469a40);
     border: 1px solid #5CA941;
     color: #fff; }
-    button.green:active {
+    .button.green:active, button.green:active {
       background-color: #569E3D;
       background-image: none;
       border-color: #418737; }
-    button.green:focus {
+    .button.green:focus, button.green:focus {
       box-shadow: 0 0 5px rgba(24, 184, 24, 0.71); }
-  button.red {
+  .button.red, button.red {
     background-color: #B33630;
     background-color: #dc5f59;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dc5f59), color-stop(100%, #b33630));
@@ -3714,7 +3715,7 @@ button {
     background-image: linear-gradient(top, #dc5f59, #b33630);
     border: 1px solid #b0333e;
     color: #fff; }
-    button.red:active {
+    .button.red:active, button.red:active {
       background-color: #b33630;
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b33630), color-stop(100%, #dc5f59));
       background-image: -webkit-linear-gradient(top, #b33630, #dc5f59);
@@ -3722,7 +3723,7 @@ button {
       background-image: -ms-linear-gradient(top, #b33630, #dc5f59);
       background-image: -o-linear-gradient(top, #b33630, #dc5f59);
       background-image: linear-gradient(top, #b33630, #dc5f59); }
-    button.red:focus {
+    .button.red:focus, button.red:focus {
       box-shadow: 0 0 5px #E02F44; }
 
 [data-icon]:before, i[data-icon]:before {
@@ -3893,12 +3894,24 @@ header {
   .info .options {
     display: none; }
 
-#responses h3 {
+#responses .title {
   background-color: #EFF0F4;
   border-top: 5px solid #469a40;
-  padding: 0.5em 4%;
   margin: 1em 0 0 0;
   color: #3D444E; }
+  #responses .title h3 {
+    padding: 0.5em 4%;
+    margin: 0; }
+  #responses .title i {
+    display: inline-block;
+    font-size: 27px;
+    color: #469a40;
+    padding: 0.5em 0; }
+  #responses .title button i, #responses .title .button i {
+    color: #FFF;
+    padding: 0; }
+  #responses .title a {
+    margin: 15px 0; }
 #responses .arguments {
   padding: 1em 0 0 2%;
   margin-bottom: 1em; }

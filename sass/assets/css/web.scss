@@ -180,13 +180,34 @@ header {
 
 
 #responses {
-	h3 {
+	.title {
 		//@include linear-gradient(top, rgb(233, 233, 233), rgba(232, 232, 232, 0.3));
 		background-color: #EFF0F4;
 		border-top: 5px solid $green;
-		padding: 0.5em 4%;
+		
 		margin: 1em 0 0 0;
 		color: #3D444E;
+
+		h3 {
+			padding: 0.5em 4%;
+			margin: 0;
+		}
+
+		i {
+			display: inline-block;
+			font-size: 27px; 
+			color: $green; 
+			padding: 0.5em 0;
+		}
+
+		button i, .button i {
+			color: #FFF;
+			padding: 0;
+		}
+
+		a {
+			margin: 15px 0
+		}
 	}
 
 	.arguments {

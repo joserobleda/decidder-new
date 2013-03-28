@@ -10,6 +10,7 @@
 
                 <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
+
                 <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
                     {% for text in predefinedresponses %}
                         <li>{{ text }}</li>
@@ -78,9 +79,27 @@
     <section id="responses">
 
         {% for response in responses %}
-            <div class="row">
+            <div class="row response">
                 <div class="twelve columns">
-                    <h3 class="response">{{ response.title }} #{{loop.index}}</h3>
+                    <div class="row title">
+                        <div class="ten mobile-three columns">
+                             <h3>{{ response.title }} #{{loop.index}}</h3>
+                        </div>
+                        <div class="two mobile-one columns text-right">
+                            {% if isOwnQuestion %}
+                                {% if response.isChosen != true %}
+                                    <a href="/question/{{ _id }}?_method=put&amp;response={{ response._id }}" class="button xs green"> 
+                                        <i class="ic" data-icon="&#61515;"></i>&nbsp;
+                                        My option! 
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if response.isChosen %}
+                                <i class="ic" data-icon="&#61513;"></i>
+                            {% endif %}
+                        </div>
+                    </div>
 
                     <div class="arguments">
                         {% for argument in response.arguments %}
