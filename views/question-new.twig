@@ -1,7 +1,19 @@
 
 	<h5 id="heading">Send a new response</h5>
 	<section>
-		<input type="text" name="title" {% if responseTitle %} value="{{ responseTitle }}" readOnly="true"{% else %}placeholder="Response" required {% endif %} />
+		{% if responseTitle %}
+			<input type="text" name="title" value="{{ responseTitle }}" readOnly="true" />
+		{% else %}
+			{% if predefinedresponses %}
+				<select name="title">						
+				{% for text in predefinedresponses %}
+					<option value="{{text}}">{{text}}</option>
+				{% endfor %}
+				</select>
+	        {% else %}
+				<input type="text" name="title" placeholder="Response" required />
+			{% endif %}
+		{% endif %}
 
 		<textarea name="argument" placeholder="Write your argument here" required rows="5"></textarea>
 
