@@ -1,7 +1,7 @@
 
 	<h5 id="heading">Send a new response</h5>
 	<section>
-		<input type="text" name="title" {% if responseTitle %} value="{{ responseTitle }}" disabled {% else %}placeholder="Response" required {% endif %} />
+		<input type="text" name="title" {% if responseTitle %} value="{{ responseTitle }}" readOnly="true"{% else %}placeholder="Response" required {% endif %} />
 
 		<textarea name="argument" placeholder="Write your argument here" required rows="5"></textarea>
 
