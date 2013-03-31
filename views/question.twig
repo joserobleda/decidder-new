@@ -115,9 +115,11 @@
                                             <div class="six columns">
                                                 {{ argument.date }}
                                             </div>
-                                            <div class="six columns text-right options">
-                                                <a href="/argument/{{argument._id}}/?_method=delete" class="ic" data-icon="&#61526;" title="delete"></a>
-                                            </div>
+                                            {% if isOwnQuestion %}
+                                                <div class="six columns text-right options">
+                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="ic" data-icon="&#61526;" title="delete"></a>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </article>
                                 </div>
