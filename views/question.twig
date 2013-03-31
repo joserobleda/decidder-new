@@ -79,11 +79,12 @@
     <section id="responses">
 
         {% for response in responses %}
+            {% set responseTitle = response.title %}
             <div class="row response">
                 <div class="twelve columns">
                     <div class="row title">
                         <div class="ten mobile-three columns">
-                             <h3>{{ response.title }} #{{loop.index}}</h3>
+                             <h3>{{ responseTitle }} #{{loop.index}}</h3>
                         </div>
                         <div class="two mobile-one columns text-right">
                             {% if isOwnQuestion %}
@@ -127,13 +128,16 @@
                             <div class="eleven columns offset-by-one">
                                 <div class="row collapse info">
                                     <div class="twelve columns">                                       
-                                        <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
+                                        <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response-argument-{{ response._id }}">
                                             <i class="ic" data-icon="&#61469;"></i> &nbsp; Add your argument
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <form id="new-response-argument-{{ response._id }}" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
+                            {% include 'question-new.twig' with {'responseTitle': responseTitle } %}
+                        </form>
                     </div>
                 </div>
             </div>
