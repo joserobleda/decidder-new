@@ -61,7 +61,7 @@
 	});
 	*/
 
-	social.twitter.login('/auth/login', function(err, req, res){
+	social.twitter.login('/auth/login/twitter', function(err, req, res){
 		if (err) return res.redirect("/error?e=twitter_login_error");
 
 		var username = req.body.screen_name;
@@ -83,8 +83,8 @@
 
 	});
 
-	/*
-	social.facebook.login('/auth/facebook', function(err, req, res) {
+	
+	social.facebook.login('/auth/login/facebook', function(err, req, res) {
 		if (err) return res.redirect("/error?e=facebook_login_error");
 
 		social.facebook.getProfileImage(req.body.id, function(err, URLImage) {
@@ -107,7 +107,7 @@
 
 	});
 
-
+	/*
 	social.linkedin.login('/auth/linkedin', function(err, req, res) {
 		if (err) return res.redirect("/error?e=linkedin_login_error");
 

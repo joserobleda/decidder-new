@@ -53,7 +53,62 @@ header {
 	}
 
 	.login {
+		@include prefixer(border-radius, 3px, webkit moz ms o spec);
 		line-height: 36px;
+		margin-left: 1em;
+		padding: 5px;
+		font-size: 12px;
+		font-weight: bold;
+		text-decoration: none;
+
+		i {
+			$dimension: 24px;
+			display: inline-block;
+			height: $dimension;
+			width: $dimension;
+			vertical-align: middle;
+			margin-top: -2px;
+		}
+
+		&.twitter {
+			@include linear-gradient(top, #FFF, #DEDEDE);
+			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+			font-family: Arial;
+			border: 1px solid #CCC;
+			color: #333333;
+
+			i {
+				background: url(../images/twitter-login.png) no-repeat scroll center center transparent;
+			}
+
+			&:hover {
+				@include linear-gradient(top, #F8F8F8, #D9D9D9);
+			}
+		}
+
+		&.facebook {
+
+			@include linear-gradient(top, #3765A4, #315B98);
+			padding: 5px 7px;
+			font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+			color: #FFF;
+			border: 1px solid #879AC0;
+
+			i {
+				margin-right: 2px;
+				width: 18px;
+				height: 18px;
+				background: url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yf/r/S-DbSHszr4D.png) no-repeat scroll 0 -178px transparent;
+			}
+
+			&:hover {
+				@include linear-gradient(bottom, #3765A4, #315B98);
+			}
+		}
+
+		&:active {
+			@include prefixer(box-shadow, inset 0 3px 5px rgba(0,0,0,0.1), webkit moz ms o spec);
+		}
 	}
 
 	.logout {
