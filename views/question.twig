@@ -79,9 +79,12 @@
             {% set responseTitle = response.title %}
             <div class="row response">
                 <div class="twelve columns">
-                    <div class="row title">
+                    <div class="row title collapse">
                         <div class="ten mobile-three columns">
-                             <h3>{{ responseTitle }} #{{loop.index}}</h3>
+                            <hgroup>
+                                <h3 class="number"> #{{loop.index}} </h3>
+                                <h3> {{ responseTitle }} </h3>
+                            </hgroup>
                         </div>
                         <div class="two mobile-one columns text-right">
                             {% if isOwnQuestion %}

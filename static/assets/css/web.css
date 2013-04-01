@@ -3968,14 +3968,22 @@ header {
   border-top: 5px solid #469a40;
   margin: 1em 0 0 0;
   color: #3D444E; }
+  #responses .title h3.number {
+    background-color: #ddd;
+    width: 70px;
+    padding: 0.5em 0;
+    text-align: center;
+    border-bottom: 2px solid #333; }
   #responses .title h3 {
+    float: left;
     padding: 0.5em 4%;
     margin: 0; }
   #responses .title i {
     display: inline-block;
     font-size: 27px;
     color: #469a40;
-    padding: 0.5em 0; }
+    padding: 0.5em 0;
+    margin-right: 0.5em; }
   #responses .title button i, #responses .title .button i {
     color: #FFF;
     padding: 0; }

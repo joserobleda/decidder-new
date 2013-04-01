@@ -42,8 +42,7 @@
 	$('.reveal').click(function () {
 		var $this = $(this), 
 			revealId = $this.data('reveal-target') || null,
-			revealSrc = $this.data('reveal-src') || null,
-			data = $this.data();
+			revealSrc = $this.data('reveal-src') || null;
 
 		function lock () {
 			$canvas.css({'height':'100%', 'overflow':'hidden'});
@@ -54,7 +53,7 @@
 		};
 
 		function open (ref) {
-			var $target = $(ref);
+			var $target = $(ref), data = $this.data();
 
 			// once modalbox is open
 			data.open = function () {
@@ -71,7 +70,7 @@
 			$target.css('margin-top', '-' + ($target.outerHeight()/2) + 'px');
 
 			// open reveal
-			$target.reveal();
+			$target.reveal(data);
 		};
 
 		// prevent scroll
