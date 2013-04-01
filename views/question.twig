@@ -76,14 +76,13 @@
     <section id="responses">
 
         {% for response in responses %}
-            {% set responseTitle = response.title %}
             <div class="row response">
                 <div class="twelve columns">
                     <div class="row title collapse">
                         <div class="ten mobile-three columns">
                             <hgroup>
                                 <h3 class="number"> #{{loop.index}} </h3>
-                                <h3> {{ responseTitle }} </h3>
+                                <h3> {{ response.title }} </h3>
                             </hgroup>
                         </div>
                         <div class="two mobile-one columns text-right">
@@ -142,7 +141,7 @@
                     </div>
                 </div>
                 <form id="new-response-argument-{{ response._id }}" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
-                    {% include 'question-new.twig' with {'responseTitle': responseTitle } %}
+                    {% include 'question-new.twig' with {'responseTitle': response.title } %}
                 </form>
             </div>
         {% endfor %}
