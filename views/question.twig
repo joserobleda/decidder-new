@@ -117,7 +117,9 @@
                                             </div>
                                             {% if isOwnQuestion or (argument.owner._id == session.user._id) %}
                                                 <div class="six columns text-right options">
-                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="ic" data-icon="&#61526;" title="delete"></a>
+                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="button xxs cancel" title="delete">
+                                                        <i class="ic" data-icon="&#61526;"></i>
+                                                    </a>
                                                 </div>
                                             {% endif %}
                                         </div>
@@ -130,7 +132,7 @@
                             <div class="eleven columns offset-by-one">
                                 <div class="row collapse info">
                                     <div class="twelve columns">                                       
-                                        <button id="new-reponse-button" class="reveal green s" data-reveal-target="#new-response-argument-{{ response._id }}">
+                                        <button id="new-reponse-button" class="reveal green xs" data-reveal-target="#new-response-argument-{{ response._id }}">
                                             <i class="ic" data-icon="&#61469;"></i> &nbsp; Add your argument
                                         </button>
                                     </div>

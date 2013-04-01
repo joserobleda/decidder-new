@@ -3660,6 +3660,18 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
   font-size: 13px;
   font-weight: bold;
   text-decoration: none; }
+  .button.cancel:hover, button.cancel:hover {
+    background-color: #b33630;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b33630), color-stop(100%, #dc5f59));
+    background-image: -webkit-linear-gradient(top, #b33630, #dc5f59);
+    background-image: -moz-linear-gradient(top, #b33630, #dc5f59);
+    background-image: -ms-linear-gradient(top, #b33630, #dc5f59);
+    background-image: -o-linear-gradient(top, #b33630, #dc5f59);
+    background-image: linear-gradient(top, #b33630, #dc5f59);
+    border: 1px solid #b0333e;
+    box-shadow: 0 0 5px #E02F44;
+    color: #DDD;
+    font-weight: bold; }
   .button:hover, button:hover {
     background-color: #3072B3;
     background-color: #599bcd;
@@ -3677,6 +3689,10 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
     background-image: none;
     border-color: #25588C;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.15); }
+  .button.xxs, .button.xxs i, button.xxs, button.xxs i {
+    padding: 1px;
+    font-size: 9px !important;
+    line-height: 12px; }
   .button.xs, .button.xs i, button.xs, button.xs i {
     font-size: 9px !important; }
   .button.s, .button.s i, button.s, button.s i {
@@ -3952,7 +3968,7 @@ header {
     border-radius: 0 0 4px 4px; }
 
 .info {
-  line-height: 12px;
+  line-height: 20px;
   font-family: "Helvetica NC";
   color: #929292;
   padding-top: 0.5em;
@@ -3988,7 +4004,7 @@ header {
     color: #FFF;
     padding: 0; }
   #responses .title a {
-    margin: 15px 0; }
+    margin: 15px 0.5em; }
 #responses .arguments {
   padding: 1em 0 0 2%;
   margin-bottom: 1em; }
