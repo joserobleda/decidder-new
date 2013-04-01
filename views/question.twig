@@ -127,18 +127,18 @@
                             <div class="eleven columns offset-by-one">
                                 <div class="row collapse info">
                                     <div class="twelve columns">                                       
-                                        <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response-argument-{{ response._id }}">
+                                        <button id="new-reponse-button" class="reveal green s" data-reveal-target="#new-response-argument-{{ response._id }}">
                                             <i class="ic" data-icon="&#61469;"></i> &nbsp; Add your argument
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <form id="new-response-argument-{{ response._id }}" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
-                            {% include 'question-new.twig' with {'responseTitle': responseTitle } %}
-                        </form>
                     </div>
                 </div>
+                <form id="new-response-argument-{{ response._id }}" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
+                    {% include 'question-new.twig' with {'responseTitle': responseTitle } %}
+                </form>
             </div>
         {% endfor %}
 
