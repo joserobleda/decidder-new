@@ -183,6 +183,15 @@ header {
     	}
     }
 
+    select {
+    	margin-bottom: 1em;
+    	font-size: 16px;
+
+    	option {
+    		padding: 4px;
+    	}
+    }
+
 	h5 {
 		margin: 0;
 	    
