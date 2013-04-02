@@ -4005,7 +4005,7 @@ header {
   margin: 1em 0 0 0;
   color: #3D444E; }
   #responses .title h3.number {
-    background-color: #ddd;
+    background-color: rgba(255, 255, 255, 0.8);
     width: 70px;
     padding: 0.5em 0;
     text-align: center;
