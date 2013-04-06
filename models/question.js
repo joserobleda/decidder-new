@@ -1,5 +1,6 @@
 
 	// var promises = require('babel/lib/promises');
+	var mail = require('babel/lib/mail');
 	var Dbitem = require('babel/models/dbitem');
 	var Response = require('./response');
 	var Argument = require('./argument');
@@ -39,6 +40,12 @@
 			}
 
 			return '';
+		},
+
+		getLastEmail: function() {
+			var lastEmail = this.data.lastEmail;
+			if (lastEmail) return lastEmail;
+			return false;
 		},
 
 		getSyncData: function () {
@@ -83,6 +90,26 @@
 		},
 
 
+		getViewDoubts: function(cb) {
+			var self = this, data = {};
+			this.getDoubts(function(err, doubts){
+				if (err) return cb(err);
+				doubts.each('getViewData', 'question').then(function(doubtsViewData){
+					data.doubts = doubtsViewData;
+					self.getUser(function(err, theUser){
+						if (err) return cb(err);
+						theUser.getViewData(function(err, userData){
+							data.owner = userData;
+							cb(null, data);
+						}, 'question');
+					});
+				});
+
+			});
+		},
+
+
+
 		getResponses: function(cb) {
 			var Response = require('./response'), response = this;
 
@@ -90,6 +117,15 @@
 				if (err) return cb.call(response, err);
 				return cb.call(response, null, responses);
 			}, {"sort": [['isChosen','desc'], ['numArguments','desc']]});
+		},
+
+
+		getDoubts: function(cb) {
+			var Doubt = require('./doubt'), doubt = this;
+			Doubt.find({question: this.getId()}, function(err, doubts) {
+				if (err) return cb.call(doubt, err);
+				return cb.call(doubt, null, doubts);
+			});
 		},
 
 
@@ -120,6 +156,40 @@
 
 				});
 
+			});
+		},
+
+		sendDoubt: function(info, cb) {
+			var self = this;
+			
+			self.getUser(function(err, theUser){
+				if (err) return cb(err);
+
+				theUser.getViewData(function(err, userData){
+
+					var mailOptions = {
+					    from: "hello@babelbite.com",
+					    to: userData.email,
+					    subject: "Request more info",
+					    forceEmbeddedImages: true,
+					    html: "A user request more info about your question: " + info
+					}
+
+					var email = new mail();
+					email.send(mailOptions, function(err) {
+						cb(null, null);
+					});
+				})
+				
+			});
+		},
+
+		setEmailSentTime: function(cb) {
+			var self = this;
+			time = (new Date()).getTime();
+			self.set({'lastEmail': time}).save(function(err, dbData) {
+				if (err) return cb(err);
+				cb(null, null);
 			});
 		},
 

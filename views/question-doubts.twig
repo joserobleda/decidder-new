@@ -1,6 +1,8 @@
 <div class="modal m">
 	<h5 id="heading">User questions</h5>
 	<section>
-		<h2>Javi, your magic here, please ;)</h2>
+		{% for doubt in doubts %}
+			<h3> {{ doubt.text }} </h3>
+		{% endfor %}
 	</section>
 </div>

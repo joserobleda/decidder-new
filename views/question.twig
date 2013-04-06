@@ -23,7 +23,7 @@
                     </div>
                     <div class="six columns text-right options">
                         {% if isOwnQuestion %}
-                            <button class="xs reveal" type="reset" data-reveal-src="post:/question/{{ _id }}/doubt" data-form-showing>
+                            <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
                                 <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions (2)
                             </button>
                             <button type="submit" class="xs" data-form-showing>
@@ -69,7 +69,7 @@
         {% include 'question-new.twig' %}
     </form>
 
-    <form id="new-inforequest" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
+    <form id="new-inforequest" method="post" action="/question/{{_id}}/doubt" class="modal m" style="display:none">
         {% include 'inforequest-new.twig' %}
     </form>
 
