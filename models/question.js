@@ -184,10 +184,9 @@
 			});
 		},
 
-		setEmailSentTime: function(cb) {
+		setEmailSentTime: function(val, cb) {
 			var self = this;
-			time = (new Date()).getTime();
-			self.set({'lastEmail': time}).save(function(err, dbData) {
+			self.set({'lastEmail': val}).save(function(err, dbData) {
 				if (err) return cb(err);
 				cb(null, null);
 			});

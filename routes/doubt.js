@@ -3,7 +3,7 @@
 	var Question = app.require('question');
 	var Doubt = app.require('doubt');
 
-	app.post('/question/:question/doubt', function(req, res){
+	app.post('/question/:question/doubt', function(req, res) {
 
 		if (!req.session.user) return res.redirect('/auth');
 
@@ -25,15 +25,16 @@
 
 				lastEmail = question.getLastEmail();
 
-				if (!lastEmail || lastEmail == 0){
+				if (!lastEmail || lastEmail == 0) {
 					question.sendDoubt(req.body.text, function(err) {
 						if (err) return cb(err);
-						question.setEmailSentTime(function(err) {
+						time = (new Date()).getTime();
+						question.setEmailSentTime(time, function(err) {
 							if (err) return cb(err);
 							res.redirect('/question/' + questionID);
 						});
 					});
-				}else{
+				} else {
 					res.redirect('/question/' + questionID);
 				}
 			});

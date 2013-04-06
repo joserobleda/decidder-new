@@ -28,13 +28,33 @@
 			});
 		};
 
-		if (user) {
-			question.hasResponse(user, function(err, bool) {
-				isResponsed(bool);
-			});
-		} else {
-			isResponsed(false);
+		var hasResponse = function(){
+			if (user) {
+				question.hasResponse(user, function(err, bool) {
+					isResponsed(bool);
+				});
+			} else {
+				isResponsed(false);
+			}
+
 		}
+
+		question.getUser(function(err, theUser){
+			if (err) return cb(err);
+
+			if  (theUser.getId() == user.getId()  && question.getLastEmail()) {
+				question.setEmailSentTime(0, function(err) {
+					if (err) return cb(err);
+					hasResponse();
+				});
+			} else {
+				hasResponse();	
+			}		
+
+		});
+
+		
+		
 	});
 
 
