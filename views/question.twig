@@ -23,8 +23,10 @@
                     </div>
                     <div class="six columns text-right options">
                         {% if isOwnQuestion %}
-                            <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
-                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions (2)
+                             {% if numberDoubts > 0 %}
+                              <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
+                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberDoubts }}
+                           {% endif %}
                             </button>
                             <button type="submit" class="xs" data-form-showing>
                                 <i class="ic" data-icon="&#61753;"></i>&nbsp; Edit your question

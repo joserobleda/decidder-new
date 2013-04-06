@@ -63,29 +63,33 @@
 			var self = this, data = this.getSyncData();
 
 
+			this.getDoubts(function(err, doubts){
 
-			this.getResponses(function(err, responses){
-				if (err) return cb(err);
+				data.numberDoubts = doubts.length;
 
-				responses.each('getViewData', 'question').then(function(responsesViewData){
-					data.responses = responsesViewData;
+				this.getResponses(function(err, responses){
+					if (err) return cb(err);
 
-					self.getUser(function(err, theUser){
-						if (err) return cb(err);
+					responses.each('getViewData', 'question').then(function(responsesViewData){
+						data.responses = responsesViewData;
 
-						if (ctx === 'user') {
-							data.owner = theUser.data;
-							return cb(null, data);
-						};
+						self.getUser(function(err, theUser){
+							if (err) return cb(err);
 
-						theUser.getViewData(function(err, userData){
-							data.owner = userData;
+							if (ctx === 'user') {
+								data.owner = theUser.data;
+								return cb(null, data);
+							};
 
-							cb(null, data);
-						}, 'question');
+							theUser.getViewData(function(err, userData){
+								data.owner = userData;
+
+								cb(null, data);
+							}, 'question');
+						});
 					});
-				});
 
+				});
 			});
 		},
 

@@ -42,7 +42,8 @@
 		question.getUser(function(err, theUser){
 			if (err) return cb(err);
 
-			if  (theUser.getId() == user.getId()  && question.getLastEmail()) {
+			if  (theUser.getId() == user.getId()  && question.getLastEmail() && false) {
+				//MIentras hacemos pruebas que no ente aquí ya que reinicia el envio de email por qustion. Por eso el false del if...
 				question.setEmailSentTime(0, function(err) {
 					if (err) return cb(err);
 					hasResponse();
