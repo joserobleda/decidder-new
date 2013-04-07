@@ -1,9 +1,9 @@
 <div class="modal m">
 	<h5 id="heading">User questions</h5>
 	<section>
-		<div id="doubts">
+		<div id="listDoubts">
 			{% for doubt in doubts %}
-				<div class="row doubt slideEffect" data-target="#responseDoubt" data-value="{{ doubt._id }}" data-text="{{ doubt.text }}" data-tohide="#doubts" data-addtext="#doubtText">
+				<div class="row doubt slideEffect" data-target="#responseDoubt" data-value="{{ doubt._id }}" data-text="{{ doubt.text }}" data-tohide="#listDoubts" data-addtext="#doubtText">
 					<div class="ten columns">
 	                	<h3> {{ doubt.text }} </h3>
 					</div>

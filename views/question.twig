@@ -54,7 +54,15 @@
             </div>
         </div>
     </section>
-
+    <div class="row">
+        <section id="doubts">
+            {% for doubt in doubts %}
+                {% if doubt.response %}
+                     User question: {{doubt.text}} --  Response: {{doubt.response}} <br><br>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
     <div class="row">
         <div class="ten columns text-center">
             <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">

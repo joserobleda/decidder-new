@@ -41,7 +41,6 @@
 	 var loadListeners = function(){
 
 		$(".slideEffect").click(function () {
-			$(this).hide();
 			$($(this).data("tohide")).hide();
 			$($(this).data("addtext")).html($(this).data("text"));
 			$("#new-response-doubt").attr('action', $("#new-response-doubt").attr('action') + $(this).data("value"));

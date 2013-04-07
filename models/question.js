@@ -62,33 +62,36 @@
 		getViewData: function(cb, ctx) {
 			var self = this, data = this.getSyncData();
 
-
-			this.getDoubts(function(err, doubts){
-
+			self.getDoubts(function(err, doubts){
+				if (err) return cb(err);
 				data.numberDoubts = doubts.length;
 
-				this.getResponses(function(err, responses){
+				doubts.each('getViewData', 'question').then(function(doubtsViewData){
 					if (err) return cb(err);
+					data.doubts = doubtsViewData;
 
-					responses.each('getViewData', 'question').then(function(responsesViewData){
-						data.responses = responsesViewData;
+					self.getResponses(function(err, responses){
+						if (err) return cb(err);
 
-						self.getUser(function(err, theUser){
-							if (err) return cb(err);
+						responses.each('getViewData', 'question').then(function(responsesViewData){
+							data.responses = responsesViewData;
+							
+							self.getUser(function(err, theUser){
+								if (err) return cb(err);
 
-							if (ctx === 'user') {
-								data.owner = theUser.data;
-								return cb(null, data);
-							};
+								if (ctx === 'user') {
+									data.owner = theUser.data;
+									return cb(null, data);
+								};
 
-							theUser.getViewData(function(err, userData){
-								data.owner = userData;
+								theUser.getViewData(function(err, userData){
+									data.owner = userData;
 
-								cb(null, data);
-							}, 'question');
+									cb(null, data);
+								}, 'question');
+							});
 						});
 					});
-
 				});
 			});
 		},
@@ -100,19 +103,13 @@
 				if (err) return cb(err);
 				doubts.each('getViewData', 'question').then(function(doubtsViewData){
 					data.doubts = doubtsViewData;
-					self.getUser(function(err, theUser){
-						if (err) return cb(err);
-						theUser.getViewData(function(err, userData){
-							data.owner = userData;
-							cb(null, data);
-						}, 'question');
-					});
+					
+					cb(null, data);
+					
 				});
 
 			});
 		},
-
-
 
 		getResponses: function(cb) {
 			var Response = require('./response'), response = this;
@@ -125,6 +122,15 @@
 
 
 		getDoubts: function(cb) {
+			var Doubt = require('./doubt'), doubt = this;
+			Doubt.find({question: this.getId()}, function(err, doubts) {
+				if (err) return cb.call(doubt, err);
+				return cb.call(doubt, null, doubts);
+			});
+		},
+
+
+		getRespondedDoubts: function(cb) {
 			var Doubt = require('./doubt'), doubt = this;
 			Doubt.find({question: this.getId()}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);
@@ -184,7 +190,6 @@
 						cb(null, null);
 					});
 				})
-				
 			});
 		},
 

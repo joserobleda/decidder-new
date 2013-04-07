@@ -50,7 +50,6 @@
 	app.param('doubt', function(req, res, next, id){
 		Doubt.findById(id, function(err, doubt){
 			if (err) return next();
-			console.log(doubt.getId());
 			req.param.doubt = doubt;
 			next();
 		});
