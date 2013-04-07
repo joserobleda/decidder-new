@@ -38,6 +38,17 @@
 		});
 	};
 
+	 var loadListeners = function(){
+
+		$(".slideEffect").click(function () {
+			$(this).hide();
+			$($(this).data("tohide")).hide();
+			$($(this).data("addtext")).html($(this).data("text"));
+			$("#new-response-doubt").attr('action', $("#new-response-doubt").attr('action') + $(this).data("value"));
+			$($(this).data("target")).animate({width:'toggle'});
+		});
+
+	}
 
 	$('.reveal').click(function () {
 		var $this = $(this), 
@@ -117,7 +128,7 @@
 				success: function (res, status, xhr) {
 
 					var contentType = xhr.getResponseHeader('content-type');
-				
+					
 					if (contentType.indexOf('text/html') === 0) {
 						// append content to body
 						var $dom = $(res).hide().appendTo($canvas);
@@ -127,6 +138,9 @@
 
 						// show content
 						open($dom);
+						loadListeners();
+
+						
 					}
 
 				}
@@ -134,7 +148,6 @@
 		};
 		
 	});
-
 
 
 })(window);

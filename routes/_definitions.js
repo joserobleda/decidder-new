@@ -3,6 +3,7 @@
 	var Question = app.require('question');
 	var Response = app.require('response');
 	var Argument = app.require('argument');
+	var Doubt = app.require('doubt');
 
 	// ******
 	// Transform response 
@@ -38,6 +39,19 @@
 			if (err) return next();
 
 			req.param.question = question;
+			next();
+		});
+	});
+
+
+	// ******
+	// Transform doubt 
+	// ******
+	app.param('doubt', function(req, res, next, id){
+		Doubt.findById(id, function(err, doubt){
+			if (err) return next();
+			console.log(doubt.getId());
+			req.param.doubt = doubt;
 			next();
 		});
 	});

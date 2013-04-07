@@ -4149,3 +4149,9 @@ div.tagsinput div {
 .not_valid {
   background: #FBD8DB !important;
   color: #90111A !important; }
+
+.doubt {
+  border-bottom: 1px solid #e8e8e8;
+  max-width: 100%;
+  min-width: 100%;
+  cursor: pointer; }

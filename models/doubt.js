@@ -4,9 +4,22 @@
 	var doubt = dbitem.extend({
 
 		getViewData: function(cb) {
-			var data = this.data;
-			cb(null, data);
-		}
+			var  self = this, data = this.data;
+			this.getQuestion(function (err, question) {
+				if (question) data.question = question.getSyncData();
+				cb(null, data);
+			});
+		},
+
+		getQuestion: function (cb) {
+			var Question = require('./question');
+			var questionID = this.get('question').toString();
+
+			Question.findById(questionID, function(err, question){
+				if (err) return cb(err);
+				cb(null, question);
+			});
+		},
 
 	});
 
