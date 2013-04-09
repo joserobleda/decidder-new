@@ -2,13 +2,24 @@
 	var app = require('babel');
 
 	app.define({
+		// ---- Twitter API
 		TWITTER_PUBLIC: 'l9iwqBYwfDeEhFtxF02rg',
 		TWITTER_SECRET: 'IeuhfDxJlp5xDBoLoU5aWH4qbeEC9DIgmXguE44wyo',
+
+		// ----- Facebook API
 		FACEBOOK_APP_ID: '443773182342689',
 		FACEBOOK_APP_SECRET: '023659594ae1689c2d892c9c3d516a87',
+
+		// ----- Linkedin API
 		LINKEDIN_PUBLIC: 'h1pyz174zm4o',
 		LINKEDIN_SECRET: 'PNFdQd4xgYbjge6W',
-		DBNAME: 'decidder'
+
+		// ----- Mongo dbname
+		DBNAME: 'decidder',
+
+		// ----- Email credentials
+		SMTP_EMAIL: 'hello@babelbite.com',
+		SMTP_PASS: 'theamazingpassword'
 
 	// Configuration for all environments
 	}).configure(function(){

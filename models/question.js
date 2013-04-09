@@ -1,5 +1,4 @@
 
-	// var promises = require('babel/lib/promises');
 	var mail = require('babel/lib/mail');
 	var Dbitem = require('babel/models/dbitem');
 	var Response = require('./response');
@@ -178,16 +177,13 @@
 				theUser.getViewData(function(err, userData){
 
 					var mailOptions = {
-					    from: "hello@babelbite.com",
-					    to: userData.email,
 					    subject: "Request more info",
-					    forceEmbeddedImages: true,
 					    html: "A user request more info about your question: " + info
 					}
 
-					var email = new mail();
-					email.send(mailOptions, function(err) {
-						cb(null, null);
+					var email = new mail(mailOptions);
+					email.send(userData.email, function(err) {
+						cb(err, null);
 					});
 				})
 			});

@@ -1,6 +1,21 @@
 (function(w, undefined) {
 	"use strict";
 
+	// ------- all the custom events
+	$.fn.bindCustomEvents = function() {
+
+		$(this).find(".slideEffect").click(function () {
+
+			$($(this).data("tohide")).hide();
+			$($(this).data("addtext")).html($(this).data("text"));
+			$("#new-response-doubt").attr('action', $("#new-response-doubt").attr('action') + $(this).data("value"));
+			$($(this).data("target")).animate({width:'toggle'});
+		});
+
+	};
+
+
+
 	var $canvas = $("#canvas"),
 		$question = $('form#question');
 
@@ -38,17 +53,6 @@
 		});
 	};
 
-	 var loadListeners = function(){
-
-		$(".slideEffect").click(function () {
-			$($(this).data("tohide")).hide();
-			$($(this).data("addtext")).html($(this).data("text"));
-			$("#new-response-doubt").attr('action', $("#new-response-doubt").attr('action') + $(this).data("value"));
-			$($(this).data("target")).animate({width:'toggle'});
-		});
-
-	}
-
 	$('.reveal').click(function () {
 		var $this = $(this), 
 			revealId = $this.data('reveal-target') || null,
@@ -80,7 +84,7 @@
 			$target.css('margin-top', '-' + ($target.outerHeight()/2) + 'px');
 
 			// open reveal
-			$target.reveal(data);
+			$target.reveal(data).bindCustomEvents();
 		};
 
 		// prevent scroll
@@ -137,9 +141,6 @@
 
 						// show content
 						open($dom);
-						loadListeners();
-
-						
 					}
 
 				}
