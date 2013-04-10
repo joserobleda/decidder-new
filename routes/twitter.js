@@ -24,6 +24,7 @@
 					if (tweet.text.indexOf('@') !== -1) continue; // we dont want mentions
 					if (tweet.text.indexOf('RT @') !== -1) continue; // we dont want retweets
 					if (tweet.text[0] === "@") continue; // we dont want responses or 'direct' messages
+					if (/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/.test(tweet.text)) continue; // we dont want other links
 					if (AllTweets.indexOf(tweet.id) !== -1) continue;
 
 					AllTweets.push(tweet.id);
@@ -47,4 +48,4 @@
 		});
 	};
 
-	// searchAndComment();
+	//searchAndComment();
