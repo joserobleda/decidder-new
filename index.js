@@ -45,7 +45,7 @@
 	}).configure('production', function(){
 		app.define({
 			PROTOCOL: 'http:',
-			DOMAIN: 'aws.babelbite.com',
+			DOMAIN: 'www.decidder.com',
 			PORT: 3000
 		});
 
