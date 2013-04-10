@@ -3766,6 +3766,9 @@ html, body {
 ul li {
   list-style: none; }
 
+i {
+  vertical-align: middle; }
+
 #loading {
   position: absolute;
   top: 50% !important;
@@ -3993,7 +3996,7 @@ header {
   color: #929292;
   padding-top: 0.5em;
   margin-top: 0.5em;
-  border-top: 1px solid #EEE; }
+  /*border-top: 1px solid #EEE;*/ }
   .info div, .info a {
     font-size: 10px; }
   .info .options {
@@ -4006,7 +4009,7 @@ header {
   color: #3D444E; }
   #responses .title h3.number {
     background-color: rgba(255, 255, 255, 0.8);
-    width: 70px;
+    width: 76px;
     padding: 0.5em 0;
     text-align: center;
     border-bottom: 2px solid #333; }
@@ -4026,7 +4029,7 @@ header {
   #responses .title a {
     margin: 15px 0.5em; }
 #responses .arguments {
-  padding: 1em 0 0 2%;
+  padding: 1em 0 0 0;
   margin-bottom: 1em; }
 #responses p {
   margin: 0; }
@@ -4068,7 +4071,7 @@ header {
     right: -16px; }
   #question h1 {
     margin: 0; }
-  #question #predefined {
+  #question #predefined li:first-child {
     padding-top: 1em;
     border-top: 1px dotted #ccc; }
   #question .info {
@@ -4081,6 +4084,8 @@ header {
   .context p {
     font-family: "Helvetica NC";
     font-size: 14px; }
+  .context p:last-child {
+    margin-bottom: 0; }
 
 textarea.context {
   padding: 6px; }
@@ -4150,8 +4155,19 @@ div.tagsinput div {
   background: #FBD8DB !important;
   color: #90111A !important; }
 
-.doubt {
-  border-bottom: 1px solid #e8e8e8;
-  max-width: 100%;
-  min-width: 100%;
-  cursor: pointer; }
+#doubts {
+  border-top: 1px dotted #CCC;
+  margin-left: 1em;
+  padding: 0.5em 0 0 2em; }
+  #doubts .doubt {
+    padding: 4px 0 4px 1em;
+    font-family: "Helvetica NC";
+    color: #666;
+    border-bottom: 1px solid #F1F1F1; }
+
+#doubt-list .doubt {
+  border-bottom: 1px solid #e8e8e8; }
+  #doubt-list .doubt:hover {
+    background-color: #cde69c; }
+  #doubt-list .doubt:last-child {
+    border-bottom-width: 0px; }

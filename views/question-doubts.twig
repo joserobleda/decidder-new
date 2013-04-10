@@ -1,16 +1,24 @@
 <div class="modal m">
 	<h5 id="heading">User questions</h5>
 	<section>
-		<div id="listDoubts">
+		<div id="doubt-list">
 			{% for doubt in doubts %}
-				<div class="row doubt slideEffect" data-target="#responseDoubt" data-value="{{ doubt._id }}" data-text="{{ doubt.text }}" data-tohide="#listDoubts" data-addtext="#doubtText">
-					<div class="ten columns">
-	                	<h3> {{ doubt.text }} </h3>
+				<a class="doubt block-grid slideEffect" 
+					data-target="#responseDoubt" 
+					data-value="{{ doubt._id }}" 
+					data-text="{{ doubt.text }}" 
+					data-tohide="#doubt-list" 
+					data-addtext="#doubtText"
+
+					
+				>
+					<div class="eleven columns">
+	                	<h6>{{ doubt.text }}</h6>
 					</div>
-					<div class="two columns">
-						<i class="ic" data-icon="&#61469;"></i>
+					<div class="one columns">
+						<h6><i class="ic" data-icon="&#61469;"></i></h6>
 					</div>
-				</div>
+				</a>
 			{% endfor %}
 		</div>
 

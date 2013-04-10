@@ -10,6 +10,17 @@
 
                 <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
+                <div id="doubts">
+                    {% for doubt in doubts %}
+                        {% if doubt.response %}
+                            <div class="doubt">
+                                <i class="ic" data-icon="&#61450;"></i>&nbsp;
+                                <span class="doubt-question">{{ doubt.text }}</span> -- 
+                                <span class="doubt-response">{{ doubt.response }}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
 
                 <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
                     {% for text in predefinedresponses %}
@@ -23,10 +34,10 @@
                     </div>
                     <div class="six columns text-right options">
                         {% if isOwnQuestion %}
-                             {% if numberDoubts > 0 %}
+                            {% if numberDoubts %}
                               <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
                                 <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberDoubts }}
-                           {% endif %}
+                            {% endif %}
                             </button>
                             <button type="submit" class="xs" data-form-showing>
                                 <i class="ic" data-icon="&#61753;"></i>&nbsp; Edit your question
@@ -54,15 +65,7 @@
             </div>
         </div>
     </section>
-    <div class="row">
-        <section id="doubts">
-            {% for doubt in doubts %}
-                {% if doubt.response %}
-                     User question: {{doubt.text}} --  Response: {{doubt.response}} <br><br>
-                {% endif %}
-            {% endfor %}
-        </section>
-    </div>
+
     <div class="row">
         <div class="ten columns text-center">
             <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
