@@ -22,7 +22,7 @@
 
 			lastEmail = question.getLastEmail();
 
-			if (!lastEmail || lastEmail == 0) {
+			if (!lastEmail) {
 
 				question.sendDoubt(req.body.text, function(err) {
 					if (err) return console.log(err);
@@ -30,12 +30,12 @@
 					var time = (new Date()).getTime();
 					question.setEmailSentTime(time, function(err) {
 						if (err) return console.log(err);
-						res.redirect('/question/' + question.getId());
 					});
 				});
-			} else {
-				res.redirect('/question/' + question.getId());
 			}
+
+
+			res.redirect('/question/' + question.getId());
 			
 		});
 	

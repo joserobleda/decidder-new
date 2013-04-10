@@ -18,7 +18,7 @@
 		DBNAME: 'decidder',
 
 		// ----- Email credentials
-		SMTP_EMAIL: 'hello@babelbite.com',
+		SMTP_EMAIL: 'hello@decidder.com',
 		SMTP_PASS: 'theamazingpassword'
 
 	// Configuration for all environments
