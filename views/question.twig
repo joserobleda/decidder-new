@@ -10,17 +10,19 @@
 
                 <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
-                <div id="doubts">
-                    {% for doubt in doubts %}
-                        {% if doubt.response %}
-                            <div class="doubt">
-                                <i class="ic" data-icon="&#61450;"></i>&nbsp;
-                                <span class="doubt-question">{{ doubt.text }}</span> -- 
-                                <span class="doubt-response">{{ doubt.response }}</span>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                {% if doubts.length %}
+                    <div id="doubts">
+                        {% for doubt in doubts %}
+                            {% if doubt.response %}
+                                <div class="doubt">
+                                    <i class="ic" data-icon="&#61450;"></i>&nbsp;
+                                    <span class="doubt-question">{{ doubt.text }}</span> -- 
+                                    <span class="doubt-response">{{ doubt.response }}</span>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
                 <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
                     {% for text in predefinedresponses %}
