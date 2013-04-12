@@ -66,7 +66,7 @@
                         <i></i><u></u>
                         <span class="fb-count" data-fb-url="{{ permalink }}">0</span>
                     </div>
-                    <button class="facebook popup" href="http://www.facebook.com/share.php?s=100&amp;p[url]={{ permalink | escape('url') }}&amp;p[title]={{title}}&amp;p[summary]={{context}}">
+                    <button class="facebook popup" href="http://www.facebook.com/share.php?s=100&amp;p[url]={{ permalink | escape('url') }}&amp;p[title]={{title | escape('url')}}&amp;p[summary]={{context | escape('url')}}">
                         <i></i>
                         Share
                     </button>
@@ -80,7 +80,7 @@
                         <span class="tw-count" data-fb-url="{{ permalink }}">0</span>
                     </div>
 
-                    <button class="twitter popup" href="https://twitter.com/intent/tweet?url={{ permalink | escape('url') }}&amp;text={{title}} -&amp;via=decidder">
+                    <button class="twitter popup" href="https://twitter.com/intent/tweet?url={{ permalink | escape('url') }}&amp;text={{title | escape('url')}} -&amp;via=decidder">
                         <i></i>
                         Tweet
                     </button>
