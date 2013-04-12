@@ -17,14 +17,20 @@
 		var user = req.session.user;
 		if (question === undefined) return next();
 
+
+		function render (data) {
+			data.permalink = app.constants.PROTOCOL + '//' + app.constants.DOMAIN + '/question/' + question.getId();
+			//data.permalink = 'http://www.google.es';
+			res.render('question.twig', data);
+		};
+
 		var isResponsed = function (isResponsed) {
 			question.getViewData(function(err, data){
 				data.isResponsed = isResponsed;
 			
 				data.isOwnQuestion = user && user.getId() == data.owner._id;
-				//console.log(data);
 
-				res.render('question.twig', data);
+				render(data);
 			});
 		};
 
