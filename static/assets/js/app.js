@@ -107,7 +107,7 @@
 
 				// once modalbox is open
 				data.open = function () {
-					$target.find("input:first").focus();
+					$target.find("input,textarea,select").not(':disabled').filter(':first').focus();
 				};
 
 				data.close = function () {
