@@ -146,3 +146,41 @@
 			res.redirect('back');
 		});
 	});
+
+
+
+
+
+	/**
+	  * Question SOCKET STREAM
+	  *
+	  *
+	  */
+	var io = app.io, namespace = '/question';
+
+	io.of(namespace).on('connection', function (socket) {
+
+		socket.on('join', function (questionId) {
+			var sockets = io.of(namespace).clients(questionId), 
+				noSockets = !sockets.length;
+
+			Question.findById(questionId, function (err, question) {
+				socket.on('disconnect', function () {
+					if (noSockets) {
+						question.events.removeListener('change', question.events._room);
+					}
+				});
+
+				socket.join(questionId);
+
+				if (noSockets) {
+					question.events._room = function (data) {
+						io.of(namespace).in(questionId).emit('change', data);
+					};
+
+					question.events.on('change', question.events._room);
+				}
+			});
+		});
+
+	});

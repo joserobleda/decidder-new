@@ -224,6 +224,25 @@
 				};
 			});
 		});
+
+
+
+		require(['/socket.io/socket.io.js'], function(){
+			var questionId = document.location.pathname.split('/')[2];
+			var socket = io.connect(document.location.protocol+'//'+document.location.host+'/question');
+
+			socket.on('connect', function () {
+				socket.emit('join', questionId);
+			});
+
+			socket.on('change', function(data) {
+				$.get(document.location.pathname, function (res) {
+					var html = $(res).find('#responses').html();
+					$("#responses").html(html);
+				})
+			});
+
+		});
 	};
 
 

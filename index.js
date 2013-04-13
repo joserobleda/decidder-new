@@ -24,13 +24,6 @@
 	// Configuration for all environments
 	}).configure(function(){
 
-		/*
-		app.set('partials', {
-			helveticaneue: 'fonts/helveticaneue.css',
-			response: "response",
-			argument: "argument"
-		});*/
-
 		app.io = require('socket.io').listen(app.server, { log: false });
 
 	// Configuracion for developments only
