@@ -1,15 +1,18 @@
 
 	<h5 id="heading">Send a new response</h5>
 	<section>
-		{% if responseTitle %}
-			<input type="text" name="title" value="{{ responseTitle }}" readOnly="true" />
+		{% if fixedTitle %}
+			<input type="text" name="title" value="{{ fixedTitle }}" disabled />
 		{% else %}
 			{% if predefinedresponses %}
-				<select name="title">						
-				{% for text in predefinedresponses %}
-					<option value="{{text}}">{{text}}</option>
-				{% endfor %}
-				</select>
+				<div class="select">
+					<select name="title" required>
+						<option value="">Select one option</option>		
+						{% for text in predefinedresponses %}
+							<option value="{{text}}">{{text}}</option>
+						{% endfor %}
+					</select>
+				</div>
 	        {% else %}
 				<input type="text" name="title" placeholder="Response" required />
 			{% endif %}

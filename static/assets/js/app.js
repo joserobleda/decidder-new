@@ -13,6 +13,7 @@
 	// ------- all the custom events
 	$.fn.bindCustomEvents = function() {
 
+
 		$(this).find(".slideEffect").click(function () {
 
 			$($(this).data("tohide")).hide();
@@ -119,7 +120,7 @@
 				$target.css('margin-top', '-' + ($target.outerHeight()/2) + 'px');
 
 				// open reveal
-				$target.reveal(data).bindCustomEvents();
+				$target.reveal(data);
 			};
 
 			// prevent scroll
@@ -173,6 +174,9 @@
 
 							// hide loading layer
 							$loading.hide();
+
+							// bind events
+							$dom.bindCustomEvents();
 
 							// show content
 							open($dom);

@@ -110,7 +110,7 @@
     </div>
 
     <form id="new-response" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
-        {% include 'question-new.twig' %}
+        {% include 'response-new.twig' %}
     </form>
 
     <form id="new-inforequest" method="post" action="/question/{{_id}}/doubt" class="modal m" style="display:none">
@@ -185,7 +185,7 @@
                     </div>
                 </div>
                 <form id="new-response-argument-{{ response._id }}" method="post" action="/question/{{_id}}/response" class="modal m" style="display:none">
-                    {% include 'question-new.twig' with {'responseTitle': response.title } %}
+                    {% include 'response-new.twig' with {'fixedTitle': response.title } %}
                 </form>
             </div>
         {% endfor %}
