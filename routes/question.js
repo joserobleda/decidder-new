@@ -172,7 +172,6 @@
 
 				socket.on('disconnect', function () {
 					if (noSockets) {
-						console.log('unbind', sockets.length);
 						question.events.removeListener('change', question.events._room);
 						delete(question.events._room);
 					}
@@ -182,7 +181,6 @@
 				if (question.events._room === undefined) {
 
 					question.events._room = function (data) {
-						console.log('data change');
 						io.of(namespace).in(questionId).emit('change', data);
 					};
 
