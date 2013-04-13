@@ -18,33 +18,36 @@
                             </article>
                         </div>
                     </div>
+                {% else %}
+                    You dont have questions. <a href="/">Make your first!</a>
                 {% endfor %}
             </ul>
         </div>
     </section>
 
-    <section class="row">
-        <div class="twelve columns centered">
-            <h3>Your arguments</h3>
+    {% if arguments.length %}
+        <section class="row">
+            <div class="twelve columns centered">
+                <h3>Your arguments</h3>
 
-            <div id="responses">
-                {% for argument in arguments %}
-                    <div class="row collapse">
-                        <div class="twelve columns">
-                            <article>
-                                <p>
-                                    <a href="/question/{{ argument.question._id }}">{{ argument.question.title }}</a> · {{ argument.text }}
-                                </p>
-                                <p>
-                                    {{ argument.question.date }} 
-                                </p>
-                            </article>
+                <div id="responses">
+                    {% for argument in arguments %}
+                        <div class="row collapse">
+                            <div class="twelve columns">
+                                <article>
+                                    <p>
+                                        <a href="/question/{{ argument.question._id }}">{{ argument.question.title }}</a> · {{ argument.text }}
+                                    </p>
+                                    <p>
+                                        {{ argument.question.date }} 
+                                    </p>
+                                </article>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
-
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
 
 {% include 'footer.twig' %}

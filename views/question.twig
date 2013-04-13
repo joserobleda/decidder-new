@@ -58,7 +58,7 @@
                 <img src="{{owner.image}}" class="poster" alt="avatar" height="80" width="80" />
             </div>
 
-            <div class="social-share">
+            <div class="share">
                 <br />
 
                 <div>
@@ -66,7 +66,7 @@
                         <i></i><u></u>
                         <span class="fb-count" data-fb-url="{{ permalink }}">0</span>
                     </div>
-                    <button class="facebook popup" href="http://www.facebook.com/share.php?s=100&amp;p[url]={{ permalink | escape('url') }}&amp;p[title]={{title | escape('url')}}&amp;p[summary]={{context | escape('url')}}">
+                    <button class="facebook popup" href="http://www.facebook.com/share.php?s=100&amp;p[url]={{ permalink | escape('url') }}&amp;p[title]={{title | escape('url')}}&amp;p[summary]={{context | escape('url')}}&amp;p[images][0]={{env.logo}}">
                         <i></i>
                         Share
                     </button>

@@ -14,7 +14,11 @@
 
 	// Do this on every request first!
 	app.all('*', function(req, res, next){
-		//var usuario = new user(app);
+		
+		res.locals.env = {
+			'logo': app.constants.PROTOCOL +'//'+ app.constants.DOMAIN +'/assets/images/logo.png'
+		};
+
 
 		if(req.session.userID) {
 			User.findById(req.session.userID, function(err, user){

@@ -37,16 +37,14 @@
 	}).configure('development', function(){
 		app.define({
 			PROTOCOL: 'http:',
-			DOMAIN: 'localhost',
-			PORT: 3000
+			DOMAIN: 'localhost:3000'
 		});
 
 	// Configuracion solo para producción
 	}).configure('production', function(){
 		app.define({
 			PROTOCOL: 'http:',
-			DOMAIN: 'www.decidder.com',
-			PORT: 3000
+			DOMAIN: 'www.decidder.com'
 		});
 
 	// Run before all request

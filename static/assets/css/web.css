@@ -3988,25 +3988,37 @@ header {
   #new-question h4 {
     text-align: center;
     font-family: 'Satisfy', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 60px;
     color: #469a40;
     text-shadow: 0 1px 2px rgba(30, 30, 30, 0.6); }
   #new-question input, #new-question input:focus {
+    display: inline;
+    display: inline-block;
+    width: 90%;
     outline: none;
     font-family: "Helvetica N", sans-serif;
     border: 0px;
-    border-radius: 6px;
+    -webkit-border-radius: 6px 0 0 6px;
+    -moz-border-radius: 6px 0 0 6px;
+    -ms-border-radius: 6px 0 0 6px;
+    -o-border-radius: 6px 0 0 6px;
+    border-radius: 6px 0 0 6px;
     padding: 10px;
     height: auto;
     box-shadow: 0 1px 0 rgba(255, 255, 255, .15), 0 2px 4px rgba(0, 0, 0, .2) inset, 0 -1px 3px rgba(0, 0, 0, .2) inset, 0 0 12px rgba(255, 255, 255, .1);
     color: #469a40;
     background-color: rgba(0, 0, 0, 0.03);
-    font-size: 35px;
+    font-size: 24px;
     text-align: center;
     letter-spacing: -1px;
     text-shadow: 0 2px 5px rgba(255, 255, 255, 0.6); }
+  #new-question button, #new-question input, #new-question input:focus {
+    height: 60px;
+    vertical-align: top; }
   #new-question button {
+    width: 10%;
+    margin-left: -2px;
     font-size: 18px; }
 
 .modal {
