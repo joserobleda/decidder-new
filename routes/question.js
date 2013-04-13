@@ -18,6 +18,10 @@
 		if (question === undefined) return next();
 
 
+		question.events.on('change', function () {
+			console.log('change');
+		});
+
 		function render (data) {
 			data.permalink = app.constants.PROTOCOL + '//' + app.constants.DOMAIN + '/question/' + question.getId();
 			//data.permalink = 'http://www.google.es';
@@ -85,7 +89,7 @@
 		var theQuestion = new Question(doc);
 		
 		theQuestion.save(function(err, dbData) {
-			console.log("Question " + dbData._id + " just created");
+			// console.log("Question " + dbData._id + " just created");
 			res.redirect('/question/' + dbData._id + "#edit")
 		});
 	});
@@ -161,25 +165,33 @@
 	io.of(namespace).on('connection', function (socket) {
 
 		socket.on('join', function (questionId) {
-			var sockets = io.of(namespace).clients(questionId), 
-				noSockets = !sockets.length;
+			
 
 			Question.findById(questionId, function (err, question) {
+				var sockets = io.of(namespace).clients(questionId), noSockets = !sockets.length;
+
 				socket.on('disconnect', function () {
 					if (noSockets) {
+						console.log('unbind', sockets.length);
 						question.events.removeListener('change', question.events._room);
+						delete(question.events._room);
 					}
 				});
 
-				socket.join(questionId);
 
-				if (noSockets) {
+				if (question.events._room === undefined) {
+
 					question.events._room = function (data) {
+						console.log('data change');
 						io.of(namespace).in(questionId).emit('change', data);
 					};
 
+
 					question.events.on('change', question.events._room);
-				}
+				};
+
+				// join to this question room
+				socket.join(questionId);
 			});
 		});
 

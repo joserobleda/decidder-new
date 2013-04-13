@@ -80,6 +80,7 @@
 	Argument.events.on('new', function (argument) {
 		argument.getQuestion(function (err, question) {
 			if (err) return err;
+
 			return question.events.emit('change', {type: 'argument', argument: argument});
 		});
 	});
@@ -88,6 +89,7 @@
 	Argument.events.on('remove', function (argument) {
 		argument.getQuestion(function (err, question) {
 			if (err) return err;
+
 			return question.events.emit('change', {type: 'argument', argument: argument});
 		});
 	});

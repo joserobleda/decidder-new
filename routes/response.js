@@ -28,7 +28,6 @@
 			var theArgument = new Argument(dataArgument);
 
 			theArgument.save(function(err, argData) {
-				console.log(argData);
 				var numArguments = response.get('numArguments') || 0;
 				response.set('numArguments', numArguments+1).save(function(err, dbData) {
 					res.redirect('/question/' + req.param.question.getId());
