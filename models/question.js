@@ -61,33 +61,38 @@
 		getViewData: function(cb, ctx) {
 			var self = this, data = this.getSyncData();
 
-			self.getDoubts(function(err, doubts){
+			self.getDoubtsPending(function(err, pendingDoubts){
 				if (err) return cb(err);
-				data.numberDoubts = doubts.length;
 
-				doubts.each('getViewData', 'question').then(function(doubtsViewData){
+				data.numberDoubts = pendingDoubts.length;
+				
+				self.getDoubts(function(err, doubts){
 					if (err) return cb(err);
-					data.doubts = doubtsViewData;
 
-					self.getResponses(function(err, responses){
+					doubts.each('getViewData', 'question').then(function(doubtsViewData){
 						if (err) return cb(err);
+						data.doubts = doubtsViewData;
 
-						responses.each('getViewData', 'question').then(function(responsesViewData){
-							data.responses = responsesViewData;
-							
-							self.getUser(function(err, theUser){
-								if (err) return cb(err);
+						self.getResponses(function(err, responses){
+							if (err) return cb(err);
 
-								if (ctx === 'user') {
-									data.owner = theUser.data;
-									return cb(null, data);
-								};
+							responses.each('getViewData', 'question').then(function(responsesViewData){
+								data.responses = responsesViewData;
+								
+								self.getUser(function(err, theUser){
+									if (err) return cb(err);
 
-								theUser.getViewData(function(err, userData){
-									data.owner = userData;
+									if (ctx === 'user') {
+										data.owner = theUser.data;
+										return cb(null, data);
+									};
 
-									cb(null, data);
-								}, 'question');
+									theUser.getViewData(function(err, userData){
+										data.owner = userData;
+
+										cb(null, data);
+									}, 'question');
+								});
 							});
 						});
 					});
@@ -99,6 +104,20 @@
 		getViewDoubts: function(cb) {
 			var self = this, data = {};
 			this.getDoubts(function(err, doubts){
+				if (err) return cb(err);
+				doubts.each('getViewData', 'question').then(function(doubtsViewData){
+					data.doubts = doubtsViewData;
+					
+					cb(null, data);
+					
+				});
+
+			});
+		},
+
+		getViewDoubtsPending: function(cb) {
+			var self = this, data = {};
+			this.getDoubtsPending(function(err, doubts){
 				if (err) return cb(err);
 				doubts.each('getViewData', 'question').then(function(doubtsViewData){
 					data.doubts = doubtsViewData;
@@ -128,10 +147,9 @@
 			});
 		},
 
-
-		getRespondedDoubts: function(cb) {
+		getDoubtsPending: function(cb) {
 			var Doubt = require('./doubt'), doubt = this;
-			Doubt.find({question: this.getId()}, function(err, doubts) {
+			Doubt.find({question: this.getId(), response: {$exists: false}}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);
 				return cb.call(doubt, null, doubts);
 			});

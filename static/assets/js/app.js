@@ -13,13 +13,19 @@
 	// ------- all the custom events
 	$.fn.bindCustomEvents = function() {
 
+		$(this).find(".async").click(function () {
 
-		$(this).find(".slideEffect").click(function () {
+			var href = $(this).attr("href"),
+				target = $(this).data("target"),
+				hide = $(this).data("hide");
 
-			$($(this).data("tohide")).hide();
-			$($(this).data("addtext")).html($(this).data("text"));
-			$("#new-response-doubt").attr('action', $("#new-response-doubt").attr('action') + $(this).data("value"));
-			$($(this).data("target")).animate({width:'toggle'});
+			$.get(href, function (html) {
+				$(target).html(html).show();
+				$(hide).hide();
+			});
+
+			return false;
+
 		});
 
 

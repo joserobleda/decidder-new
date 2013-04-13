@@ -46,7 +46,7 @@
 			
 			var question = req.param.question;
 			if (question === undefined) return next();
-			question.getViewDoubts(function(err, data){
+			question.getViewDoubtsPending(function(err, data){
 				data.question = question.getSyncData();
 				res.render('question-doubts.twig', data);
 			});
@@ -64,6 +64,17 @@
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
 			if (err) return cb(err);
 			res.redirect('/question/' + question.getId());
+		});
+
+	});
+
+
+	app.get('/question/:question/doubt/:doubt', function(req, res) {
+		if (!req.session.user) return res.redirect('/auth');
+		var doubt = req.param.doubt;
+
+		doubt.getViewData(function(err, data){
+			res.render('show-doubt.twig', data);
 		});
 
 	});

@@ -3,15 +3,7 @@
 	<section>
 		<div id="doubt-list">
 			{% for doubt in doubts %}
-				<a class="doubt block-grid slideEffect" 
-					data-target="#responseDoubt" 
-					data-value="{{ doubt._id }}" 
-					data-text="{{ doubt.text }}" 
-					data-tohide="#doubt-list" 
-					data-addtext="#doubtText"
-
-					
-				>
+				<a class="doubt block-grid async" href="/question/{{ question._id }}/doubt/{{ doubt._id }}" data-target="#responseDoubt" data-hide="#doubt-list">
 					<div class="eleven columns">
 	                	<h6>{{ doubt.text }}</h6>
 					</div>
@@ -22,15 +14,6 @@
 			{% endfor %}
 		</div>
 
-		<div id="responseDoubt" style="width:100%;display:none">
-			<form id="new-response-doubt" method="post" action="/question/{{ question._id }}/doubt/">
-				<h3 id="doubtText"></h3>
-            	<textarea name="text" placeholder="Write your response here" required rows="5"></textarea>
-				<div class="clearfix">
-					<button class="green right s" type="submit">Send</button>
-					<button class="red left s close-reveal-modal" type="reset">Cancel</button>
-				</div>
-			 </form>
-       	</div>
+		<div id="responseDoubt" style="width:100%;display:none"></div>
 	</section>
 </div>
