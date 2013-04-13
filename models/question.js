@@ -51,7 +51,7 @@
 			var data = this.data, context = this.data.context || '';
 
 			data.contextHTML = this.getContextHTML();
-			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context.length;
+			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context;
 			data.predefinedtext = this.getPredefinedText();
 			data.date = new Date(data.time);
 
