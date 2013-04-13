@@ -36,7 +36,7 @@
 						};
 
 
-						/* If no email defined
+						// If no email defined
 						if (!user.get('email')) {
 							if (req.body.email) {
 								return user.set({email: req.body.email}).save(function(err, dbData) {
@@ -45,9 +45,9 @@
 									res.redirect('/');
 								});
 							} else {
-								return res.render('email-login.html', {user: user});
+								return res.render('input-email.twig', {user: user});
 							}
-						};*/
+						};/**/
 
 						next();
 					}, 'session');

@@ -1,0 +1,18 @@
+{% include 'header.twig' %}
+
+    <section class="row">
+        <div class="nine columns centered">
+
+			<div id="center" id="login-box">
+				<h2>Please, type your email</h2>
+				<br />
+				<form method="post" action="/auth/email">
+				    <input type="text" name="email" placeholder=""  /><button class="green">Go!</button>
+				    <div class="light">Dont worry, just for notifications!</div>
+				</form>
+			</div>
+
+        </div>
+    </section>
+
+{% include 'footer.twig' %}

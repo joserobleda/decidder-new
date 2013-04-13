@@ -15,6 +15,7 @@ a, a:hover, a:focus { color: $green; }
 html, body { height:100%; font-family: $helveticaN;  }
 ul li { list-style: none; }  
 i { vertical-align: middle; }
+.light { color: #aaa; }
 
 #loading { 
 	position: absolute; 
@@ -128,7 +129,7 @@ header {
 }
 
 
-#new-question {
+#center {
 
 	margin-top: 130px;
 
