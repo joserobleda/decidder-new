@@ -130,11 +130,11 @@
 		},
 
 		getResponses: function(cb) {
-			var Response = require('./response'), response = this;
+			var question = this;
 
 			Response.find({question: this.getId()}, function(err, responses) {
-				if (err) return cb.call(response, err);
-				return cb.call(response, null, responses);
+				if (err) return cb.call(question, err);
+				return cb.call(question, null, responses);
 			}, {"sort": [['isChosen','desc'], ['numArguments','desc']]});
 		},
 
