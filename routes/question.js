@@ -20,7 +20,7 @@
 
 		function render (data) {
 			data.permalink = app.constants.PROTOCOL + '//' + app.constants.DOMAIN + '/question/' + question.getId();
-
+			
 			res.render('question.twig', data);
 		};
 
@@ -28,7 +28,7 @@
 			question.getViewData(function(err, data){
 				data.isResponsed = isResponsed;
 			
-				data.isOwnQuestion = question.eq(user);
+				data.isOwnQuestion = user && user.getId() == data.owner._id;
 
 				render(data);
 			});
