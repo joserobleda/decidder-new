@@ -1,27 +1,22 @@
 
 	var app = require("babel");
 
-	app.delete('/argument/:argument', function(req, res) {
+	app.delete('/argument/:argument', function(req, res, next) {
 		var argument = req.param.argument;
+		var user = req.session.user;
 
-		argument.getResponse(function(err, response) {
-			var numArguments = response.get('numArguments') - 1;
+		// not found
+		if (!argument) return next();
 
+		argument.getQuestionOwner(function (err, questionOwner) {
+			if (err) return res.redirect("/error?e=delete_error");
 
-			var then = function(err, dbData) {
-				if (err) return res.redirect("/error?e=delete_error");
+			// -- same user
+			if (questionOwner.eq(user) === false) return res.status(401).end();
 
-				argument.remove(function(err) {
-					res.redirect('back');
-				});
-			};
-
-
-			if (numArguments) {
-				response.set('numArguments', numArguments).save(then);
-			} else {
-				response.remove(then);
-			}
-
+			argument.remove(function (err) {
+				res.redirect('back');
+			});
 		});
+
 	});

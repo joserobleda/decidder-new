@@ -7,7 +7,7 @@
 
 	app.post('/question/:question/response', function(req, res){
 
-		if (!req.session.user) return res.redirect('/auth');
+		if (!req.session.user) return res.redirect('/auth/login/twitter');
 
 		var doc = { 
 			title: req.body.title,

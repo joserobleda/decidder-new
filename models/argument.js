@@ -24,6 +24,16 @@
 			});
 		},
 
+		getQuestionOwner: function (cb) {
+			return this.getQuestion(function (err, question) {
+				if (err) return cb(err);
+
+				question.getUser(function (err, user) {
+					cb(err, user);
+				});
+			});
+		},
+
 		getQuestion: function (cb) {
 			var Question = require('./question');
 			var questionID = this.get('question').toString();
@@ -73,6 +83,30 @@
 
 					
 				}, 'response');
+			});
+		},
+
+		remove: function (cb) {
+			var argument = this;
+
+			function thenRemove (err, dbData) {
+				if (err) return cb(err);
+				return argument._parent(cb)
+			};
+
+
+			this.getResponse(function(err, response) {
+				if (err) return cb(err);
+
+				var numArguments = response.get('numArguments') - 1;
+
+		
+				if (numArguments) return response.set('numArguments', numArguments).save(thenRemove);
+				
+				argument._parent(function (err) {
+					cb(err);
+					response.remove();	
+				});
 			});
 		}
 	});
