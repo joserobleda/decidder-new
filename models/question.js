@@ -186,7 +186,7 @@
 			});
 		},
 
-		sendDoubt: function(info, cb) {
+		sendDoubt: function(template, cb) {
 			var self = this;
 			
 			self.getUser(function(err, theUser){
@@ -196,7 +196,7 @@
 
 					var mailOptions = {
 					    subject: "Request more info",
-					    html: "A user request more info about your question: " + info
+					    html: template
 					}
 
 					var email = new mail(mailOptions);

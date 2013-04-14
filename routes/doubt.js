@@ -24,12 +24,22 @@
 
 			if (!lastEmail) {
 
-				question.sendDoubt(req.body.text, function(err) {
-					if (err) return console.log(err);
+				items = {	protocol: app.constants.PROTOCOL,
+							domain: app.constants.DOMAIN,
+							question : question.data,
+							text: req.body.text,
+							user: req.session.user.data
+						}
 
-					var time = (new Date()).getTime();
-					question.setEmailSentTime(time, function(err) {
+				app.render('email/request-info.twig', items , function(err, html){
+
+					question.sendDoubt(html, function(err) {
 						if (err) return console.log(err);
+
+						var time = (new Date()).getTime();
+						question.setEmailSentTime(time, function(err) {
+							if (err) return console.log(err);
+						});
 					});
 				});
 			}
