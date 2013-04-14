@@ -95,7 +95,8 @@
           *
           *
           */
-		$('.reveal').click(function () {
+		$(this).find('.reveal').click(function () {
+			console.log('click');
 			var $this = $(this), 
 				revealId = $this.data('reveal-target') || null,
 				revealSrc = $this.data('reveal-src') || null;
