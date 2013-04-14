@@ -18,13 +18,9 @@
 		if (question === undefined) return next();
 
 
-		question.events.on('change', function () {
-			console.log('change');
-		});
-
 		function render (data) {
 			data.permalink = app.constants.PROTOCOL + '//' + app.constants.DOMAIN + '/question/' + question.getId();
-			//data.permalink = 'http://www.google.es';
+
 			res.render('question.twig', data);
 		};
 
@@ -32,7 +28,7 @@
 			question.getViewData(function(err, data){
 				data.isResponsed = isResponsed;
 			
-				data.isOwnQuestion = user && user.getId() == data.owner._id;
+				data.isOwnQuestion = question.eq(user);
 
 				render(data);
 			});
