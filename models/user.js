@@ -9,6 +9,7 @@
 
 			var self = this, data = this.data;
 
+			data._id = data._id.toString();
 
 			var onQuestions = function(questions) {
 				data.questions = questions;

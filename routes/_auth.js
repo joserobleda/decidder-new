@@ -30,7 +30,7 @@
 				if (user) {
 					user.getViewData(function(err, userData) {
 						req.session.user = user;
-						//console.log(userData);
+
 						res.locals.session = {
 							user: userData
 						};
