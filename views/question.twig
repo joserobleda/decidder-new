@@ -132,9 +132,8 @@
                         <div class="two mobile-one columns text-right">
                             {% if isOwnQuestion %}
                                 {% if response.isChosen != true %}
-                                    <a href="/question/{{ _id }}?_method=put&amp;response={{ response._id }}" class="button xs green"> 
-                                        <i class="ic" data-icon="&#61515;"></i>&nbsp;
-                                        My option! 
+                                    <a href="/question/{{ _id }}?_method=put&amp;response={{ response._id }}" class="button xs greenh" title="My choice"> 
+                                        <i class="ic" data-icon="&#61515;"></i>
                                     </a>
                                 {% endif %}
                             {% endif %}

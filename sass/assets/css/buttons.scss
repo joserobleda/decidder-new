@@ -25,9 +25,10 @@
 
     &:hover {
     	background-color: #3072B3;
-    	@include linear-gradient(#599BCD, #3072B3);
+    	//@include linear-gradient(#599BCD, #3072B3);
+    	@include linear-gradient(#999, #666);
     	color: #FFF;
-    	border-color: #2A65A0;
+    	border-color: #666;
     }
 
     &:active {
@@ -44,7 +45,7 @@
 
 
 
-    &.green {
+    &.green, &.greenh:hover {
     	color: white;
 
 		background-color: #469A40;

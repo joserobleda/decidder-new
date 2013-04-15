@@ -3674,15 +3674,15 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
     font-weight: bold; }
   .button:hover, button:hover {
     background-color: #3072B3;
-    background-color: #599bcd;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #599bcd), color-stop(100%, #3072b3));
-    background-image: -webkit-linear-gradient(top, #599bcd, #3072b3);
-    background-image: -moz-linear-gradient(top, #599bcd, #3072b3);
-    background-image: -ms-linear-gradient(top, #599bcd, #3072b3);
-    background-image: -o-linear-gradient(top, #599bcd, #3072b3);
-    background-image: linear-gradient(top, #599bcd, #3072b3);
+    background-color: #999999;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #999999), color-stop(100%, #666666));
+    background-image: -webkit-linear-gradient(top, #999999, #666666);
+    background-image: -moz-linear-gradient(top, #999999, #666666);
+    background-image: -ms-linear-gradient(top, #999999, #666666);
+    background-image: -o-linear-gradient(top, #999999, #666666);
+    background-image: linear-gradient(top, #999999, #666666);
     color: #FFF;
-    border-color: #2A65A0; }
+    border-color: #666; }
   .button:active, button:active {
     color: #FFF;
     background-color: #3072B3;
@@ -3697,7 +3697,7 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
     font-size: 9px !important; }
   .button.s, .button.s i, button.s, button.s i {
     font-size: 11px !important; }
-  .button.green, button.green {
+  .button.green, .button.greenh:hover, button.green, button.greenh:hover {
     color: white;
     background-color: #469A40;
     -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -3714,11 +3714,11 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
     background-image: linear-gradient(top, #76c959, #469a40);
     border: 1px solid #5CA941;
     color: #fff; }
-    .button.green:active, button.green:active {
+    .button.green:active, .button.greenh:hover:active, button.green:active, button.greenh:hover:active {
       background-color: #569E3D;
       background-image: none;
       border-color: #418737; }
-    .button.green:focus, button.green:focus {
+    .button.green:focus, .button.greenh:hover:focus, button.green:focus, button.greenh:hover:focus {
       box-shadow: 0 0 5px rgba(24, 184, 24, 0.71); }
   .button.red, button.red {
     background-color: #B33630;
@@ -4160,18 +4160,20 @@ header {
     display: inline-block;
     font-size: 27px;
     color: #469a40;
-    padding: 0.5em 0;
-    margin-right: 0.5em; }
+    padding: 0.5em 0; }
   #responses .title button i, #responses .title .button i {
-    color: #FFF;
+    color: #666;
     padding: 0; }
+  #responses .title button:hover i, #responses .title .button:hover i {
+    color: #FFF; }
   #responses .title a {
     margin: 15px 0.5em; }
 #responses .arguments {
   padding: 1em 0 0 0;
   margin-bottom: 1em; }
 #responses p {
-  margin: 0; }
+  margin: 0;
+  font-size: 16px; }
 #responses article {
   font-family: "Helvetica N";
   padding: 1em;
@@ -4222,7 +4224,7 @@ header {
   padding: 1em; }
   .context p {
     font-family: "Helvetica NC";
-    font-size: 14px; }
+    font-size: 18px; }
   .context p:last-child {
     margin-bottom: 0; }
 

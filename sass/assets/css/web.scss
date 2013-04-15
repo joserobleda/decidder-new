@@ -320,12 +320,15 @@ header {
 			font-size: 27px; 
 			color: $green; 
 			padding: 0.5em 0;
-			margin-right: 0.5em;
+			//margin-right: 0.5em;
 		}
 
 		button i, .button i {
-			color: #FFF;
+			color: #666;
 			padding: 0;
+		}
+		button:hover i, .button:hover i {
+			color: #FFF;
 		}
 
 		a {
@@ -339,7 +342,10 @@ header {
 		margin-bottom: 1em;
 	}
 
-	p { margin: 0; }
+	p { 
+		margin: 0; 
+		font-size: 16px;
+	}
 
 	article {
 		//@include prefixer(box-shadow, 3px 5px 6px -4px rgba(0, 0, 0, 0.25), webkit moz ms o spec);
@@ -410,7 +416,7 @@ header {
 
 	p {
 		font-family: $helveticaC;
-		font-size: 14px;
+		font-size: 18px;
 	}
 
 	p:last-child {
