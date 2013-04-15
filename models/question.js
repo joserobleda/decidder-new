@@ -3,6 +3,8 @@
 	var Dbitem = require('babel/models/dbitem');
 	var Response = require('./response');
 	var Argument = require('./argument');
+	var User = require('./user');
+	var Doubt = require('./doubt');
 	var ghm = require("ghm");
 	
 
@@ -10,7 +12,6 @@
 	var Question = Dbitem.extend({
 
 		getUser: function(cb) {
-			var User = require('./user');
 			var userID = this.get('owner');
 
 			User.findById(userID, function(err, theUser){
@@ -140,7 +141,7 @@
 
 
 		getDoubts: function(cb) {
-			var Doubt = require('./doubt'), doubt = this;
+			var doubt = this;
 			Doubt.find({question: this.getId()}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);
 				return cb.call(doubt, null, doubts);
@@ -148,7 +149,7 @@
 		},
 
 		getDoubtsPending: function(cb) {
-			var Doubt = require('./doubt'), doubt = this;
+			var doubt = this;
 			Doubt.find({question: this.getId(), response: {$exists: false}}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);
 				return cb.call(doubt, null, doubts);
