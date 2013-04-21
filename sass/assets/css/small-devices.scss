@@ -1,0 +1,13 @@
+@media only screen and (max-width: 767px) { 
+	#center {
+		input {
+			width: 100% !important; 
+			@include prefixer(border-radius, 6px 6px 6px 6px !important, webkit moz ms o spec);	
+		}
+		button {
+			margin-left: 35% !important;
+			width: 30% !important; 
+			font-size: 18px !important;
+		}
+	}
+}

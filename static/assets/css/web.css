@@ -3858,6 +3858,17 @@ a[data-icon] {
     vertical-align: middle;
     min-width: 60px; }
 
+@media only screen and (max-width: 767px) {
+  #center input {
+    width: 100% !important;
+    -webkit-border-radius: 6px 6px 6px 6px !important;
+    -moz-border-radius: 6px 6px 6px 6px !important;
+    -ms-border-radius: 6px 6px 6px 6px !important;
+    -o-border-radius: 6px 6px 6px 6px !important;
+    border-radius: 6px 6px 6px 6px !important; }  #center button {
+    margin-left: 35% !important;
+    width: 30% !important;
+    font-size: 18px !important; } }
 a, a:hover, a:focus {
   color: #469a40; }
 
