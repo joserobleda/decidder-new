@@ -16,6 +16,7 @@ html, body { height:100%; font-family: $helveticaN;  }
 ul li { list-style: none; }  
 i { vertical-align: middle; }
 .light { color: #aaa; }
+.mbottom-eight { margin-bottom: 8px; }
 
 #loading { 
 	position: absolute; 
@@ -438,6 +439,10 @@ textarea.context {
 .avatar {
 	@include prefixer(border-radius, 20px, spec);
 }
+
+.mbottom-eight {
+	margin-bottom: 8px;
+}	
 
 // Tags input
 div.tagsinput { border:1px solid #CCC; background: #FFF; padding:5px; overflow-y: auto;}

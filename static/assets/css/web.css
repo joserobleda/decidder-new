@@ -3874,6 +3874,9 @@ i {
 .light {
   color: #aaa; }
 
+.mbottom-eight {
+  margin-bottom: 8px; }
+
 #loading {
   position: absolute;
   top: 50% !important;
@@ -4243,6 +4246,9 @@ textarea.context {
 
 .avatar {
   border-radius: 20px; }
+
+.mbottom-eight {
+  margin-bottom: 8px; }
 
 div.tagsinput {
   border: 1px solid #CCC;
