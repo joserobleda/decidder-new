@@ -99,10 +99,12 @@
 
     <div class="row">
         <div class="ten columns text-center">
-            <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
-                <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
-            </button>
-            <span style=""> &nbsp; or &nbsp; </span>
+        {#    {% if not isResponsed %}  #}
+                <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
+                    <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                </button>
+                <span style=""> &nbsp; or &nbsp; </span>
+        {#    {% endif %}   #}
             <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
                 <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
             </button>
