@@ -13,6 +13,11 @@
 	// ------- all the custom events
 	$.fn.bindCustomEvents = function() {
 
+        /**
+          *  Get async content
+          *
+          *
+          */
 		$(this).find(".async").click(function () {
 
 			var href = $(this).attr("href"),
@@ -25,7 +30,15 @@
 			});
 
 			return false;
+		});
 
+        /**
+          *  Get async content
+          *
+          *
+          */
+		$(this).find("form").each(function () {
+			// form validtions
 		});
 
 
@@ -46,7 +59,11 @@
           window.open(href, wname, "height="+height+",width="+width+",top="+top+",left="+left+",resizable=no");
         });
 
-
+        /**
+          *  Get twitter count
+          *
+          *
+          */
         $(this).find('.tw-count').each(function () {
           var $this = $(this),
             url = $this.data('fb-url') || location.href, 
