@@ -206,6 +206,7 @@
 				$(widget).bind('edit', function () {
 					$('input.taglist').tagsInput({
 						defaultText: 'add predefined response',
+						placeholderColor: '#bbb',
 						ready: function () {
 							$(this).attr('data-form-editing', true);
 						}
