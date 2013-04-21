@@ -65,8 +65,9 @@
 	});
 	*/
 
-	social.twitter.login('/auth/login/twitter', function(err, req, res){
+	social.twitter.login('/auth/login/twitter', function(err, req, res) {
 		if (err) return res.redirect("/error?e=twitter_login_error");
+
 
 		var username = req.body.screen_name;
 		social.twitter.getProfileImage(username, function(err, URLImage) {
@@ -81,7 +82,7 @@
 				if (err) return res.redirect("/error?e=twitter_login_error");
 
 				req.session.userID = user.getId();
-				res.redirect("/");
+				res.redirect(req.referer || '/');
 			});
 		});
 
@@ -104,7 +105,7 @@
 
 				user.set(doc).save(function() {
 					req.session.userID = user.getId();
-					res.redirect("/");	
+					res.redirect(req.referer || '/');
 				});
 			});		
 		});
