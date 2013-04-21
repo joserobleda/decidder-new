@@ -15,7 +15,7 @@
 					</select>
 				</div>
 	        {% else %}
-				<input type="text" name="title" placeholder="Response" required tabindex="1" />
+				<input type="text" name="title" placeholder="Response" required pattern="^\S(.*)" tabindex="1" />
 			{% endif %}
 		{% endif %}
 
