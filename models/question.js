@@ -1,10 +1,6 @@
 
 	var mail = require('babel/lib/mail');
 	var Dbitem = require('babel/models/dbitem');
-	var Response = require('./response');
-	var Argument = require('./argument');
-	var User = require('./user');
-	var Doubt = require('./doubt');
 	var ghm = require("ghm");
 	
 
@@ -12,6 +8,7 @@
 	var Question = Dbitem.extend({
 
 		getUser: function(cb) {
+			var User = require('./user');
 			var userID = this.get('owner');
 
 			User.findById(userID, function(err, theUser){
@@ -21,6 +18,7 @@
 		},
 
 		hasResponse: function(user, cb) {
+			var Argument = require('./argument');
 			var question = this;
 
 			Argument.find({owner:user.getId(), question:question.getId()}, function(err, arguments) {
@@ -131,6 +129,7 @@
 		},
 
 		getResponses: function(cb) {
+			var Response = require('./response');
 			var question = this;
 
 			Response.find({question: this.getId()}, function(err, responses) {
@@ -141,6 +140,7 @@
 
 
 		getDoubts: function(cb) {
+			var Doubt = require('./doubt');
 			var doubt = this;
 			Doubt.find({question: this.getId()}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);
@@ -149,6 +149,7 @@
 		},
 
 		getDoubtsPending: function(cb) {
+			var Doubt = require('./doubt');
 			var doubt = this;
 			Doubt.find({question: this.getId(), response: {$exists: false}}, function(err, doubts) {
 				if (err) return cb.call(doubt, err);

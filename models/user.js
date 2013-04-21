@@ -1,7 +1,6 @@
 
 	var User = require('babel/models/user');
-	var Question = require('./question');
-	var Arguments = require('./argument');
+	
 
 	var CustomUser = User.extend({
 		getViewData: function(cb, ctx) {
@@ -36,6 +35,8 @@
 		},
 
 		getQuestions: function(cb) {
+			var Question = require('./question');
+
 			Question.find({owner: this.getId()}, function(err, questions){
 				if (err) return cb(err);
 				return cb(null, questions);
@@ -44,7 +45,9 @@
 
 
 		getArguments: function(cb) {
-			Arguments.find({owner: this.getId()}, function(err, arguments){
+			var Argument = require('./argument');
+
+			Argument.find({owner: this.getId()}, function(err, arguments){
 				if (err) return cb(err);
 				return cb(null, arguments);
 			});
