@@ -59,12 +59,6 @@
 	});
 
 
-	/*
-	app.get('/auth', function(req, res){
-		res.render('login.html');
-	});
-	*/
-
 	social.twitter.login('/auth/login/twitter', function(err, req, res) {
 		if (err) return res.redirect("/error?e=twitter_login_error");
 
@@ -113,7 +107,7 @@
 	});
 
 	/*
-	social.linkedin.login('/auth/linkedin', function(err, req, res) {
+	social.linkedin.login('/auth/login/linkedin', function(err, req, res) {
 		if (err) return res.redirect("/error?e=linkedin_login_error");
 
 		var doc = {
@@ -131,5 +125,4 @@
 			res.redirect("/");
 		});
 
-	});
-	*/
+	});*/
