@@ -40,7 +40,7 @@
 						if (!user.get('email')) {
 							if (req.body.email) {
 								return user.set({email: req.body.email}).save(function(err, dbData) {
-									if (err) return res.redirect('/auth/error');
+									if (err) return res.error('cant set the email');
 
 									res.redirect('/');
 								});
@@ -59,14 +59,8 @@
 	});
 
 
-	/*
-	app.get('/auth', function(req, res){
-		res.render('login.html');
-	});
-	*/
-
 	social.twitter.login('/auth/login/twitter', function(err, req, res) {
-		if (err) return res.redirect("/error?e=twitter_login_error");
+		if (err) return res.error("twitter login error");
 
 
 		var username = req.body.screen_name;
@@ -79,7 +73,7 @@
 			
 			//console.log(doc);
 			User.findOrCreate({'twitter.user_id': doc.twitter.user_id}, doc, function(err, user) {
-				if (err) return res.redirect("/error?e=twitter_login_error");
+				if (err) return res.error("twitter login error");
 
 				req.session.userID = user.getId();
 				res.redirect(req.referer || '/');
@@ -90,7 +84,7 @@
 
 	
 	social.facebook.login('/auth/login/facebook', function(err, req, res) {
-		if (err) return res.redirect("/error?e=facebook_login_error");
+		if (err) return res.error("facebook login error");
 
 		social.facebook.getProfileImage(req.body.id, function(err, URLImage) {
 			var doc = {
@@ -101,7 +95,7 @@
 			};
 
 			User.findOrCreate({'facebook.id': doc.facebook.id, $or:[{ email:doc.email }]}, doc, function(err, user) {
-				if (err) return res.redirect("/error?e=facebook_login_error");
+				if (err) return res.error("facebook login error");
 
 				user.set(doc).save(function() {
 					req.session.userID = user.getId();
@@ -113,7 +107,7 @@
 	});
 
 	/*
-	social.linkedin.login('/auth/linkedin', function(err, req, res) {
+	social.linkedin.login('/auth/login/linkedin', function(err, req, res) {
 		if (err) return res.redirect("/error?e=linkedin_login_error");
 
 		var doc = {
@@ -131,5 +125,4 @@
 			res.redirect("/");
 		});
 
-	});
-	*/
+	});*/
