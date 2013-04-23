@@ -1,8 +1,12 @@
-<form id="new-response-doubt" method="post" action="/question/{{ question._id }}/doubt/{{ _id }}">
-	<h3 id="doubtText"></h3>
-   	<textarea name="text" placeholder="Write your doubt here" required rows="5"></textarea>
-	<div class="text-right">
-		<button class="red s close-reveal-modal" type="reset" tabindex="4">Cancel</button>
-		<button class="green s" type="submit" tabindex="3">Send</button>
-	</div>
-</form>
+		<h5 id="heading">User questions</h5>
+		<section>
+			<form id="new-response-doubt" method="post" action="/question/{{ question._id }}/doubt/{{ _id }}">
+				<h6 id="doubtText">{{text}}</h6>
+			   	<textarea name="text" placeholder="Write your doubt here" required rows="5"></textarea>
+				<div class="text-right">
+					<button class="red s" type="reset" tabindex="4">Cancel</button>
+					<button class="green s" type="submit" tabindex="3">Send</button>
+				</div>
+			</form>
+
+		</section>

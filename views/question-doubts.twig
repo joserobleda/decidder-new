@@ -1,9 +1,9 @@
-<div class="modal m">
+<div id="question-doubts" class="modal m">
 	<h5 id="heading">User questions</h5>
 	<section>
 		<div id="doubt-list">
 			{% for doubt in doubts %}
-				<a class="doubt block-grid async" href="/question/{{ question._id }}/doubt/{{ doubt._id }}" data-target="#responseDoubt" data-hide="#doubt-list">
+				<a class="doubt block-grid async" href="/question/{{ question._id }}/doubt/{{ doubt._id }}" target="#question-doubts">
 					<div class="eleven columns">
 	                	<h6>{{ doubt.text }}</h6>
 					</div>
@@ -13,7 +13,5 @@
 				</a>
 			{% endfor %}
 		</div>
-
-		<div id="responseDoubt" style="width:100%;display:none"></div>
 	</section>
 </div>
