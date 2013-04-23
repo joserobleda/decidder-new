@@ -88,3 +88,18 @@
 		});
 
 	});
+
+	app.delete('/question/:question/doubt/:doubt', function(req, res, next) {
+		var doubt = req.param.doubt;
+		var user = req.session.user;
+
+		if (!doubt) return next();
+
+		doubt.getUser(function(err, userOwner){
+			if (userOwner.eq(user) === false) return res.status(401).end();
+			doubt.remove(function (err) {
+				res.redirect('back');
+			});
+		});
+
+	});
