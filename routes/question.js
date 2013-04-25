@@ -48,19 +48,26 @@
 		question.getUser(function(err, theUser){
 			if (err) return console.error(err);
 
-			if  (user && theUser.getId() == user.getId()  && question.getLastEmail() && false) {
-				//MIentras hacemos pruebas que no ente aquí ya que reinicia el envio de email por qustion. Por eso el false del if...
-				question.setEmailSentTime(0, function(err) {
-					hasResponse();
-				});
-			} else {
-				hasResponse();	
-			}		
+			if  (user && theUser.getId() == user.getId() && false /*evitar spam!*/) {
+			
+				if (question.getLastEmailDoubt()) {
+					question.setEmailSentTimeDoubt(0, function(err) {
+						if (err) return console.error(err);
+					});
+				}
+
+				if (question.getLastEmailResponse()) {
+					question.setEmailSentTimeResponse(0, function(err) {
+						if (err) return console.error(err);
+					});
+				}
+			} 
+
+			//Does not matter asynchronism
+			hasResponse();
 
 		});
 
-		
-		
 	});
 
 

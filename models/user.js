@@ -3,6 +3,12 @@
 	
 
 	var CustomUser = User.extend({
+
+		getSyncData: function () {
+			var data = this.data;
+			return data;
+		},
+
 		getViewData: function(cb, ctx) {
 			if (ctx !== undefined) return cb(null, this.data);
 

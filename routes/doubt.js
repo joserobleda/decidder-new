@@ -20,9 +20,9 @@
 
 		theDoubt.save(function(err, argData) {
 
-			lastEmail = question.getLastEmail();
+			lastEmailDoubt = question.getLastEmailDoubt();
 
-			if (!lastEmail) {
+			if (!lastEmailDoubt) {
 
 				items = {	protocol: app.constants.PROTOCOL,
 							domain: app.constants.DOMAIN,
@@ -33,11 +33,11 @@
 
 				app.render('email/request-info.twig', items , function(err, html){
 
-					question.sendDoubt(html, function(err) {
+					question.sendEmail(html, "A user requested more info", function(err) {
 						if (err) return console.log(err);
 
 						var time = (new Date()).getTime();
-						question.setEmailSentTime(time, function(err) {
+						question.setEmailSentTimeDoubt(time, function(err) {
 							if (err) return console.log(err);
 						});
 					});

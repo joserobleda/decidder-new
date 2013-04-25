@@ -40,9 +40,15 @@
 			return '';
 		},
 
-		getLastEmail: function() {
-			var lastEmail = this.data.lastEmail;
-			if (lastEmail) return lastEmail;
+		getLastEmailDoubt: function() {
+			var lastEmailDoubt = this.data.lastEmailDoubt;
+			if (lastEmailDoubt) return lastEmailDoubt;
+			return false;
+		},
+
+		getLastEmailResponse: function() {
+			var lastEmailResponse = this.data.lastEmailResponse;
+			if (lastEmailResponse) return lastEmailResponse;
 			return false;
 		},
 
@@ -188,30 +194,35 @@
 			});
 		},
 
-		sendDoubt: function(template, cb) {
+		sendEmail: function(template, subject, cb) {
 			var self = this;
 			
 			self.getUser(function(err, theUser){
 				if (err) return cb(err);
 
-				theUser.getViewData(function(err, userData){
+				var mailOptions = {
+				    subject: subject,
+				    html: template
+				}
 
-					var mailOptions = {
-					    subject: "Request more info",
-					    html: template
-					}
-
-					var email = new mail(mailOptions);
-					email.send(userData.email, function(err) {
-						cb(err, null);
-					});
-				})
+				var email = new mail(mailOptions);
+				email.send(theUser.data.email, function(err) {
+					cb(err, null);
+				});
 			});
 		},
 
-		setEmailSentTime: function(val, cb) {
+		setEmailSentTimeDoubt: function(val, cb) {
 			var self = this;
-			self.set({'lastEmail': val}).save(function(err, dbData) {
+			self.set({'lastEmailDoubt': val}).save(function(err, dbData) {
+				if (err) return cb(err);
+				cb(null, null);
+			});
+		},
+
+		setEmailSentTimeResponse: function(val, cb) {
+			var self = this;
+			self.set({'lastEmailResponse': val}).save(function(err, dbData) {
 				if (err) return cb(err);
 				cb(null, null);
 			});
