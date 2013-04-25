@@ -2,6 +2,7 @@
 	var app = require('babel');
 	var Question = app.require('question');
 	var Doubt = app.require('doubt');
+	var mail = require('babel/lib/mail');
 
 	app.post('/question/:question/doubt', function(req, res) {
 
@@ -72,8 +73,32 @@
 		var doubt = req.param.doubt;
 
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
-			if (err) return cb(err);
-			res.redirect('/question/' + question.getId());
+			if (err) return console.error(err);
+
+			items = {
+					protocol: app.constants.PROTOCOL,
+					domain: app.constants.DOMAIN,
+					question : question.data,
+					doubt : doubt.data,
+					response: req.body.text,
+				}
+
+			app.render('email/response-doubt.twig', items , function(err, html){
+				if (err) return console.error(err);
+
+				question.getUser(function(err, doubtUser){
+					var mailOptions = {
+						subject: "You have the answer to your doubt",
+					    html: html
+					}
+
+					var email = new mail(mailOptions);
+					email.send(doubtUser.data.email, function(err) {
+						if (err) return console.error(err);
+						res.redirect('/question/' + question.getId());
+					});
+				});
+			});
 		});
 
 	});
