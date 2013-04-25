@@ -91,15 +91,17 @@
 
 	app.delete('/question/:question/doubt/:doubt', function(req, res, next) {
 		var doubt = req.param.doubt;
+		var question = req.param.question;
 		var user = req.session.user;
 
 		if (!doubt) return next();
 
-		doubt.getUser(function(err, userOwner){
-			if (userOwner.eq(user) === false) return res.status(401).end();
+		question.getUser(function(err, userOwner){
+			if (err) return console.error(err);
+			if (user && user.getId() != userOwner.getId()) return res.status(401).end();
+
 			doubt.remove(function (err) {
 				res.redirect('back');
 			});
 		});
-
 	});
