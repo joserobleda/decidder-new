@@ -19,14 +19,13 @@
           *
           */
 		$(this).find(".async").click(function () {
-
 			var href = $(this).attr("href"),
-				target = $(this).data("target"),
-				hide = $(this).data("hide");
+				target = $(this).attr("target");
 
 			$.get(href, function (html) {
-				$(target).html(html).show();
-				$(hide).hide();
+				var $dom = $(target).html(html);
+				$dom.bindCustomEvents();
+				$dom.show();
 			});
 
 			return false;

@@ -2,6 +2,7 @@
 	var app = require('babel');
 	var Question = app.require('question');
 	var Doubt = app.require('doubt');
+	var mail = require('babel/lib/mail');
 
 	app.post('/question/:question/doubt', function(req, res) {
 
@@ -20,9 +21,9 @@
 
 		theDoubt.save(function(err, argData) {
 
-			lastEmail = question.getLastEmail();
+			lastEmailDoubt = question.getLastEmailDoubt();
 
-			if (!lastEmail) {
+			if (!lastEmailDoubt) {
 
 				items = {	protocol: app.constants.PROTOCOL,
 							domain: app.constants.DOMAIN,
@@ -33,11 +34,11 @@
 
 				app.render('email/request-info.twig', items , function(err, html){
 
-					question.sendDoubt(html, function(err) {
+					question.sendEmail(html, "A user requested more info", function(err) {
 						if (err) return console.log(err);
 
 						var time = (new Date()).getTime();
-						question.setEmailSentTime(time, function(err) {
+						question.setEmailSentTimeDoubt(time, function(err) {
 							if (err) return console.log(err);
 						});
 					});
@@ -72,8 +73,32 @@
 		var doubt = req.param.doubt;
 
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
-			if (err) return cb(err);
-			res.redirect('/question/' + question.getId());
+			if (err) return console.error(err);
+
+			items = {
+					protocol: app.constants.PROTOCOL,
+					domain: app.constants.DOMAIN,
+					question : question.data,
+					doubt : doubt.data,
+					response: req.body.text,
+				}
+
+			app.render('email/response-doubt.twig', items , function(err, html){
+				if (err) return console.error(err);
+
+				question.getUser(function(err, doubtUser){
+					var mailOptions = {
+						subject: "You have the answer to your doubt",
+					    html: html
+					}
+
+					var email = new mail(mailOptions);
+					email.send(doubtUser.data.email, function(err) {
+						if (err) return console.error(err);
+						res.redirect('/question/' + question.getId());
+					});
+				});
+			});
 		});
 
 	});
@@ -87,4 +112,21 @@
 			res.render('show-doubt.twig', data);
 		});
 
+	});
+
+	app.delete('/question/:question/doubt/:doubt', function(req, res, next) {
+		var doubt = req.param.doubt;
+		var question = req.param.question;
+		var user = req.session.user;
+
+		if (!doubt) return next();
+
+		question.getUser(function(err, userOwner){
+			if (err) return console.error(err);
+			if (user && user.getId() != userOwner.getId()) return res.status(401).end();
+
+			doubt.remove(function (err) {
+				res.redirect('back');
+			});
+		});
 	});

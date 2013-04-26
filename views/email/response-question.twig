@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>decidder</title>
+    </head>
+    <body>
+		<div>
+			<img src="{{ protocol }}//{{ domain }}/assets/images/logo.png" width="170" height="36" alt="deccider logo" />
+			<br><hr>	
+		</div>
+		<div style="margin-top:20px">
+			The user <strong>{{ user.nick }}</strong> responsed your question!!!
+
+			<strong>{{ question.title }}</strong>
+			<br><br>
+			User response: <strong>{{ text }}</strong>
+			<br><br>
+			Click in the <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to check the full response
+			
+		</div>
+ </body>
+
+
+</html>
