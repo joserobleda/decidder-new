@@ -8,15 +8,24 @@
 		// not found
 		if (!argument) return next();
 
-		argument.getQuestionOwner(function (err, questionOwner) {
+		argument.getUser(function (err, argumentUser) {
 			if (err) return res.redirect("/error?e=delete_error");
 
 			// -- same user
-			if (questionOwner.eq(user) === false) return res.status(401).end();
+			if (argumentUser.eq(user) === false) {
+				argument.getQuestionOwner(function (err, questionOwner) {
+					if (err) return res.redirect("/error?e=delete_error");
+
+					// -- same user
+					if (questionOwner.eq(user) === false) return res.status(401).end();
+				});
+			};
 
 			argument.remove(function (err) {
 				res.redirect('back');
 			});
 		});
+
+		
 
 	});
