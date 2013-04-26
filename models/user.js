@@ -4,11 +4,13 @@
 
 	var CustomUser = User.extend({
 		getViewData: function(cb, ctx) {
-			if (ctx !== undefined) return cb(null, this.data);
+			var self = this, data = this.getSyncData();
 
-			var self = this, data = this.data;
+			if (ctx !== undefined) return cb(null, data);
 
-			data._id = data._id.toString();
+
+
+					
 
 			var onQuestions = function(questions) {
 				data.questions = questions;
@@ -51,7 +53,15 @@
 				if (err) return cb(err);
 				return cb(null, arguments);
 			});
+		},
+
+		getSyncData: function () {
+			var data = this.data;
+			data._id = data._id.toString();
+
+			return data;
 		}
+
 	});
 
 

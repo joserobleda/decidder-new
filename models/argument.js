@@ -59,7 +59,7 @@
 			self.getUser(function(err, theUser){
 
 				if (ctx === 'response') {
-					data.owner = theUser.data;
+					data.owner = theUser.getSyncData();
 					return cb(null, data);
 				};
 
