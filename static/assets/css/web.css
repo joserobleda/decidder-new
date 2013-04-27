@@ -4059,6 +4059,9 @@ header {
   -ms-box-shadow: 0 0px 46px 0px #aaa;
   -o-box-shadow: 0 0px 46px 0px #aaa;
   box-shadow: 0 0px 46px 0px #aaa; }
+  @media only screen and (max-width: 767px) {
+    .modal {
+      width: 300px !important; } }
   .modal.m {
     width: 500px; }
   .modal textarea {
