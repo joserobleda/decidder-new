@@ -1,5 +1,6 @@
 
 	var Dbitem = require('babel/models/dbitem');
+	var moment = require('babel/lib/moment');
 	var Response = require('./response');
 	
 	
@@ -47,7 +48,7 @@
 		getSyncData: function () {
 			var data = this.data;
 
-			data.date = new Date(data.time);
+			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
 		},

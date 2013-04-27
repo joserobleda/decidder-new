@@ -2,6 +2,7 @@
 	var mail = require('babel/lib/mail');
 	var Dbitem = require('babel/models/dbitem');
 	var ghm = require("ghm");
+	var moment = require('babel/lib/moment');
 	
 
 
@@ -58,7 +59,7 @@
 			data.contextHTML = this.getContextHTML();
 			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context;
 			data.predefinedtext = this.getPredefinedText();
-			data.date = new Date(data.time);
+			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
 		},
