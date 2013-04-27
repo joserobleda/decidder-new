@@ -70,6 +70,7 @@
 				if (err) return cb(err);
 
 				data.numberDoubts = pendingDoubts.length;
+				data.hasPendingDoubts = !pendingDoubts.length;
 				
 				self.getDoubts(function(err, doubts){
 					if (err) return cb(err);
@@ -166,6 +167,8 @@
 
 		setChosenResponse: function(response, cb) {
 			var self = this;
+			var Response = require('./response');
+
 			this.set({'chosen': response}).save(function(err, dbData) {
 				if (err) return cb(err);
 
