@@ -6,7 +6,6 @@
 @import "buttons";
 @import "icons";
 @import "share";
-@import "small-devices";
 
 $helveticaN: "Helvetica N";
 $helveticaC: "Helvetica NC";
@@ -164,6 +163,11 @@ header {
 	    text-align:center;
 	    letter-spacing: -1px;
 	    text-shadow: 0 2px 5px rgba(255, 255, 255, .6);
+
+	    @media only screen and (max-width: 767px) {
+	    	width: 100% !important; 
+			@include prefixer(border-radius, 6px 6px 6px 6px !important, webkit moz ms o spec);	
+	    }
 	}
 
 	button, input, input:focus {
@@ -175,6 +179,11 @@ header {
 		width: 10%;
 		margin-left: -2px;
 		font-size: 18px;
+		@media only screen and (max-width: 767px) {
+			margin-left: 35% !important;
+			width: 30% !important; 
+			font-size: 18px !important;
+		}
 	}
 }
 
