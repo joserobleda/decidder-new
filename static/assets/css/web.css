@@ -4174,8 +4174,10 @@ header {
     display: inline-block;
     font-size: 27px;
     color: #469a40;
-    padding: 0.5em 0; }
+    padding: 0.5em 0;
+    margin-right: 0.5em; }
   #responses .title button i, #responses .title .button i {
+    margin: 0;
     color: #666;
     padding: 0; }
   #responses .title button:hover i, #responses .title .button:hover i {
@@ -4226,6 +4228,8 @@ header {
     right: -16px; }
   #question h1 {
     margin: 0; }
+  #question #question-body {
+    min-height: 150px; }
   #question #predefined li:first-child {
     padding-top: 1em;
     border-top: 1px dotted #ccc; }

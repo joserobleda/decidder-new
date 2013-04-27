@@ -46,7 +46,7 @@
 		}
 
 		question.getUser(function(err, theUser){
-			if (err) return console.error(err);
+			if (err) return res.error(err);
 
 			if  (user && theUser.getId() == user.getId() && false /*evitar spam!*/) {
 			

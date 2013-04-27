@@ -8,33 +8,35 @@
 
                 <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
 
-                <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
+                <div id="question-body">
+                    <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
-                {% if doubts.length %}
-                    <div id="doubts">
-                        {% for doubt in doubts %}
-                            {% if doubt.response %}
-                                <div class="doubt">
-                                    <i class="ic" data-icon="&#61450;"></i>&nbsp;
-                                    <span class="doubt-question">{{ doubt.text }}</span> -- 
-                                    <span class="doubt-response">{{ doubt.response }}</span>
-                                    <span class="right">
-                                        {% if isOwnQuestion %}
-                                             <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel" title="delete">
-                                                <i class="ic" data-icon="&#61526;"></i>
-                                                </a>
-                                        {% endif %}
-                                </div>
-                            {% endif %}
+                    {% if hasPendingDoubts %}
+                        <div id="doubts">
+                            {% for doubt in doubts %}
+                                {% if doubt.response %}
+                                    <div class="doubt">
+                                        <i class="ic" data-icon="&#61450;"></i>&nbsp;
+                                        <span class="doubt-question">{{ doubt.text }}</span> -- 
+                                        <span class="doubt-response">{{ doubt.response }}</span>
+                                        <span class="right">
+                                            {% if isOwnQuestion %}
+                                                 <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel" title="delete">
+                                                    <i class="ic" data-icon="&#61526;"></i>
+                                                    </a>
+                                            {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
+                        {% for text in predefinedresponses %}
+                            <li>{{ text }}</li>
                         {% endfor %}
-                    </div>
-                {% endif %}
-
-                <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
-                    {% for text in predefinedresponses %}
-                        <li>{{ text }}</li>
-                    {% endfor %}
-                </ul>
+                    </ul>
+                </div>
 
                 <div class="row info collapse">
                     <div class="six columns">
