@@ -19,6 +19,7 @@
           *
           */
 		$(this).find(".async").click(function () {
+			event.preventDefault();
 			var href = $(this).attr("href"),
 				target = $(this).attr("target");
 
@@ -28,7 +29,6 @@
 				$dom.show();
 			});
 
-			return false;
 		});
 
         /**
