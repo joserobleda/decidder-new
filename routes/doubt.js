@@ -25,7 +25,7 @@
 
 			if (!lastEmailDoubt) {
 
-				items = {	protocol: app.constants.PROTOCOL,
+				var items = {	protocol: app.constants.PROTOCOL,
 							domain: app.constants.DOMAIN,
 							question : question.data,
 							text: req.body.text,
@@ -35,11 +35,11 @@
 				app.render('email/request-info.twig', items , function(err, html){
 
 					question.sendEmail(html, "A user requested more info", function(err) {
-						if (err) return console.log(err);
+						if (err) return res.error('Error enviando email')
 
 						var time = (new Date()).getTime();
 						question.setEmailSentTimeDoubt(time, function(err) {
-							if (err) return console.log(err);
+							if (err) return res.error('Error actualizando campo timeDoubt');
 						});
 					});
 				});
@@ -73,7 +73,7 @@
 		var doubt = req.param.doubt;
 
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
-			if (err) return console.error(err);
+			if (err) return res.error('Error guardando la respuesta de una duda');
 
 			items = {
 					protocol: app.constants.PROTOCOL,
@@ -84,7 +84,7 @@
 				}
 
 			app.render('email/response-doubt.twig', items , function(err, html){
-				if (err) return console.error(err);
+				if (err) return res.error('Error actualizando campo timeDoubt');
 
 				question.getUser(function(err, doubtUser){
 					var mailOptions = {
@@ -94,7 +94,7 @@
 
 					var email = new mail(mailOptions);
 					email.send(doubtUser.data.email, function(err) {
-						if (err) return console.error(err);
+						if (err) return res.error('Error envio email duda respuesta');
 						res.redirect('/question/' + question.getId());
 					});
 				});
@@ -122,7 +122,7 @@
 		if (!doubt) return next();
 
 		question.getUser(function(err, userOwner){
-			if (err) return console.error(err);
+			if (err) return res.error('Error obteniendo owner de question');
 			if (user && user.getId() != userOwner.getId()) return res.status(401).end();
 
 			doubt.remove(function (err) {

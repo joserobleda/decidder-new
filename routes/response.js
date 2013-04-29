@@ -9,7 +9,7 @@
 
 		if (!req.session.user) return res.redirect('/auth/login/twitter');
 
-		question = req.param.question;
+		var question = req.param.question;
 
 		var doc = { 
 			title: req.body.title,
