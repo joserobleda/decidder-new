@@ -3,15 +3,15 @@
 	<section>
 		<div id="doubt-list">
 			{% for doubt in doubts %}
-				<a class="doubt block-grid async" href="/question/{{ question._id }}/doubt/{{ doubt._id }}" target="#question-doubts">
-					<div class="eleven columns">
-	                	<h6>{{ doubt.text }}</h6>
-					</div>
-					<div class="one columns">
-						<h6><i class="ic" data-icon="&#61469;"></i></h6>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
-	</section>
-</div>
+					<a class="doubt block-grid reveal close-reveal-modal" data-reveal-src="get:/question/{{ question._id }}/doubt/{{ doubt._id }}" target="#question-doubts">
+						<div class="eleven columns">
+		                	<h6>{{ doubt.text }}</h6>
+						</div>
+						<div class="one columns">
+							<h6><i class="ic" data-icon="&#61469;"></i></h6>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</section>
+	</div>
