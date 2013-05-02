@@ -28,7 +28,7 @@
 		},
 
 		getContextHTML: function() {
-			return ghm.parse(this.data.context || '');
+			return (this.data.context || '').tweetify('target="_blank"').ghm();
 		},
 
 		getPredefinedText: function() {

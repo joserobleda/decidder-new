@@ -3,7 +3,6 @@
 	var moment = require('babel/lib/moment');
 	var Response = require('./response');
 	
-	
 	var Argument = Dbitem.extend({
 		
 		getUser: function(cb) {
@@ -48,6 +47,7 @@
 		getSyncData: function () {
 			var data = this.data;
 
+			data.text = data.text.tweetify('target="_blank"').ghm();
 			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
