@@ -165,6 +165,21 @@
 			});
 		},
 
+		getVisits: function() {
+			var visits = this.data.visits;
+			if (visits) return visits;
+			return false;
+		},
+
+		addVisit: function(cb) {
+			var self = this;
+			var visits = this.data.visits;
+			visits = visits ? visits + 1 : 1;
+			self.set({'visits': visits}).save(function(err, dbData) {
+				if (err) return cb(err);
+				cb(null, null);
+			});
+		},
 
 		setChosenResponse: function(response, cb) {
 			var self = this;
