@@ -18,8 +18,12 @@
 		var cookieVisit = req.cookies.rememberVisit;
 
 		if ( cookieVisit !== '1') {
-			console.log('cuento visita');
 			// Contar visita
+			
+			question.addVisit(function(err) {
+				if (err) return res.error('Error actualizando campo visits');
+			});
+			
 			res.cookie('rememberVisit', '1', { maxAge: 86400000 });
 		} 
 
