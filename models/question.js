@@ -69,11 +69,12 @@
 			self.getDoubtsPending(function(err, pendingDoubts){
 				if (err) return cb(err);
 
-				data.numberDoubts = pendingDoubts.length;
-				data.hasPendingDoubts = !pendingDoubts.length;
+				data.numberPendingDoubts = pendingDoubts.length;
 				
 				self.getDoubts(function(err, doubts){
 					if (err) return cb(err);
+
+					data.hasDoubts = !doubts.length;
 
 					doubts.each('getViewData', 'question').then(function(doubtsViewData){
 						if (err) return cb(err);

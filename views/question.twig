@@ -9,10 +9,9 @@
                 <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
 
                 <div id="question-body">
-                    <div class="visits"> {{visits}} </div>
                     <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
-                    {% if hasPendingDoubts %}
+                    {% if hasDoubts %}
                         <div id="doubts">
                             {% for doubt in doubts %}
                                 {% if doubt.response %}
@@ -41,11 +40,11 @@
 
                 <div class="row info collapse">
                     <div class="six columns">
-                        {{date}}
+                        {{date}} &nbsp; · &nbsp; <span class="visits">{{visits}}</span> views
                     </div>
                     <div class="six columns text-right options">
                         {% if isOwnQuestion %}
-                            {% if numberDoubts %}
+                            {% if numberPendingDoubts %}
                               <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
                                 <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberDoubts }}
                             {% endif %}
