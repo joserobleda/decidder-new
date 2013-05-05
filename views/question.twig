@@ -9,6 +9,7 @@
                 <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
 
                 <div id="question-body">
+                    <div class="visits"> {{visits}} </div>
                     <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
                     {% if hasPendingDoubts %}
