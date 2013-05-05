@@ -15,6 +15,13 @@
 	app.get('/question/:question', function(req, res, next) {
 		var question = req.param.question;
 		var user = req.session.user;
+
+		if (req.cookies.rememberVisit !== '1') {
+			console.log('cuento visita');
+			// Contar visita
+			res.cookie('rememberVisit', '1', { maxAge: 86400000 });
+		} 
+
 		if (question === undefined) return next();
 
 
