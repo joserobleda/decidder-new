@@ -39,7 +39,8 @@
 							domain: app.constants.DOMAIN,
 							question : question.data,
 							text: doc.title,
-							user: req.session.user.data
+							user: req.session.user.data,
+							questionOwner: userOwner.data
 						}
 
 						app.render('email/response-question.twig', items , function(err, html){

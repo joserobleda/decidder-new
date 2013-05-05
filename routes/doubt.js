@@ -25,21 +25,26 @@
 
 			if (!lastEmailDoubt) {
 
-				var items = {	protocol: app.constants.PROTOCOL,
-							domain: app.constants.DOMAIN,
-							question : question.data,
-							text: req.body.text,
-							user: req.session.user.data
-						}
+				question.getUser(function(err, questionOwner){
 
-				app.render('email/request-info.twig', items , function(err, html){
+					var items = {
+								protocol: app.constants.PROTOCOL,
+								domain: app.constants.DOMAIN,
+								question : question.data,
+								text: req.body.text,
+								user: req.session.user.data,
+								questionOwner: questionOwner.data
+							}
 
-					question.sendEmail(html, "A user requested more info", function(err) {
-						if (err) return res.error('Error enviando email')
+					app.render('email/request-info.twig', items , function(err, html){
 
-						var time = (new Date()).getTime();
-						question.setEmailSentTimeDoubt(time, function(err) {
-							if (err) return res.error('Error actualizando campo timeDoubt');
+						question.sendEmail(html, "A user requested more info", function(err) {
+							if (err) return res.error('Error enviando email')
+
+							var time = (new Date()).getTime();
+							question.setEmailSentTimeDoubt(time, function(err) {
+								if (err) return res.error('Error actualizando campo timeDoubt');
+							});
 						});
 					});
 				});
@@ -75,18 +80,20 @@
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
 			if (err) return res.error('Error guardando la respuesta de una duda');
 
-			items = {
-					protocol: app.constants.PROTOCOL,
-					domain: app.constants.DOMAIN,
-					question : question.data,
-					doubt : doubt.data,
-					response: req.body.text,
-				}
+			question.getUser(function(err, doubtUser){
+				items = {
+						protocol: app.constants.PROTOCOL,
+						domain: app.constants.DOMAIN,
+						question : question.data,
+						doubt : doubt.data,
+						response: req.body.text,
+						doubtOwner: doubtUser.data
+					}
 
-			app.render('email/response-doubt.twig', items , function(err, html){
-				if (err) return res.error('Error actualizando campo timeDoubt');
+				app.render('email/response-doubt.twig', items , function(err, html){
+					if (err) return res.error('Error actualizando campo timeDoubt');
 
-				question.getUser(function(err, doubtUser){
+					
 					var mailOptions = {
 						subject: "You have the answer to your doubt",
 					    html: html
