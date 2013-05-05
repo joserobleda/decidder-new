@@ -498,6 +498,14 @@ div.tagsinput div { display:block; float: left; }
 		font-family: $helveticaC;
 		color: #666;
 		border-bottom: 1px solid #F1F1F1;
+
+		.button.xxs i {
+			line-height: 9px;
+		}
+	}
+
+	.doubt:last-child {
+		border-bottom: 0px;
 	}
 }
 

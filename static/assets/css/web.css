@@ -4331,6 +4331,10 @@ div.tagsinput div {
     font-family: "Helvetica NC";
     color: #666;
     border-bottom: 1px solid #F1F1F1; }
+    #doubts .doubt .button.xxs i {
+      line-height: 9px; }
+  #doubts .doubt:last-child {
+    border-bottom: 0px; }
 
 #doubt-list .doubt {
   border-bottom: 1px solid #e8e8e8; }

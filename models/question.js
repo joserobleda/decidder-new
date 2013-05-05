@@ -74,7 +74,7 @@
 				self.getDoubts(function(err, doubts){
 					if (err) return cb(err);
 
-					data.hasDoubts = !doubts.length;
+					data.hasDoubts = !!doubts.length;
 
 					doubts.each('getViewData', 'question').then(function(doubtsViewData){
 						if (err) return cb(err);
