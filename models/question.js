@@ -1,7 +1,6 @@
 
 	var mail = require('babel/lib/mail');
 	var Dbitem = require('babel/models/dbitem');
-	var ghm = require("ghm");
 	var moment = require('babel/lib/moment');
 	
 
