@@ -12,7 +12,7 @@
                     <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
 
                     {% if hasDoubts %}
-                        <div id="doubts">
+                        <div id="doubts" data-form-showing>
                             {% for doubt in doubts %}
                                 {% if doubt.response %}
                                     <div class="doubt">
@@ -31,11 +31,14 @@
                         </div>
                     {% endif %}
 
+                    <input type="text" name="predefinedresponses" placeholder="Type here the responses" class="ul taglist" data-form-editing style="display:none" />
+                    {#
                     <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
                         {% for text in predefinedresponses %}
                             <li>{{ text }}</li>
                         {% endfor %}
                     </ul>
+                    #}
                 </div>
 
                 <div class="row info collapse">

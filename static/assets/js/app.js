@@ -106,6 +106,33 @@
 
 
 
+        /**
+          *  Enable taglist
+          *
+          *
+          */
+		$ctx.find('input.taglist').each(function () {
+			var $this = $(this), 
+				data = $this.data(),
+				placeholder = $this.attr('placeholder'),
+				hidden = $this.is(':hidden');
+
+			$(this).tagsInput({
+				defaultText: placeholder,
+				placeholderColor: '#bbb',
+				ready: function () {
+					if (hidden) $(this).hide();
+
+					for (var key in data) {
+						var attr = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+						$(this).attr('data-' + attr, data[key]);
+					}
+				}
+			});
+		});
+
+
+
 
         /**
           *  Open modalbox
@@ -225,17 +252,11 @@
 
 			$question.editable(function (widget) {
 				$(widget).bind('edit', function () {
-					$('input.taglist').tagsInput({
-						defaultText: 'add predefined response',
-						placeholderColor: '#bbb',
-						ready: function () {
-							$(this).attr('data-form-editing', true);
-						}
-					});
+					$question.find('input.taglist').hide();
 				});
 
 				$(widget).bind('show', function () {
-					$question.find('.tagsinput').remove();
+					
 				})
 
 				$(widget).bind('error', function(){

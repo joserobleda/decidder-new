@@ -131,7 +131,7 @@
 
 		if (req.body.context !== undefined) {
 
-			var predefined = req.body.predefinedresponses ? req.body.predefinedresponses.split(',') : '';
+			var predefined = typeof req.body.predefinedresponses === 'string' ? req.body.predefinedresponses.split(',') : '';
 			var data = {
 				predefinedresponses: predefined,
 				context: req.body.context, 

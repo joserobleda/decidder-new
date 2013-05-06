@@ -29,8 +29,13 @@
 		};
 
 		this.layers = function(e) {
-			$dom.find('[data-form-editing]').toggle();
-			$dom.find('[data-form-showing]').toggle();
+			if (widget.editing) {
+				$dom.find('[data-form-editing]').show();
+				$dom.find('[data-form-showing]').hide();
+			} else {
+				$dom.find('[data-form-editing]').hide();
+				$dom.find('[data-form-showing]').show();
+			}
 		};
 
 		this.edit = function() {
