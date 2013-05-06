@@ -211,7 +211,7 @@
 				// join to this question room
 				socket.join(questionId);
 
-				room.emit('viewers', sockets.length+1);
+				room.emit('viewers', sockets.length);
 			});
 		});
 
