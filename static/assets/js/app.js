@@ -291,6 +291,15 @@
 				})
 			});
 
+
+			var $domViewers = $("#viewers"), currentViewers = 1;
+			socket.on('viewers', function (viewers) {
+				if (currentViewers != viewers) {
+					currentViewers = viewers;
+					$domViewers.html(viewers);
+				}
+			});
+
 		});
 	};
 

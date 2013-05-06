@@ -183,9 +183,14 @@
 			
 
 			Question.findById(questionId, function (err, question) {
-				var sockets = io.of(namespace).clients(questionId), noSockets = !sockets.length;
+				var sockets = io.of(namespace).clients(questionId), 
+					noSockets = !sockets.length
+					room = io.of(namespace).in(questionId)
+				;
 
 				socket.on('disconnect', function () {
+					io.of(namespace).in(questionId).emit('viewers', sockets.length);
+
 					if (noSockets) {
 						question.events.removeListener('change', question.events._room);
 						delete(question.events._room);
@@ -196,7 +201,7 @@
 				if (question.events._room === undefined) {
 
 					question.events._room = function (data) {
-						io.of(namespace).in(questionId).emit('change', data);
+						room.emit('change', data);
 					};
 
 
@@ -205,6 +210,8 @@
 
 				// join to this question room
 				socket.join(questionId);
+
+				room.emit('viewers', sockets.length+1);
 			});
 		});
 

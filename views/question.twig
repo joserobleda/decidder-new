@@ -32,18 +32,16 @@
                     {% endif %}
 
                     <input type="text" name="predefinedresponses" placeholder="Type here the responses" class="ul taglist" data-form-editing style="display:none" />
-                    {#
-                    <ul id="predefined" name="predefinedresponses" data-form-placeholder="Type here the responses" data-raw="{{ predefinedtext }}" class="taglist">
-                        {% for text in predefinedresponses %}
-                            <li>{{ text }}</li>
-                        {% endfor %}
-                    </ul>
-                    #}
+    
                 </div>
 
                 <div class="row info collapse">
                     <div class="six columns">
-                        {{date}} &nbsp; · &nbsp; <span class="visits">{{visits}}</span> views
+                        {{date}} 
+                        &nbsp; · &nbsp; 
+                        <span class="visits">{{visits}}</span> views 
+                        &nbsp; · &nbsp;
+                        <span id="viewers">1</span> active viewers 
                     </div>
                     <div class="six columns text-right options">
                         {% if isOwnQuestion %}
