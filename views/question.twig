@@ -21,9 +21,9 @@
                                         <span class="doubt-response">{{ doubt.response }}</span>
                                         <span class="right">
                                             {% if isOwnQuestion %}
-                                                 <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel" title="delete">
+                                                <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel" title="Delete this doubt">
                                                     <i class="ic" data-icon="&#61526;"></i>
-                                                    </a>
+                                                </a>
                                             {% endif %}
                                     </div>
                                 {% endif %}
@@ -185,7 +185,7 @@
                                             </div>
                                             {% if isOwnQuestion or (argument.owner._id == session.user._id) %}
                                                 <div class="six columns text-right options">
-                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="button xxs cancel" title="delete">
+                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="button xxs cancel" title="Delete this argument">
                                                         <i class="ic" data-icon="&#61526;"></i>
                                                     </a>
                                                 </div>
