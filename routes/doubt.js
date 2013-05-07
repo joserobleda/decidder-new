@@ -80,7 +80,7 @@
 		doubt.set({'response': req.body.text}).save(function(err, dbData) {
 			if (err) return res.error('Error guardando la respuesta de una duda');
 
-			question.getUser(function(err, doubtUser){
+			doubt.getUser(function(err, doubtUser){
 				items = {
 						protocol: app.constants.PROTOCOL,
 						domain: app.constants.DOMAIN,
