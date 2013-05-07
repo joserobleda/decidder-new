@@ -162,7 +162,7 @@
 		if (req.param.question === undefined) return next();
 
 		req.param.question.remove(function(err) {
-			res.redirect('back');
+			res.redirect('/');
 		});
 	});
 

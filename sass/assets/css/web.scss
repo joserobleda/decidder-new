@@ -6,6 +6,7 @@
 @import "buttons";
 @import "icons";
 @import "share";
+@import "tipsy";
 
 $helveticaN: "Helvetica N";
 $helveticaC: "Helvetica NC";
@@ -300,6 +301,7 @@ header {
 
 	div, a {
 		font-size: 10px;
+		vertical-align: top;
 	}
 
 	.options { display: none; }
@@ -333,9 +335,8 @@ header {
 		i {
 			display: inline-block;
 			font-size: 27px; 
-			color: $green; 
-			padding: 0.5em 0;
-			margin-right: 0.5em;
+			color: $green;
+			margin: 0.5em;
 		}
 
 		button i, .button i {
@@ -502,6 +503,10 @@ div.tagsinput div { display:block; float: left; }
 		.button.xxs i {
 			line-height: 9px;
 		}
+
+		a { display: none; }
+
+		&:hover a { display: inline-block; }
 	}
 
 	.doubt:last-child {

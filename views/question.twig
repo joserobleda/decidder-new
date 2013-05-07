@@ -6,7 +6,7 @@
                 <input type="hidden" name="_method" value="put" />
 
 
-                <h1  name="title" data-tag="input" class="border-green">{{ title }}</h1>
+                <h1 name="title" data-tag="input" class="border-green" data-form-tabindex="1">{{ title }}</h1>
 
                 <div id="question-body">
                     <div id="context" class="context" data-tag="textarea" name="context" data-raw="{{ context }}" data-form-placeholder="Type here the context" data-form-tabindex="2">{{ contextHTML }}</div>
@@ -31,7 +31,7 @@
                         </div>
                     {% endif %}
 
-                    <input type="text" name="predefinedresponses" placeholder="Type here the responses" class="ul taglist" data-form-editing style="display:none" />
+                    <input type="text" name="predefinedresponses" tabindex="3" placeholder="Type here the responses" class="ul taglist" data-form-editing style="display:none" />
     
                 </div>
 
@@ -53,9 +53,13 @@
                             <button type="submit" class="xs" data-form-showing>
                                 <i class="ic" data-icon="&#61753;"></i>&nbsp; Edit your question
                             </button>
-                            <button type="submit" class="right green xs" style="display:none" data-form-editing>
-                                <i class="ic" data-icon="&#61528;"></i>&nbsp; Save
-                            </button>
+                            <div class="right" style="display:none" data-form-editing>
+                                <a class="button red xs confirm" href="/question/{{ _id }}/?_method=delete" tabindex="5"><i class="ic" data-icon="&#61528;"></i>&nbsp; Delete</a>
+
+                                <button type="submit" class="green xs" tabindex="4">
+                                    <i class="ic" data-icon="&#61528;"></i>&nbsp; Save
+                                </button>
+                            </div>
                         {% endif %}
                     </div>
                 </div>
@@ -154,14 +158,14 @@
                         <div class="two mobile-one columns text-right">
                             {% if isOwnQuestion %}
                                 {% if response.isChosen != true %}
-                                    <a href="/question/{{ _id }}?_method=put&amp;response={{ response._id }}" class="button xs greenh" title="My choice"> 
+                                    <a href="/question/{{ _id }}?_method=put&amp;response={{ response._id }}" class="button xs greenh" title="Set as selected option"> 
                                         <i class="ic" data-icon="&#61515;"></i>
                                     </a>
                                 {% endif %}
                             {% endif %}
 
                             {% if response.isChosen %}
-                                <i class="ic" data-icon="&#61513;"></i>
+                                <i class="ic" data-icon="&#61513;" title="Selected option!"></i>
                             {% endif %}
                         </div>
                     </div>

@@ -14,6 +14,28 @@
 	$.fn.bindCustomEvents = function() {
 		var $ctx = $(this);
 
+
+        /**
+          *  Confirmar acciones
+          *
+          *
+          */
+		$ctx.find('.confirm').click(function (e) {
+			var $this = $(this), txt = $this.data('confirm') || 'are you sure?';
+
+			if (!confirm(txt)) e.preventDefault();
+		});
+
+
+        /**
+          *  Tipsy links
+          *
+          *
+          */
+ 		$ctx.find('[title]').tipsy({gravity: $.fn.tipsy.autoNS});
+
+
+
         /**
           *  Get async content
           *
@@ -114,6 +136,7 @@
 		$ctx.find('input.taglist').each(function () {
 			var $this = $(this), 
 				data = $this.data(),
+				tabindex = $this.attr('tabindex'),
 				placeholder = $this.attr('placeholder'),
 				hidden = $this.is(':hidden');
 
@@ -122,6 +145,7 @@
 				placeholderColor: '#bbb',
 				ready: function () {
 					if (hidden) $(this).hide();
+					if (tabindex) $(this).find('input').attr('tabindex', tabindex);
 
 					for (var key in data) {
 						var attr = key.replace(/([A-Z])/g, '-$1').toLowerCase();
