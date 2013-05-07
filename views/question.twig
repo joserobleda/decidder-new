@@ -2,7 +2,7 @@
 
     <section class="row">
         <div class="ten columns">
-            <form id="question" method="post" action="/question/{{_id}}" >
+            <form id="question" method="post" action="/question/{{_id}}" data-is-owner="{% if isOwnQuestion %}true{% else %}false{% endif %}">
                 <input type="hidden" name="_method" value="put" />
 
 
@@ -111,6 +111,14 @@
             </div>
         </div>
     </section>
+
+    <div class="row">
+        <div class="ten columns text-center">
+            <div id="updates" style="display:none">
+                <a href="./" data-target="#updates" class="xhr-refresh hide-target">This question has been updated. Click here to refresh!</a>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="ten columns text-center">

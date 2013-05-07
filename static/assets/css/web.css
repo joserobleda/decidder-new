@@ -4432,6 +4432,25 @@ div.tagsinput div {
   background: #FBD8DB !important;
   color: #90111A !important; }
 
+#updates {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #e9f2fc;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9f2fc), color-stop(100%, #d2e4f9));
+  background-image: -webkit-linear-gradient(top, #e9f2fc, #d2e4f9);
+  background-image: -moz-linear-gradient(top, #e9f2fc, #d2e4f9);
+  background-image: -ms-linear-gradient(top, #e9f2fc, #d2e4f9);
+  background-image: -o-linear-gradient(top, #e9f2fc, #d2e4f9);
+  background-image: linear-gradient(top, #e9f2fc, #d2e4f9);
+  margin: 0 auto 1.5em auto;
+  padding: 1em 0;
+  border: 1px solid #2BA6CB; }
+  #updates a {
+    color: #0084B4; }
+
 #doubts {
   border-top: 1px dotted #CCC;
   margin-left: 1em;

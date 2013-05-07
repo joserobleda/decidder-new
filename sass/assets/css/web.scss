@@ -487,7 +487,18 @@ div.tagsinput div { display:block; float: left; }
 .not_valid {background: #FBD8DB !important; color: #90111A !important;}
 
 
+#updates {
+	@include prefixer(border-radius, 3px, webkit moz ms o spec);
+	@include linear-gradient(top, #E9F2FC, #D2E4F9);
 
+	margin: 0 auto 1.5em auto;
+	padding: 1em 0;
+	border: 1px solid #2BA6CB;
+
+
+
+	a { color: #0084B4; }
+}
 
 #doubts {
 	border-top: 1px dotted #CCC;

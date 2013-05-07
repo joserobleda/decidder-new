@@ -6,6 +6,20 @@
 
 
 
+	var xhrReload = function (e) {
+		e.preventDefault();
+
+		var replaces = ["#responses", "#context", "#doubts", "#question h1"];
+
+		$.get(document.location.pathname, function (res) {
+			var $doc = $(res);
+
+			for (var i in replaces) {
+				var selector = replaces[i];
+				$(selector).replaceWith($doc.find(selector));
+			};
+		});
+	};
 
 
 
@@ -25,6 +39,27 @@
 
 			if (!confirm(txt)) e.preventDefault();
 		});
+
+
+        /**
+          *  Reload page by ajax
+          *
+          *
+          */
+		$ctx.find('a.xhr-refresh').click(xhrReload);
+
+
+        /**
+          *  Hide 
+          *
+          *
+          */
+		$ctx.find('.hide-target').click(function (e) {
+			var $this = $(this), target = $this.data('target');
+
+			$(target).hide();
+		});
+
 
 
         /**
@@ -71,14 +106,14 @@
           *
           */
         $ctx.find('.popup').click(function (e) {
-          var href = $(this).attr('href'), 
-            wname = $(this).data('popup-name') || false,
-            width = $(this).data('popup-width') || 500,
-            height = $(this).data('popup-height') || 280,
-            left = (screen.width/2)-(width/2),
-            top = (screen.height/2)-(height/2);
+			var href = $(this).attr('href'), 
+			wname = $(this).data('popup-name') || false,
+			width = $(this).data('popup-width') || 500,
+			height = $(this).data('popup-height') || 280,
+			left = (screen.width/2)-(width/2),
+			top = (screen.height/2)-(height/2);
 
-          window.open(href, wname, "height="+height+",width="+width+",top="+top+",left="+left+",resizable=no");
+			window.open(href, wname, "height="+height+",width="+width+",top="+top+",left="+left+",resizable=no");
         });
 
         /**
@@ -87,18 +122,17 @@
           *
           */
         $ctx.find('.tw-count').each(function () {
-          var $this = $(this),
-            url = $this.data('fb-url') || location.href, 
-            api = "http://urls.api.twitter.com/1/urls/count.json?url=" + encodeURI(url) + "&amp;callback=?";
+			var $this = $(this),
+			url = $this.data('fb-url') || location.href, 
+			api = "http://urls.api.twitter.com/1/urls/count.json?url=" + encodeURI(url) + "&amp;callback=?";
 
-          function onCount(count) {
-            $this.html(count);
-          };
-          
-          $.getJSON(api, function(res) {
-            if (res) onCount(res.count);
-          })
+			function onCount(count) {
+				$this.html(count);
+			};
 
+			$.getJSON(api, function(res) {
+				if (res) onCount(res.count);
+			});
         });
 
 
@@ -108,21 +142,21 @@
           *
           */
         $ctx.find('.fb-count').each(function () {
-          // total_count,like_count,comment_count,share_count,click_count
-          var $this = $(this), 
-            data,
-            count = ($this.data('fb-count') || 'share') + '_count',
-            url = $this.data('fb-url') || location.href, 
-            api = "https://api.facebook.com/method/fql.query?query=select "+ count +" from link_stat where url='"+ encodeURI(url) +"'&format=json"
+			// total_count,like_count,comment_count,share_count,click_count
+			var $this = $(this), 
+				data,
+				count = ($this.data('fb-count') || 'share') + '_count',
+				url = $this.data('fb-url') || location.href, 
+				api = "https://api.facebook.com/method/fql.query?query=select "+ count +" from link_stat where url='"+ encodeURI(url) +"'&format=json"
 
-          function onCount(count) {
-            $this.html(count);
-          };
+			function onCount(count) {
+				$this.html(count);
+			};
 
 
-          $.getJSON(api, function (res) {
-            if (res[0] && res[0][count] !== undefined) onCount(res[0][count]);
-          });
+			$.getJSON(api, function (res) {
+				if (res[0] && res[0][count] !== undefined) onCount(res[0][count]);
+			});
 
         });
 
@@ -271,7 +305,7 @@
 
 
 	if ($question.length) {
-		//console.log(question);
+		
 		require(['widget/formEditable'], function () {
 
 			$question.editable(function (widget) {
@@ -301,22 +335,28 @@
 
 
 		require(['/socket.io/socket.io.js'], function(){
-			var questionId = document.location.pathname.split('/')[2];
-			var socket = io.connect(document.location.protocol+'//'+document.location.host+'/question');
+
+			var isOwner = $question.data('is-owner'),
+				$domViewers = $("#viewers"), 
+				$updates = $("#updates"),
+				currentViewers = 1,
+				questionId = document.location.pathname.split('/')[2],
+				socket = io.connect(document.location.protocol+'//'+document.location.host+'/question');
 
 			socket.on('connect', function () {
 				socket.emit('join', questionId);
 			});
 
 			socket.on('change', function(data) {
-				$.get(document.location.pathname, function (res) {
-					var html = $(res).find('#responses').html();
-					$("#responses").html(html);
-				})
+				// no decirle al usuario que modifica una question que hay cambios cuando es él quien modifica
+				if (isOwner == true && data.type == 'question') return;
+
+				// mostrar el link de actualizar
+				$updates.slideToggle();
 			});
 
 
-			var $domViewers = $("#viewers"), currentViewers = 1;
+
 			socket.on('viewers', function (viewers) {
 				if (currentViewers != viewers) {
 					currentViewers = viewers;
