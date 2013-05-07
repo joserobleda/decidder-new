@@ -35,7 +35,7 @@
           *
           */
 		$ctx.find('.confirm').click(function (e) {
-			var $this = $(this), txt = $this.data('confirm') || 'are you sure?';
+			var $this = $(this), txt = $this.data('confirm') || 'Are you sure?';
 
 			if (!confirm(txt)) e.preventDefault();
 		});

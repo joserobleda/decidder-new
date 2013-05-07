@@ -24,6 +24,7 @@
 	// Configuration for all environments
 	}).configure(function(){
 
+		app.use(app.deploy('OURMEGAULTRASECUREANDAMAZINGDEPLOYKEY'));
 		app.io = require('socket.io').listen(app.server, { log: false });
 
 	// Configuracion for developments only
