@@ -53,12 +53,15 @@
 		},
 
 		getSyncData: function () {
-			var data = this.data, context = this.data.context || '';
+			var data = this.data
+				, context = this.data.context || ''
+				, resume = context.length > 120 ? context.substring(0, 120) + "..." : context
+			;
 
 			data.contextHTML = this.getContextHTML();
-			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context;
+			data.contextResume = resume;
 			data.predefinedtext = this.getPredefinedText();
-			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
+			data.date = new moment(new Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
 		},
