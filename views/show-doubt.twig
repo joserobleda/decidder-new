@@ -4,10 +4,10 @@
 		<section>
 			<form id="new-response-doubt" method="post" action="/question/{{ question._id }}/doubt/{{ _id }}">
 				<h6 id="doubtText">{{text}}</h6>
-			   	<textarea name="text" placeholder="Write your doubt here" required rows="5"></textarea>
+			   	<textarea name="text" placeholder="Write your doubt here" required rows="5" tabindex="1"></textarea>
 				<div class="text-right">
-					<button class="red s reveal" type="reset" tabindex="4" data-reveal-src="/question/{{ _id }}/doubt"  target="#question-doubts">Cancel</button>
-					<button class="green s" type="submit" tabindex="3">Send</button>
+					<button class="red s reveal" type="reset" tabindex="3" data-reveal-src="/question/{{ _id }}/doubt"  target="#question-doubts">Cancel</button>
+					<button class="green s" type="submit" tabindex="2">Send</button>
 				</div>
 			</form>
 		</section>
