@@ -10,6 +10,7 @@
 			if (ctx !== undefined) return cb(null, data);
 
 
+
 			this.wait(this.getQuestions, this.getArguments, function (err, questionList, argumentsList) {
 				if (err) return cb(err);
 
@@ -37,15 +38,17 @@
 			});
 		},
 
-		getQuestions: function(cb) {
+		getQuestions: function(cb, howMany) {
 			var Question = require('./question');
 			var sortBy = [['time','desc']];
+			var howMany = howMany || 7;
 
 			Question.find({owner: this.getId()}, function(err, questions){
 				if (err) return cb(err);
 				return cb(null, questions);
 			}, {
-				'sort': sortBy
+				'sort': sortBy, 
+				limit: howMany
 			});
 		},
 
@@ -53,12 +56,14 @@
 		getArguments: function(cb) {
 			var Argument = require('./argument');
 			var sortBy = [['time','desc']];
+			var howMany = howMany || 7;
 
 			Argument.find({owner: this.getId()}, function(err, arguments){
 				if (err) return cb(err);
 				return cb(null, arguments);
 			}, {
-				'sort': sortBy
+				'sort': sortBy, 
+				limit: howMany
 			});
 		},
 
