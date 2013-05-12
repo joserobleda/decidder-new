@@ -59,7 +59,9 @@
 			;
 
 			data.contextHTML = this.getContextHTML();
-			data.contextResume = resume;
+
+			// --- parse ghm but STRIP TAGS!! and then linkyfy and tweetify, we dont want html, just basics
+			data.contextResume = resume.ghm().stripTags().linkify();
 			data.predefinedtext = this.getPredefinedText();
 			data.date = new moment(new Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
