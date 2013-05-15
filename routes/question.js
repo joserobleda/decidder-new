@@ -15,17 +15,21 @@
 	app.get('/question/:question', function(req, res, next) {
 		var question = req.param.question;
 		var user = req.session.user;
-		var cookieVisit = req.cookies.rememberVisit;
+		var cookieVisit = req.cookies.visit;
 
-		if ( cookieVisit !== '1') {
-			// Contar visita
-			
+		if ( cookieVisit === undefined && 0) {
+			var cookieValue = Math.random();
+			res.cookie('visit', cookieValue, { maxAge: 86400000 });
+			// *Añadir a DB cookieValue en question
 			question.addVisit(function(err) {
 				if (err) return res.error('Error actualizando campo visits');
 			});
-			
-			res.cookie('rememberVisit', '1', { maxAge: 86400000 });
-		} 
+		} else if (0 /* *Matchear con lo guardado en DB question*/) {
+			// *Añadir a DB cookieVisit en question
+			question.addVisit(function(err) {
+				if (err) return res.error('Error actualizando campo visits');
+			});	
+		}
 
 		if (question === undefined) return next();
 
