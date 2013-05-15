@@ -176,6 +176,14 @@
 			return false;
 		},
 
+		setCookieVisit: function(val, cb) {
+			var self = this;
+			self.set({'cookieVisit': val}).save(function(err, dbData) {
+				if (err) return cb(err);
+				cb(null, null);
+			});
+		},
+
 		addVisit: function(cb) {
 			var self = this;
 			var visits = this.data.visits;

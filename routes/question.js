@@ -17,10 +17,16 @@
 		var user = req.session.user;
 		var cookieVisit = req.cookies.visit;
 
-		if ( cookieVisit === undefined && 0) {
+		if ( cookieVisit === undefined ) {
 			var cookieValue = Math.random();
+			var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieValue) : [cookieValue];
+
 			res.cookie('visit', cookieValue, { maxAge: 86400000 });
-			// *Añadir a DB cookieValue en question
+			
+			question.setCookieVisit(arrayCookie, function(err) {
+				if (err) return res.error('Error actualizando campo cookieVisit');
+			});
+
 			question.addVisit(function(err) {
 				if (err) return res.error('Error actualizando campo visits');
 			});
