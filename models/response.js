@@ -6,7 +6,7 @@
 
 		getViewData: function(cb) {
 			var data = this.data;
-			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
+			data.date = new moment(new Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			this.getArguments(function(err, arguments){
 				if (err) return cb(err);
