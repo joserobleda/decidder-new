@@ -255,7 +255,26 @@
 					question._parent(cb);
 				});
 			})
+		},
+
+		getUsers: function (cb) {
+			this.getArguments(function(err, arguments) {
+				if (err) return cb(err);		
+					arguments.each('getUser').then(function(users){
+						cb(false, users);
+					})
+			})
+		},
+
+		getArguments: function(cb) {
+			var Argument = require('./argument');
+			var question = this;
+			Argument.find({question: this.getId()}, function(err, arguments) {
+				if (err) return cb.call(question, err);
+				return cb.call(question, null, arguments);
+			});
 		}
+
 	});
 
 	Question.collection = 'questions';

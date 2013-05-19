@@ -1,11 +1,11 @@
 {% include 'email/email-header.twig' %}
 
-	<strong>Hello {{ questionOwner.nick }},</strong><br><br>
+	<strong>Hello {{ user.nick }},</strong><br><br>
 
-	<strong>{{ user.nick }} </strong> needs more information for your question:
+	<strong>{{ user.nick }} </strong> has updated the context of the question:
 
 	<strong>{{ question.title }}</strong><br><br>
-	<strong>{{ text }}</strong><br><br>
+	<strong>{{ question.context }}</strong><br><br>
 
 	Click in the <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to answer the question and let the users help you out!
 

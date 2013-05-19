@@ -118,7 +118,7 @@
 	  */
 	app.put('/question/:question', function(req, res){
 		if (!req.session.user) return res.redirect('/auth');
-	
+		
 		var question = req.param.question
 
 		if (req.body.response) {
@@ -139,6 +139,19 @@
 				published: true
 			};
 			
+			newContext = req.body.context;
+
+			if (actualContext = question.data.context) {
+				
+				if (newContext != actualContext) {
+					question.getUsers(function(err,users) {
+						users = users.getUnique();
+						users.each('sendUpdateContextEmail', question).then(function(){});
+					});
+					
+				}
+			}
+
 			question.set(data).save(function(err) {
 				if (err) return res.status(500).end();
 
