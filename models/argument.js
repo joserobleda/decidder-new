@@ -48,7 +48,7 @@
 			var data = this.data;
 
 			data.text = data.text.tweetify('target="_blank"').ghm();
-			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
+			data.date = new moment(new Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
 		},

@@ -13,48 +13,59 @@
 
 
 
-					
-
-			var onQuestions = function(questions) {
-				data.questions = questions;
-				
-				self.getArguments(function(err, arguments){
-					if (err) return cb(err);
-
-					arguments.each('getViewData', 'user').then(function(viewData){
-						data.arguments = viewData;
-
-						return cb(null, data);
-					});
-				});
-			};
-
-			this.getQuestions(function(err, questions){
+			this.wait(this.getQuestions, this.getArguments, function (err, questionList, argumentsList) {
 				if (err) return cb(err);
 
-				questions.each('getViewData', 'user').then(function(viewData){
-					onQuestions(viewData);
+
+				var getArgumentsViewData = function (cb) {
+					argumentsList.each('getViewData', 'user').then(function(viewData){
+						return cb(null, viewData);
+					});
+				};
+
+				var getQuestionsViewData = function (cb) {
+					questionList.each('getViewData', 'user').then(function(viewData){
+						return cb(null, viewData);
+					});
+				};
+
+
+				this.wait(getQuestionsViewData, getArgumentsViewData, function (err, questionsViewData, argumentsViewData) {
+					data.questions = questionsViewData;
+					data.arguments = argumentsViewData;
+
+					return cb(null, data);
 				});
+
 			});
-			
 		},
 
-		getQuestions: function(cb) {
+		getQuestions: function(cb, howMany) {
 			var Question = require('./question');
+			var sortBy = [['time','desc']];
+			var howMany = howMany || 7;
 
 			Question.find({owner: this.getId()}, function(err, questions){
 				if (err) return cb(err);
 				return cb(null, questions);
+			}, {
+				'sort': sortBy, 
+				limit: howMany
 			});
 		},
 
 
 		getArguments: function(cb) {
 			var Argument = require('./argument');
+			var sortBy = [['time','desc']];
+			var howMany = howMany || 7;
 
 			Argument.find({owner: this.getId()}, function(err, arguments){
 				if (err) return cb(err);
 				return cb(null, arguments);
+			}, {
+				'sort': sortBy, 
+				limit: howMany
 			});
 		},
 

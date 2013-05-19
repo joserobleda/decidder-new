@@ -12,8 +12,8 @@
                                 <p>
                                     <a href="/question/{{ question._id }}">{{ question.title }}</a> · {{ question.contextResume }}
                                 </p>
-                                <p>
-                                    {{ question.responses.length }} response | {{ question.date }} 
+                                <p class="light">
+                                    {{ question.responses.length }} responses | {{ question.date }} 
                                 </p>
                             </article>
                         </div>
@@ -28,7 +28,7 @@
     {% if arguments.length %}
         <section class="row">
             <div class="twelve columns centered">
-                <h3>Your arguments</h3>
+                <h3>Your responses</h3>
 
                 <div id="responses">
                     {% for argument in arguments %}

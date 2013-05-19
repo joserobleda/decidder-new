@@ -53,12 +53,17 @@
 		},
 
 		getSyncData: function () {
-			var data = this.data, context = this.data.context || '';
+			var data = this.data
+				, context = this.data.context || ''
+				, resume = context.length > 120 ? context.substring(0, 120) + "..." : context
+			;
 
 			data.contextHTML = this.getContextHTML();
-			data.contextResume = context.length > 120 ? context.substring(0, 120) + "..." : context;
+
+			// --- parse ghm but STRIP TAGS!! and then linkyfy and tweetify, we dont want html, just basics
+			data.contextResume = resume.ghm().stripTags().linkify();
 			data.predefinedtext = this.getPredefinedText();
-			data.date = new moment(Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
+			data.date = new moment(new Date(data.time)).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 			return data;
 		},
@@ -169,6 +174,14 @@
 			var visits = this.data.visits;
 			if (visits) return visits;
 			return false;
+		},
+
+		setCookieVisit: function(val, cb) {
+			var self = this;
+			self.set({'cookieVisit': val}).save(function(err, dbData) {
+				if (err) return cb(err);
+				cb(null, null);
+			});
 		},
 
 		addVisit: function(cb) {
