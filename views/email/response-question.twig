@@ -1,22 +1,12 @@
-<html>
-    <head>
-        <title>decidder</title>
-    </head>
-    <body>
-		{% include 'email/email-header.twig' %}
-			<div style="float:left;margin-top:20px">
-				<strong>Hello {{ questionOwner.nick }}</strong>,<br><br>
-				The user <strong>{{ user.nick }}</strong> responded your question:
+{% include 'email/email-header.twig' %}
 
-				<strong>{{ question.title }}</strong>
-				<br><br>
-				The user says: <strong>{{ text }}</strong>
-				<br><br>
-				Click in the <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to check the full response
-				
-			</div>
-		</div>
- </body>
+	<strong>Hello {{ questionOwner.nick }}</strong>,<br><br>
+	<strong>{{ user.nick }}</strong> responded your question:
 
+	<strong>{{ question.title }}</strong>
+	<br><br>
+	He says: <strong>{{ text }}</strong>
+	<br><br>
+	Click in the <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to check the full response
 
-</html>
+{% include 'email/email-footer.twig' %}
