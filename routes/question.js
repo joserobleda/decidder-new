@@ -17,7 +17,7 @@
 		var user = req.session.user;
 		var cookieVisit = req.cookies.visit;
 
-		/*if ( cookieVisit === undefined ) {
+		if ( cookieVisit === undefined ) {
 			var cookieValue = Math.random();
 			var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieValue) : [cookieValue];
 
@@ -30,12 +30,12 @@
 			question.addVisit(function(err) {
 				if (err) return res.error('Error actualizando campo visits');
 			});
-		} else if (0 *Matchear con lo guardado en DB question*) {
+		} else if (0 /* *Matchear con lo guardado en DB question*/) {
 			// *Añadir a DB cookieVisit en question
 			question.addVisit(function(err) {
 				if (err) return res.error('Error actualizando campo visits');
 			});	
-		}*/
+		}
 
 		if (question === undefined) return next();
 
