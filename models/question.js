@@ -286,7 +286,15 @@
 				if (err) return cb.call(question, err);
 				return cb.call(question, null, arguments);
 			});
-		}
+		},
+
+		onChange: function(cb) {
+			var question = this;
+			question.getUsers(function(err,users) {
+				users = users.unique();
+				users.each('sendUpdateContextEmail', question).then(function(){});
+			});
+		}	
 
 	});
 

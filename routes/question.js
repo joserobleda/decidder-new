@@ -154,11 +154,8 @@
 			if (actualContext = question.data.context) {
 				
 				if (newContext != actualContext) {
-					question.getUsers(function(err,users) {
-						users = users.unique();
-						users.each('sendUpdateContextEmail', question).then(function(){});
+					question.onChange(function(err) {
 					});
-					
 				}
 			}
 
