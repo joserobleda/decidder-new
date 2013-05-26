@@ -70,7 +70,7 @@
 		question.getUser(function(err, theUser){
 			if (err) return res.error(err);
 
-			if  (user && theUser.getId() == user.getId() && false /*evitar spam!*/) {
+			if  (user && theUser.getId() == user.getId()) {
 			
 				if (question.getLastEmailDoubt()) {
 					question.setEmailSentTimeDoubt(0, function(err) {

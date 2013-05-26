@@ -86,7 +86,7 @@
 								domain: app.constants.DOMAIN,
 								question : question.data,
 								user: data,
-								owner: owner
+								owner: owner.data
 						}
 
 				app.render('email/update-context.twig', items , function(err, html){
