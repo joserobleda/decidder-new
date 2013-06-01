@@ -167,27 +167,27 @@
           *
           *
           */
-		$ctx.find('input.taglist').each(function () {
-			var $this = $(this), 
-				data = $this.data(),
-				tabindex = $this.attr('tabindex'),
-				placeholder = $this.attr('placeholder'),
-				hidden = $this.is(':hidden');
+		// $ctx.find('input.taglist').each(function () {
+		// 	var $this = $(this), 
+		// 		data = $this.data(),
+		// 		tabindex = $this.attr('tabindex'),
+		// 		placeholder = $this.attr('placeholder'),
+		// 		hidden = $this.is(':hidden');
 
-			$(this).tagsInput({
-				defaultText: placeholder,
-				placeholderColor: '#bbb',
-				ready: function () {
-					if (hidden) $(this).hide();
-					if (tabindex) $(this).find('input').attr('tabindex', tabindex);
+		// 	$(this).tagsInput({
+		// 		defaultText: placeholder,
+		// 		placeholderColor: '#bbb',
+		// 		ready: function () {
+		// 			if (hidden) $(this).hide();
+		// 			if (tabindex) $(this).find('input').attr('tabindex', tabindex);
 
-					for (var key in data) {
-						var attr = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-						$(this).attr('data-' + attr, data[key]);
-					}
-				}
-			});
-		});
+		// 			for (var key in data) {
+		// 				var attr = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+		// 				$(this).attr('data-' + attr, data[key]);
+		// 			}
+		// 		}
+		// 	});
+		// });
 
 
 
@@ -310,11 +310,20 @@
 
 			$question.editable(function (widget) {
 				$(widget).bind('edit', function () {
+					$('input.taglist').tagsInput({
+						defaultText: 'add predefined response',
+						placeholderColor: '#bbb',
+						ready: function () {
+							$(this).attr('data-form-editing', true);
+						}
+					});
 					$question.find('input.taglist').hide();
 				});
 
 				$(widget).bind('show', function () {
-					
+					console.log('$$$#@');
+					$question.find('.tagsinput').remove();	
+					$question.find('ul.predefinded').addClass("prueba");	
 				})
 
 				$(widget).bind('error', function(){
