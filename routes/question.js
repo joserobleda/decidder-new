@@ -30,10 +30,14 @@
 			question.addVisit(function(err) {
 				if (err) return res.error('Error actualizando campo visits');
 			});
-		} else if (0 /* *Matchear con lo guardado en DB question*/) {
-			// *Añadir a DB cookieVisit en question
-			question.addVisit(function(err) {
-				if (err) return res.error('Error actualizando campo visits');
+		} else if (0) {
+			question.alreadyVisited(cookieVisit, function(err, bool) {
+				if (err) return res.error('Error comprobando question visitada');
+				if (!bool) {
+					question.addVisit(function(err) {
+						if (err) return res.error('Error actualizando campo visits');
+					});
+				}
 			});	
 		}
 

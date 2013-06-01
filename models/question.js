@@ -194,6 +194,15 @@
 			});
 		},
 
+		alreadyVisited: function(cookie, cb) {
+			return cb.call(false);
+			var Question = require('./question');
+			var question = this;
+			Question.find({cookieVisit:cookie}, function(err, cookies) {
+				cb.call(question, err, !!(cookies && cookies.length));
+			});
+		},
+
 		setChosenResponse: function(response, cb) {
 			var self = this;
 			var Response = require('./response');
