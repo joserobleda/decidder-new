@@ -1,23 +1,12 @@
-<html>
-    <head>
-        <title>decidder</title>
-    </head>
-    <body>
-		{% include 'email/email-header.twig' %}
-			<div style="float:left;margin-top:20px">
-				<strong>Hello {{ doubtOwner.nick }}</strong>,<br><br>
+{% include 'email/email-header.twig' %}
 
-				The owner of the question has response your doubt:
+	<strong>Hello {{ doubtOwner.nick }}</strong>,<br><br>
 
-				<strong>{{ doubt.text }}</strong>
-				<br><br>
-				The user says: <strong>{{ response }}</strong>
-				<br><br>
-				If you think the answer is good enough, click in this <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to answer the question.
-				
-			</div>
-		</div>
- </body>
+	The creator of the question <strong>{{ question.title }}</strong> has responded to your doubt.
 
+	<br><br>
+	He says: <strong>{{ response }}</strong>
+	<br><br>
+	If you think the answer is good enough, click in this <a href="{{ protocol }}//{{ domain }}/question/{{ question._id }}">Link</a> to answer the question.
 
-</html>
+{% include 'email/email-footer.twig' %}

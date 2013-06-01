@@ -74,7 +74,7 @@
 		question.getUser(function(err, theUser){
 			if (err) return res.error(err);
 
-			if  (user && theUser.getId() == user.getId() && false /*evitar spam!*/) {
+			if  (user && theUser.getId() == user.getId()) {
 			
 				if (question.getLastEmailDoubt()) {
 					question.setEmailSentTimeDoubt(0, function(err) {
@@ -132,7 +132,7 @@
 	  */
 	app.put('/question/:question', function(req, res){
 		if (!req.session.user) return res.redirect('/auth');
-	
+		
 		var question = req.param.question
 
 		if (req.body.response) {
@@ -153,6 +153,16 @@
 				published: true
 			};
 			
+			newContext = req.body.context;
+
+			if (actualContext = question.data.context) {
+				
+				if (newContext != actualContext) {
+					question.onChange(function(err) {
+					});
+				}
+			}
+
 			question.set(data).save(function(err) {
 				if (err) return res.status(500).end();
 
