@@ -80,7 +80,7 @@
 					if (err) return cb(err);
 
 					data.hasDoubts = !!doubts.length;
-
+					
 					doubts.each('getViewData', 'question').then(function(doubtsViewData){
 						if (err) return cb(err);
 						data.doubts = doubtsViewData;
