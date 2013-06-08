@@ -225,6 +225,7 @@
 				if (question.events._room === undefined) {
 
 					question.events._room = function (data) {
+						if (data.user) data.user = data.user.data._id;
 						room.emit('change', data);
 					};
 

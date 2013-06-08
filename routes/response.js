@@ -9,7 +9,7 @@
 
 		if (!req.session.user) return res.redirect('/auth/login/twitter');
 
-		var question = req.param.question;
+		var question = req.param.question, user = req.session.user;
 
 		var doc = { 
 			title: req.body.title,
@@ -52,16 +52,16 @@
 									if (err) return console.log(err);
 									var time = (new Date()).getTime();
 									question.setEmailSentTimeResponse(time, function(err) {
-										res.redirect('/question/' + req.param.question.getId());
+										
 									});
 								});
-							} else {
-								res.redirect('/question/' + req.param.question.getId());
 							}
-						});				
+						});
+
+						res.redirect('/question/' + req.param.question.getId());		
 					});
 				});
 				
-			});
-		});
+			}, user);
+		}, user);
 	});

@@ -18,12 +18,18 @@
 
 					// -- same user
 					if (questionOwner.eq(user) === false) return res.status(401).end();
-				});
-			};
 
-			argument.remove(function (err) {
-				res.redirect('back');
-			});
+					argument.remove(function (err) {
+						res.redirect('back');
+					}, user);
+				});
+			} else {
+				argument.remove(function (err) {
+					res.redirect('back');
+				}, user);	
+			}
+
+
 		});
 
 		

@@ -361,7 +361,7 @@
 				if (isOwner == true && data.type == 'question') return;
 
 				// mostrar el link de actualizar
-				$updates.slideToggle();
+				$updates.slideDown();
 			});
 
 
