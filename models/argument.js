@@ -121,7 +121,6 @@
 
 
 	Argument.events.on('remove', function (argument, user) {
-		console.log('user', user);
 		argument.getQuestion(function (err, question) {
 			if (err) return err;
 
