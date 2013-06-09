@@ -301,10 +301,11 @@
 			var question = this;
 			question.getUsers(function(err,users) {
 				users = users.unique();
-				users.each('sendUpdateContextEmail', question).then(function(){});
+				users.each('sendUpdateContextEmail', question).then(function(){
+					cb(false, users);
+				});
 			});
 		}	
-
 	});
 
 	Question.collection = 'questions';
