@@ -87,12 +87,12 @@
 			});
 		},
 
-		remove: function (cb) {
+		remove: function (cb, user) {
 			var argument = this;
 
 			function thenRemove (err, dbData) {
 				if (err) return cb(err);
-				return argument._parent(cb)
+				return argument._parent(cb, user)
 			};
 
 
@@ -100,32 +100,31 @@
 				if (err) return cb(err);
 
 				var numArguments = response.get('numArguments') - 1;
-
 		
 				if (numArguments) return response.set('numArguments', numArguments).save(thenRemove);
 				
 				argument._parent(function (err) {
 					cb(err);
-					response.remove();	
-				});
+					response.remove(null, user);
+				}, user);
 			});
 		}
 	});
 
-	Argument.events.on('new', function (argument) {
+	Argument.events.on('new', function (argument, user) {
 		argument.getQuestion(function (err, question) {
 			if (err) return err;
 
-			return question.events.emit('change', {type: 'argument', argument: argument});
+			return question.events.emit('change', {type: 'argument', argument: argument, user: user});
 		});
 	});
 
 
-	Argument.events.on('remove', function (argument) {
+	Argument.events.on('remove', function (argument, user) {
 		argument.getQuestion(function (err, question) {
 			if (err) return err;
 
-			return question.events.emit('change', {type: 'argument', argument: argument});
+			return question.events.emit('change', {type: 'argument', argument: argument, user: user});
 		});
 	});
 

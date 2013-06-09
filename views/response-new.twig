@@ -5,7 +5,7 @@
 			<input type="hidden" name="title" value="{{ fixedTitle }}" />
 			<input type="text" name="title" value="{{ fixedTitle }}" disabled tabindex="1"/>
 		{% else %}
-			{% if predefinedresponses %}
+			{% if predefinedresponses != "" %}
 				<div class="select">
 					<select name="title" required tabindex="1">
 						<option value="">Select one option</option>		

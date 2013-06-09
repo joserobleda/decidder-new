@@ -7,6 +7,9 @@
 		<script src="/assets/js/vendor/jquery.address.js"></script>
 		<script src="/assets/js/vendor/jquery.tagsinput.min.js"></script>
 		<script src="/assets/js/vendor/jquery.tipsy.js"></script>
+		{% if session.user %}
+		<script type="text/javascript">window.__userid = '{{session.user._id}}';</script>
+		{% endif %}
         <script data-main="/assets/js/app.js" src="/assets/js/vendor/require.js"></script>
 
 

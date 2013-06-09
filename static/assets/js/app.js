@@ -2,7 +2,9 @@
 	"use strict";
 
 
-	var $canvas = $("#canvas"), $question = $('form#question');
+	var $canvas = $("#canvas"), 
+		$question = $('form#question'),
+		userId = window.__userid || false;
 
 
 
@@ -360,8 +362,10 @@
 				// no decirle al usuario que modifica una question que hay cambios cuando es él quien modifica
 				if (isOwner == true && data.type == 'question') return;
 
+				if (userId === data.user) return;
+
 				// mostrar el link de actualizar
-				$updates.slideToggle();
+				$updates.slideDown();
 			});
 
 

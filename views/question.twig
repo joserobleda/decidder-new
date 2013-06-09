@@ -21,7 +21,7 @@
                                         <span class="doubt-response">{{ doubt.response }}</span>
                                         <span class="right">
                                             {% if isOwnQuestion %}
-                                                <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel" title="Delete this doubt">
+                                                <a href="/question/{{ _id }}/doubt/{{doubt._id}}/?_method=delete" class="button xxs cancel confirm" title="Delete this doubt">
                                                     <i class="ic" data-icon="&#61526;"></i>
                                                 </a>
                                             {% endif %}
@@ -47,7 +47,7 @@
                         {% if isOwnQuestion %}
                             {% if numberPendingDoubts %}
                               <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
-                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberDoubts }}
+                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberPendingDoubts }}
                             {% endif %}
                             </button>
                             <button type="submit" class="xs" data-form-showing>
@@ -193,7 +193,7 @@
                                             </div>
                                             {% if isOwnQuestion or (argument.owner._id == session.user._id) %}
                                                 <div class="six columns text-right options">
-                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="button xxs cancel" title="Delete this argument">
+                                                    <a href="/argument/{{argument._id}}/?_method=delete" class="button xxs cancel confirm" title="Delete this argument">
                                                         <i class="ic" data-icon="&#61526;"></i>
                                                     </a>
                                                 </div>
