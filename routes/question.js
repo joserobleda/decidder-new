@@ -168,6 +168,8 @@
 				} else {
 					return res.json(data);
 				}
+			} else {
+					return res.json(data);
 			}
 		}
 
