@@ -126,9 +126,15 @@
                 <div class="hide-for-large-up">
                     <br />
                 </div>
-                <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
-                    <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
-                </button>
+                {% if session.user._id %}
+                    <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
+                        <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                    </button>
+                {% else %}
+                    <a href="/auth/login/twitter" class="button l green"> 
+                        <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                    </a>
+                {% endif %} 
                 <div class="hide-for-large-up">
                     <br />
                 </div>
