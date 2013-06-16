@@ -169,13 +169,12 @@
 					return res.json(data);
 				}
 			} else {
-					question.set(data).save(function(err) {
-							if (err) return res.status(500).end();
-							data.context = question.getContextHTML();
-							data.predefinedresponses = question.data.predefinedresponses;
-							return res.json(data);
-						});
+				question.set(data).save(function(err) {
+					if (err) return res.status(500).end();
+					data.context = question.getContextHTML();
+					data.predefinedresponses = question.data.predefinedresponses;
 					return res.json(data);
+				});
 			}
 		}
 
