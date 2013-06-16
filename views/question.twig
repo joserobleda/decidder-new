@@ -143,9 +143,15 @@
                     <br />
                 </div>
             {% endif %}   
-            <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
-                <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
-            </button>
+            {% if session.user._id %}
+                <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
+                    <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
+                </button>
+            {% else %}
+                <a href="/auth/login/twitter" class="button l green"> 
+                    <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
+                </a>
+            {% endif %} 
         </div>
     </div>
 
