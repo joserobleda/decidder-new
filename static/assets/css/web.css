@@ -4124,7 +4124,7 @@ header {
     border-radius: 6px 0 0 6px;
     padding: 10px;
     height: auto;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .15), 0 2px 4px rgba(0, 0, 0, .2) inset, 0 -1px 3px rgba(0, 0, 0, .2) inset, 0 0 12px rgba(255, 255, 255, .1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.2) inset, 0 -1px 3px rgba(0, 0, 0, 0.2) inset, 0 0 12px rgba(255, 255, 255, 0.1);
     color: #469a40;
     background-color: rgba(0, 0, 0, 0.03);
     font-size: 24px;
@@ -4166,11 +4166,11 @@ header {
   z-index: 100;
   margin: 0;
   width: 400px;
-  -webkit-box-shadow: 0 0px 46px 0px #aaa;
-  -moz-box-shadow: 0 0px 46px 0px #aaa;
-  -ms-box-shadow: 0 0px 46px 0px #aaa;
-  -o-box-shadow: 0 0px 46px 0px #aaa;
-  box-shadow: 0 0px 46px 0px #aaa; }
+  -webkit-box-shadow: 0 0px 46px 0px #aaaaaa;
+  -moz-box-shadow: 0 0px 46px 0px #aaaaaa;
+  -ms-box-shadow: 0 0px 46px 0px #aaaaaa;
+  -o-box-shadow: 0 0px 46px 0px #aaaaaa;
+  box-shadow: 0 0px 46px 0px #aaaaaa; }
   @media only screen and (max-width: 767px) {
     .modal {
       width: 300px !important; } }
@@ -4230,11 +4230,11 @@ header {
     background-image: -ms-linear-gradient(top, #f9f9f9, #e9e9e9);
     background-image: linear, top, #f9f9f9, #e9e9e9;
     border-bottom: 1px solid #bababa;
-    -webkit-box-shadow: inset 0px 0px 0px #fff, 0px 1px 3px rgba(0, 0, 0, .08);
-    -moz-box-shadow: inset 0px 0px 0px #fff, 0px 1px 3px rgba(0, 0, 0, .08);
-    -ms-box-shadow: inset 0px 0px 0px #fff, 0px 1px 3px rgba(0, 0, 0, .08);
-    -o-box-shadow: inset 0px 0px 0px #fff, 0px 1px 3px rgba(0, 0, 0, .08);
-    box-shadow: inset 0px 0px 0px #fff, 0px 1px 3px rgba(0, 0, 0, .08);
+    -webkit-box-shadow: inset 0px 0px 0px white, 0px 1px 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0px 0px 0px white, 0px 1px 3px rgba(0, 0, 0, 0.08);
+    -ms-box-shadow: inset 0px 0px 0px white, 0px 1px 3px rgba(0, 0, 0, 0.08);
+    -o-box-shadow: inset 0px 0px 0px white, 0px 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0px 0px 0px white, 0px 1px 3px rgba(0, 0, 0, 0.08);
     -webkit-border-radius: 4px 4px 0px 0px;
     -moz-border-radius: 4px 4px 0px 0px;
     -ms-border-radius: 4px 4px 0px 0px;
