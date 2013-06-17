@@ -153,30 +153,12 @@
 				published: true
 			};
 			
-			newContext = req.body.context;
-
-			if (actualContext = question.data.context) {
-				if (newContext != actualContext) {
-					question.onChange(function(err) {
-						question.set(data).save(function(err) {
-							if (err) return res.status(500).end();
-							data.context = question.getContextHTML();
-							data.predefinedresponses = question.data.predefinedresponses;
-							return res.json(data);
-						});
-					});
-				} else {
+			question.set(data).save(function(err) {
+				if (err) return res.status(500).end();
+					data.context = question.getContextHTML();
+					data.predefinedresponses = question.data.predefinedresponses;
 					return res.json(data);
-				}
-			} else {
-					question.set(data).save(function(err) {
-							if (err) return res.status(500).end();
-							data.context = question.getContextHTML();
-							data.predefinedresponses = question.data.predefinedresponses;
-							return res.json(data);
-						});
-					return res.json(data);
-			}
+				});
 		}
 
 	});

@@ -297,17 +297,24 @@
 			});
 		},
 
-		onChange: function(cb) {
+		onChange: function(cachedObject) {
+			if (typeof cachedObject !== 'undefined' && this.data.context!=cachedObject.data.context) {
+				this.onChangeContext();
+			}
+		},
+
+		onChangeContext: function(cb) {
 			var question = this;
 			question.getUsers(function(err,users) {
 				users = users.unique();
-				users.each('sendUpdateContextEmail', question).then(function(){
-					cb(false, users);
-				});
+				users.each('sendUpdateContextEmail', question).then(function(){});
 			});
-		}	
-	});
+		}
 
+
+	});
+	
+	
 	Question.collection = 'questions';
 
 	module.exports = Question;
