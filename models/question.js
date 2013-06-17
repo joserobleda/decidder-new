@@ -195,11 +195,10 @@
 		},
 
 		alreadyVisited: function(cookie, cb) {
-			return cb.call(false);
 			var Question = require('./question');
 			var question = this;
 			Question.find({cookieVisit:cookie}, function(err, cookies) {
-				cb.call(question, err, !!(cookies && cookies.length));
+				return cb.call(question, err, !!(cookies && cookies.length));
 			});
 		},
 

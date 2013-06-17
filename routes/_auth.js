@@ -65,13 +65,14 @@
 
 		var username = req.body.screen_name;
 		social.twitter.getProfileImage(username, function(err, URLImage) {
+
 			var doc = {
 				nick: username,
 				twitter: req.body,
 				image: URLImage
 			};
 			
-			//console.log(doc);
+
 			User.findOrCreate({'twitter.user_id': doc.twitter.user_id}, doc, function(err, user) {
 				if (err) return res.error("twitter login error");
 
