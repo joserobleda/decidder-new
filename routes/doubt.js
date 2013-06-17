@@ -137,3 +137,11 @@
 			});
 		});
 	});
+
+
+	Doubt.events.on('new', function (doubt, user) {
+		doubt.getQuestion(function (err, question) {
+			if (err) return err;
+			return question.events.emit('change', {type: 'doubt', doubt: doubt, user: user});
+		});
+	});

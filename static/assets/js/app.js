@@ -11,7 +11,7 @@
 	var xhrReload = function (e) {
 		e.preventDefault();
 
-		var replaces = ["#responses", "#context", "#doubts", "#question h1"];
+		var replaces = ["#responses", "#context", "#doubts", "#question h1", "#pendingDoubts"];
 
 		$.get(document.location.pathname, function (res) {
 			var $doc = $(res);
@@ -362,7 +362,7 @@
 				// no decirle al usuario que modifica una question que hay cambios cuando es él quien modifica
 				if (isOwner == true && data.type == 'question') return;
 
-				if (userId === data.user) return;
+				if (userId === data.user && data.type != 'doubt') return;
 
 				// mostrar el link de actualizar
 				$updates.slideDown();

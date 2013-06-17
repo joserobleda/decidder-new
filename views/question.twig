@@ -47,7 +47,7 @@
                         {% if isOwnQuestion %}
                             {% if numberPendingDoubts %}
                               <button class="xs reveal" type="reset" data-reveal-src="get:/question/{{ _id }}/doubt" data-form-showing>
-                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions {{ numberPendingDoubts }}
+                                <i class="ic" data-icon="&#61450;"></i>&nbsp; Response to users questions <span id="pendingDoubts">{{ numberPendingDoubts }}</span>
                             {% endif %}
                             </button>
                             <button type="submit" class="xs" data-form-showing>
