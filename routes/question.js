@@ -37,6 +37,10 @@
 					question.addVisit(function(err) {
 						if (err) return res.error('Error actualizando campo visits');
 					});
+					var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieVisit) : [cookieVisit];
+					question.setCookieVisit(arrayCookie, function(err) {
+						if (err) return res.error('Error actualizando campo cookieVisit');
+					});
 				}
 			});	
 		}
