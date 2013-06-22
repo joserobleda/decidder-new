@@ -18,7 +18,7 @@
 		var cookieVisit = req.cookies.visit;
 
 		if ( cookieVisit === undefined ) {
-			var cookieValue = Math.random();
+			var cookieValue = Math.random().toString();
 			var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieValue) : [cookieValue];
 
 			res.cookie('visit', cookieValue, { maxAge: 86400000 });
