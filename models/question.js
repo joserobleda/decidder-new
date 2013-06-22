@@ -188,17 +188,27 @@
 			var self = this;
 			var visits = this.data.visits;
 			visits = visits ? visits + 1 : 1;
-			self.set({'visits': visits}).save(function(err, dbData) {
-				if (err) return cb(err);
-				cb(null, null);
+			// self.set({'visits': visits}).save(function(err, dbData) {
+			// 	if (err) return cb(err);
+			// 	cb(null, null);
+			// });
+		},
+
+		match: function(filter, cb, opt) {
+			var Question = require('./question');
+			var mongo = require('../node_modules/babel/node_modules/mongodb');
+			var question = this;
+			filter._id = mongo.ObjectID(question.getId());
+			Question.find(filter, function(err, questions) {
+				return cb.call(question, err, questions);
 			});
 		},
 
 		alreadyVisited: function(cookie, cb) {
 			var Question = require('./question');
 			var question = this;
-			Question.find({cookieVisit:cookie}, function(err, cookies) {
-				return cb.call(question, err, !!(cookies && cookies.length));
+			this.match({cookieVisit:cookie}, function(err, questions) {
+				return cb.call(question, err, !!(questions && questions.length));
 			});
 		},
 
