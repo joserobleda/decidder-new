@@ -202,7 +202,7 @@ header {
     width: 400px;
 
 	@media only screen and (max-width: 767px) {
-    	width: 300px !important; 
+    	width: 80%!important; 
     }    
 
     @include prefixer(box-shadow, 0 0px 46px 0px #aaa, webkit moz ms o spec);
