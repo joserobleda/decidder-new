@@ -122,35 +122,37 @@
 
     <div class="row">
         <div class="ten columns text-center">
-            {% if not isResponsed %}
-                <div class="hide-for-large-up">
-                    <br />
-                </div>
+            {% if not isOwnQuestion %}
+                {% if not isResponsed %}
+                    <div class="hide-for-large-up">
+                        <br />
+                    </div>
+                    {% if session.user._id %}
+                        <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
+                            <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                        </button>
+                    {% else %}
+                        <a href="/auth/login/twitter" class="button l green"> 
+                            <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                        </a>
+                    {% endif %} 
+                    <div class="hide-for-large-up">
+                        <br />
+                    </div>
+                    <span style=""> &nbsp; or &nbsp; </span>
+                    <div class="hide-for-large-up">
+                        <br />
+                    </div>
+                {% endif %}   
                 {% if session.user._id %}
-                    <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-response">
-                        <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                    <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
+                        <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
                     </button>
                 {% else %}
                     <a href="/auth/login/twitter" class="button l green"> 
-                        <i class="ic" data-icon="&#61757;"></i>&nbsp; Write a response
+                        <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
                     </a>
                 {% endif %} 
-                <div class="hide-for-large-up">
-                    <br />
-                </div>
-                <span style=""> &nbsp; or &nbsp; </span>
-                <div class="hide-for-large-up">
-                    <br />
-                </div>
-            {% endif %}   
-            {% if session.user._id %}
-                <button id="new-reponse-button" class="reveal green" data-reveal-target="#new-inforequest">
-                    <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
-                </button>
-            {% else %}
-                <a href="/auth/login/twitter" class="button l green"> 
-                    <i class="ic" data-icon="&#61779;"></i>&nbsp; Request more info
-                </a>
             {% endif %} 
         </div>
     </div>
