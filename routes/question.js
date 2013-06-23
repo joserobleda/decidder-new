@@ -22,24 +22,25 @@
 			var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieValue) : [cookieValue];
 
 			res.cookie('visit', cookieValue, { maxAge: 86400000 });
-			
+
 			question.setCookieVisit(arrayCookie, function(err) {
 				if (err) return res.error('Error actualizando campo cookieVisit');
+				question.addVisit(function(err) {
+					if (err) return res.error('Error actualizando campo visits');
+				});
 			});
 
-			question.addVisit(function(err) {
-				if (err) return res.error('Error actualizando campo visits');
-			});
-		} else if (0) {
+			
+		} else {
 			question.alreadyVisited(cookieVisit, function(err, bool) {
 				if (err) return res.error('Error comprobando question visitada');
-				if (!bool) {
-					question.addVisit(function(err) {
-						if (err) return res.error('Error actualizando campo visits');
-					});
+				if (!bool) {	
 					var arrayCookie = question.data.cookieVisit ? question.data.cookieVisit.concat(cookieVisit) : [cookieVisit];
 					question.setCookieVisit(arrayCookie, function(err) {
 						if (err) return res.error('Error actualizando campo cookieVisit');
+						question.addVisit(function(err) {
+							if (err) return res.error('Error actualizando campo visits');
+						});
 					});
 				}
 			});	
