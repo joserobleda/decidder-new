@@ -13,7 +13,17 @@ $helveticaC: "Helvetica NC";
 $green: #469A40;
 
 a, a:hover, a:focus { color: $green; }
-html, body { height:100%; font-family: $helveticaN;  }
+html, body { 
+	height:100%; 
+	font-family: $helveticaN;  
+	@media only screen and (max-width: 767px) {
+	    overflow-x:hidden;
+	    width:100%;
+	    -webkit-box-sizing: border-box;
+	       -moz-box-sizing: border-box;
+	            box-sizing: border-box;
+	}
+}
 ul li { list-style: none; }  
 i { vertical-align: middle; }
 .light { color: #aaa; }
