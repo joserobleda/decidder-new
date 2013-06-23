@@ -12,6 +12,9 @@
 						{% for text in predefinedresponses %}
 							<option value="{{text}}">{{text}}</option>
 						{% endfor %}
+						{% for responsePredefined in responses %}
+							<option value="{{ responsePredefined.title }}">{{ responsePredefined.title }}</option>
+						{% endfor %}
 					</select>
 				</div>
 	        {% else %}
