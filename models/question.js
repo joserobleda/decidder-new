@@ -7,6 +7,12 @@
 
 	var Question = Dbitem.extend({
 
+		init: function(data) {
+			this._parent(data); 
+			this.events.on('change', this.onChange);
+			this.events.on('changecontext', this.onChangeContext);
+		},
+
 		getUser: function(cb) {
 			var User = require('./user');
 			var userID = this.get('owner');
@@ -306,17 +312,17 @@
 			});
 		},
 
-		onChange: function(cachedObject) {
-			if (typeof cachedObject !== 'undefined' && this.data.context!=cachedObject.data.context) {
-				this.onChangeContext();
+		onChange: function(e) {
+			if (e.previousData.context != e.currentData.context) {
+				e.type = "changecontext";
+				e.source.events.emit("changecontext", e);
 			}
 		},
 
-		onChangeContext: function(cb) {
-			var question = this;
-			question.getUsers(function(err,users) {
+		onChangeContext: function(e) {
+			e.source.getUsers(function(err,users) {
 				users = users.unique();
-				users.each('sendUpdateContextEmail', question).then(function(){});
+				users.each('sendUpdateContextEmail', e.source).then(function(){});
 			});
 		}
 

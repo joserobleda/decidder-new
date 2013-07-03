@@ -323,7 +323,6 @@
 				});
 
 				$(widget).bind('show', function () {
-					console.log('$$$#@');
 					$question.find('.tagsinput').remove();	
 					$question.find('ul.predefinded').addClass("prueba");	
 				})
@@ -360,9 +359,9 @@
 
 			socket.on('change', function(data) {
 				// no decirle al usuario que modifica una question que hay cambios cuando es él quien modifica
-				if (isOwner == true && data.type == 'question') return;
+				if (isOwner == true && data.collection == 'questions') return;
 
-				if (userId === data.user && data.type != 'doubt') return;
+				if (userId === data.user && data.collection != 'doubt') return;
 
 				// mostrar el link de actualizar
 				$updates.slideDown();

@@ -208,7 +208,7 @@
 					io.of(namespace).in(questionId).emit('viewers', sockets.length);
 
 					if (noSockets) {
-						question.events.removeListener('change', question.events._room);
+						question.events.removeListener('changecontext', question.events._room);
 						delete(question.events._room);
 					}
 				});
@@ -221,8 +221,7 @@
 						room.emit('change', data);
 					};
 
-
-					question.events.on('change', question.events._room);
+					question.events.on('changecontext', question.events._room);
 				};
 
 				// join to this question room
