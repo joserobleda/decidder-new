@@ -60,7 +60,10 @@
 
 
 	social.twitter.login('/auth/login/twitter', function(err, req, res) {
-		if (err) return res.error("twitter login error");
+		if (err) {
+			console.error(err);
+			return res.error("twitter login error");
+		}
 
 
 		var username = req.body.screen_name;
