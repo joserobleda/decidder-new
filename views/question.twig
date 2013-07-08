@@ -222,7 +222,7 @@
                             <div class="eleven columns offset-by-one">
                                 <div class="row collapse info">
                                     <div class="twelve columns">   
-                                        {% if not isResponsed %}                                    
+                                        {% if not isResponsed and not isOwnQuestion%}                                    
                                             <button id="new-reponse-button" class="reveal green xs" data-reveal-target="#new-response-argument-{{ response._id }}">
                                                 <i class="ic" data-icon="&#61469;"></i> &nbsp; Add your argument
                                             </button>
