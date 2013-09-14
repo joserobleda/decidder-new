@@ -313,7 +313,7 @@
 		},
 
 		onChange: function(e) {
-			if (e.previousData.context != e.currentData.context) {
+			if (e.previousData && e.previousData.context != e.currentData.context) {
 				e.type = "changecontext";
 				e.source.events.emit("changecontext", e);
 			}
