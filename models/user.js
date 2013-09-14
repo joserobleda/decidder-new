@@ -2,7 +2,7 @@
 	var app = require('babel');
 	var User = require('babel/models/user');
 	var mail = require('babel/lib/mail');
-	
+	var promises = require('babel/lib/promises');
 
 	var CustomUser = User.extend({
 
@@ -12,32 +12,27 @@
 			if (ctx !== undefined) return cb(null, data);
 
 
-
-			this.wait(this.getQuestions, this.getArguments, function (err, questionList, argumentsList) {
-				if (err) return cb(err);
-
-
-				var getArgumentsViewData = function (cb) {
-					argumentsList.each('getViewData', 'user').then(function(viewData){
-						return cb(null, viewData);
-					});
-				};
-
-				var getQuestionsViewData = function (cb) {
-					questionList.each('getViewData', 'user').then(function(viewData){
-						return cb(null, viewData);
-					});
-				};
-
-
-				this.wait(getQuestionsViewData, getArgumentsViewData, function (err, questionsViewData, argumentsViewData) {
-					data.questions = questionsViewData;
-					data.arguments = argumentsViewData;
-
-					return cb(null, data);
-				});
-
+			var questionsPromise = this.getQuestions().then(function (questionList) {
+				return questionList.each('getViewData', 'user');
+			}).then(function (questionsData) {
+				return questionsData;
 			});
+
+
+			var argumentsPromise = this.getArguments().then(function (argumentList) {
+				return argumentList.each('getViewData', 'user');
+			}).then(function (argumentsData) {
+				return argumentsData;
+			});
+
+
+			promises.all([questionsPromise, argumentsPromise]).then (function (results) {
+				data.questions = results[0];
+				data.arguments = results[1];
+
+				return cb(null, data);
+			}, cb);
+
 		},
 
 		getQuestions: function(cb, howMany) {
@@ -45,13 +40,18 @@
 			var sortBy = [['time','desc']];
 			var howMany = howMany || 7;
 
+			var deferred = new promises.Deferred();
+	
 			Question.find({owner: this.getId()}, function(err, questions){
-				if (err) return cb(err);
-				return cb(null, questions);
+				if (err) return deferred.reject(err);
+
+				deferred.resolve(questions);
 			}, {
 				'sort': sortBy, 
 				limit: howMany
 			});
+
+			return deferred.promise;
 		},
 
 
@@ -60,13 +60,18 @@
 			var sortBy = [['time','desc']];
 			var howMany = howMany || 7;
 
+			var deferred = new promises.Deferred();
+	
 			Argument.find({owner: this.getId()}, function(err, arguments){
-				if (err) return cb(err);
-				return cb(null, arguments);
+				if (err) return deferred.reject(err);
+
+				deferred.resolve(arguments);
 			}, {
 				'sort': sortBy, 
 				limit: howMany
 			});
+
+			return deferred.promise;
 		},
 
 		getSyncData: function () {

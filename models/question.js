@@ -77,6 +77,14 @@
 		getViewData: function(cb, ctx) {
 			var self = this, data = this.getSyncData();
 
+			/*
+			self.getDoubtsPending().then(function (pendingDoubts) {
+
+			}).then(function () {
+
+			})
+			*/
+			
 			self.getDoubtsPending(function(err, pendingDoubts){
 				if (err) return cb(err);
 
@@ -116,6 +124,7 @@
 					});
 				});
 			});
+			/**/
 		},
 
 

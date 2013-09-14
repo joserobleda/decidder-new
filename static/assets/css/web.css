@@ -3976,6 +3976,13 @@ a, a:hover, a:focus {
 html, body {
   height: 100%;
   font-family: "Helvetica N"; }
+  @media only screen and (max-width: 767px) {
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; } }
 
 ul li {
   list-style: none; }
@@ -4173,7 +4180,7 @@ header {
   box-shadow: 0 0px 46px 0px #aaaaaa; }
   @media only screen and (max-width: 767px) {
     .modal {
-      width: 300px !important; } }
+      width: 80% !important; } }
   .modal.m {
     width: 500px; }
   .modal textarea {
