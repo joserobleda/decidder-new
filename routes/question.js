@@ -222,7 +222,7 @@
 						room.emit('change', data);
 					};
 
-					question.events.on('changecontext', question.events._room);
+					question.events.on('change', question.events._room);
 				};
 
 				// join to this question room
